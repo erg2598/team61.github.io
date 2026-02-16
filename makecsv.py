@@ -1,12 +1,18 @@
 import csv
 import psycopg2
+from dotenv import load_dotenv
+import os
+
+# Load the .env file
+load_dotenv()
+
 
 # 1. Connect to the PostgreSQL database
 conn = psycopg2.connect(
-    host="csce-315-db.engr.tamu.edu",
-    database="team_61_db",
-    user="team_61",      
-    password="331_61"   
+    host=os.getenv("DB_HOST"),
+    database=os.getenv("DB_NAME"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD")
 )
 cursor = conn.cursor()
 
