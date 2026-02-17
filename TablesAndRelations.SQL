@@ -23,3 +23,14 @@ CREATE TABLE IF NOT EXISTS public."OrderLineItem"
 );
 
 COMMENT ON TABLE public."OrderLineItem" IS 'The Specific Customized Item';
+
+CREATE TABLE IF NOT EXISTS public."Item"
+(
+    "itemId" integer NOT NULL,
+    name character varying(50) NOT NULL,
+    "basePrice" numeric(10, 2) DEFAULT 0,
+    size character varying(20) DEFAULT 'SMALL',
+    PRIMARY KEY ("itemId")
+);
+
+COMMENT ON TABLE public."Item" IS 'for each general menu item.';
