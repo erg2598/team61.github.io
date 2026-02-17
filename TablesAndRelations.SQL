@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS public."Order"
     "orderId" SERIAL,
     "orderDate" timestamp NOT NULL,
     status character varying(20) DEFAULT 'NOT READY',
-    "totalAmount" numeric(10, 2) DEFAULT 0,
+    "totalAmount" real DEFAULT 0,
     "customerName" character varying(100) DEFAULT 'ANONYMOUS',
     PRIMARY KEY ("orderId")
 );
@@ -60,29 +60,25 @@ ALTER TABLE IF EXISTS public."OrderLineItem"
     ADD FOREIGN KEY ("orderId")
     REFERENCES public."Order" ("orderId") MATCH SIMPLE
     ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
+    ON DELETE NO ACTION;
 
 
 ALTER TABLE IF EXISTS public."OrderLineItem"
     ADD FOREIGN KEY ("itemId")
     REFERENCES public."Item" ("itemId") MATCH SIMPLE
     ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
+    ON DELETE NO ACTION;
 
 
 ALTER TABLE IF EXISTS public."Ingredients"
     ADD FOREIGN KEY ("itemId")
     REFERENCES public."Item" ("itemId") MATCH SIMPLE
     ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
+    ON DELETE NO ACTION;
 
 
 ALTER TABLE IF EXISTS public."Ingredients"
     ADD FOREIGN KEY ("inventoryId")
     REFERENCES public."Inventory" ("inventoryId") MATCH SIMPLE
     ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
+    ON DELETE NO ACTION;
