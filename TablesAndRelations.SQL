@@ -34,3 +34,14 @@ CREATE TABLE IF NOT EXISTS public."Item"
 );
 
 COMMENT ON TABLE public."Item" IS 'for each general menu item.';
+
+CREATE TABLE IF NOT EXISTS public."Ingredients"
+(
+    "ingredientId" integer NOT NULL,
+    "itemId" integer NOT NULL,
+    "inventoryId" integer NOT NULL,
+    "quantityUsed" real DEFAULT 0,
+    PRIMARY KEY ("ingredientId")
+);
+
+COMMENT ON TABLE public."Ingredients" IS 'holds the different ingredients used for each menu item.';
