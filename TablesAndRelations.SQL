@@ -55,5 +55,27 @@ CREATE TABLE IF NOT EXISTS public."Inventory"
     PRIMARY KEY ("inventoryId")
 );
 
-COMMENT ON TABLE public."Inventory"
-    IS 'Holds the ingredients and the amounts of each.';
+COMMENT ON TABLE public."Inventory" IS 'Holds the ingredients and the amounts of each.';
+
+ALTER TABLE IF EXISTS public."OrderLineItem"
+    ADD FOREIGN KEY ("itemId")
+    REFERENCES public."Item" ("itemId") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public."Ingredients"
+    ADD FOREIGN KEY ("itemId")
+    REFERENCES public."Item" ("itemId") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public."Ingredients"
+    ADD FOREIGN KEY ("inventoryId")
+    REFERENCES public."Inventory" ("inventoryId") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
