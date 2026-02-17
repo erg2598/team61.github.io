@@ -8,8 +8,7 @@ CREATE TABLE IF NOT EXISTS public."Order"
     PRIMARY KEY ("orderId")
 );
 
-COMMENT ON TABLE public."Order"
-    IS 'Order Overview Information';
+COMMENT ON TABLE public."Order" IS 'Order Overview Information';
 
 CREATE TABLE IF NOT EXISTS public."OrderLineItem"
 (
@@ -22,8 +21,7 @@ CREATE TABLE IF NOT EXISTS public."OrderLineItem"
     PRIMARY KEY ("orderLineId")
 );
 
-COMMENT ON TABLE public."OrderLineItem"
-    IS 'The Specific Customized Item';
+COMMENT ON TABLE public."OrderLineItem" IS 'The Specific Customized Item';
 
 CREATE TABLE IF NOT EXISTS public."Item"
 (
@@ -34,8 +32,7 @@ CREATE TABLE IF NOT EXISTS public."Item"
     PRIMARY KEY ("itemId")
 );
 
-COMMENT ON TABLE public."Item"
-    IS 'for each general menu item.';
+COMMENT ON TABLE public."Item" IS 'for each general menu item.';
 
 CREATE TABLE IF NOT EXISTS public."Ingredients"
 (
@@ -46,8 +43,7 @@ CREATE TABLE IF NOT EXISTS public."Ingredients"
     PRIMARY KEY ("ingredientId")
 );
 
-COMMENT ON TABLE public."Ingredients"
-    IS 'holds the different ingredients used for each menu item.';
+COMMENT ON TABLE public."Ingredients" IS 'holds the different ingredients used for each menu item.';
 
 CREATE TABLE IF NOT EXISTS public."Inventory"
 (
@@ -58,8 +54,7 @@ CREATE TABLE IF NOT EXISTS public."Inventory"
     PRIMARY KEY ("inventoryId")
 );
 
-COMMENT ON TABLE public."Inventory"
-    IS 'Holds the ingredients and the amounts of each.';
+COMMENT ON TABLE public."Inventory" IS 'Holds the ingredients and the amounts of each.';
 
 ALTER TABLE IF EXISTS public."OrderLineItem"
     ADD FOREIGN KEY ("orderId")
