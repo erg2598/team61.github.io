@@ -45,3 +45,15 @@ CREATE TABLE IF NOT EXISTS public."Ingredients"
 );
 
 COMMENT ON TABLE public."Ingredients" IS 'holds the different ingredients used for each menu item.';
+
+CREATE TABLE IF NOT EXISTS public."Inventory"
+(
+    "inventoryId" integer NOT NULL,
+    name character varying(50) NOT NULL,
+    "quantityOnHand" real DEFAULT 0,
+    "reorderThreshold" integer,
+    PRIMARY KEY ("inventoryId")
+);
+
+COMMENT ON TABLE public."Inventory"
+    IS 'Holds the ingredients and the amounts of each.';
