@@ -10,3 +10,16 @@ CREATE TABLE IF NOT EXISTS public."Order"
 );
 
 COMMENT ON TABLE public."Order" IS 'Order Overview Information';
+
+CREATE TABLE IF NOT EXISTS public."OrderLineItem"
+(
+    "orderLineId" integer NOT NULL,
+    "orderId" integer NOT NULL,
+    "itemId" integer NOT NULL,
+    quantity integer DEFAULT 0,
+    "sugarAmount" real DEFAULT 0,
+    "iceLevel" character varying(20) DEFAULT 'NONE',
+    PRIMARY KEY ("orderLineId")
+);
+
+COMMENT ON TABLE public."OrderLineItem" IS 'The Specific Customized Item';
