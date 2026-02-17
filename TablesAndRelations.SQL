@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS public."Order"
 (
     "orderId" SERIAL,
-    "orderDate" timestamp NOT NULL,
+    "orderDate" timestamp DEFAULT CURRENT_TIMESTAMP,
     status character varying(20) DEFAULT 'NOT READY',
     "totalAmount" real DEFAULT 0,
     "customerName" character varying(100) DEFAULT 'ANONYMOUS',
