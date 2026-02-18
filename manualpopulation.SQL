@@ -25,5 +25,14 @@ INSERT INTO "Inventory" VALUES
 (24, "Brown Sugar Thai Pearl Milk Tea", 160,100),
 (25, "Brown Sugar Taro Pearl Milk Tea", 170,100),
 (26, "Brown Sugar Mango Green Milk Tea", 135,100),
-(27, "Brown Sugar Coconut Pearl Milk Tea", 145,100);
-(28, )
+(27, "Brown Sugar Coconut Pearl Milk Tea", 145,100),
+(28, "Pearls (Boba)", 1985, 1000),
+(29, "Coffee Jelly", 1219, 1000),
+(30, "Pudding", 1190,1000),
+(31, "Lychee Jelly", 1384, 1000),
+(32, "Honey Jelly", 1412,1000)
+(33, "Crystal Boba", 1837, 1000),
+(34, "Mango Popping Boba",1612,1000),
+(35, "Strawberry Popping Boba", 1829, 1000),
+(36, "Ice cream", 1721,1000),
+(37, "Creama", 1421, 1000);
