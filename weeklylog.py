@@ -3,6 +3,7 @@ import psycopg2
 from dotenv import load_dotenv
 import os
 import random
+from datetime import datetime, timedelta
 
 load_dotenv()
 
@@ -39,22 +40,29 @@ sugar_amounts = [0, 25, 50, 75, 100]
 
 ice_types = ["Light", "Normal", "None"]
 
+peak_days = {
+    datetime(2025, 1, 21).date(),
+    datetime(2025, 8,25).date(),
+    datetime(2025,9,6).date(),
+    datetime(2025,10,4).date(),
+    }
+
 #Clears data from Order and OrderLineItem
-sql_query = "DELETE FROM \"Order\";"
+sql_query = "DELETE FROM \"OrderLineItem\";"
 cursor.execute(sql_query)
 
-sql_query = "DELETE FROM \"OrderLineItem\";"
+sql_query = "DELETE FROM \"Order\";"
 cursor.execute(sql_query)
 
 # 65 weeks, $1.25 million in sales, 4 peak days, 24 menu items 
 # 18 required queries, all 5 special queries
 orderlineId = 0
 orderId = 0
-for years in range(2024,2025):
+for years in range(2024,2026):
 
-    for months in range(1,12):
+    for months in range(1,13):
 
-        for days in range(1,31):
+        for days in range(1,32):
             if months == 2 and days >=29:
                 continue
             if months == 4 and days >=30:
@@ -67,20 +75,23 @@ for years in range(2024,2025):
                 continue
 
 
-
-            orders = random.randint(100,150)
+            current = datetime(years,months,days).date()
+            if current in peak_days:
+                orders = random.randint(200,250)
+            else:
+                orders = random.randint(50,100)
             for order in range(orders):
                 total = 0
                 orderId += 1
-                drinks = random.randint(1,5)
+                drinks = random.randint(1,3)
                 hour = random.randint(8,20)
                 minute = random.randint(0,59)
                 second = random.randint(0,59)
                 name = random.choice(names)
-                sql_query = f"INSERT INTO \"Order\"(\"orderId\",\"orderDate\",\"status\",\"customerName\") VALUES ({orderId},\'{years}-{months}-{days}\',\'READY\',\'{name}\');"
+                sql_query = f"INSERT INTO \"Order\"(\"orderId\",\"orderDate\",\"status\",\"customerName\") VALUES ({orderId},\'{years}-{months}-{days} {hour}:{minute}:{second}',\'READY\',\'{name}\');"
                 cursor.execute(sql_query)
                 for drinks_ordered in range(drinks):
-                    quantity = random.randint(1,2)
+                    quantity = 1
                     orderlineId += 1
                     actual_drink_id = random.randint(1,54)
                     sugar = random.choice(sugar_amounts)
@@ -93,7 +104,7 @@ for years in range(2024,2025):
                 
                 sql_query = f"UPDATE \"Order\" SET \"totalAmount\" = {total} WHERE \"orderId\" = {orderId};"
                 cursor.execute(sql_query)
-
+conn.commit()
 conn.close()
                     
                     
