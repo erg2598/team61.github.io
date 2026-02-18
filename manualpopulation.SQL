@@ -35,4 +35,8 @@ INSERT INTO "Inventory" VALUES
 (34, "Mango Popping Boba",1612,1000),
 (35, "Strawberry Popping Boba", 1829, 1000),
 (36, "Ice cream", 1721,1000),
-(37, "Creama", 1421, 1000);
+(37, "Creama", 1421, 1000),
+(39, "Cups", 9772, 5000),
+(40, "Straws",9291, 5000),
+(41, "Sealing Plastic", 6592, 5000),
+(42, "Napkins", 10000, 5000);
