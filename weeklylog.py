@@ -8,14 +8,10 @@ from datetime import datetime, timedelta
 load_dotenv()
 
 conn = psycopg2.connect(
-    # host=os.getenv("DB_HOST"),
-    # database=os.getenv("DB_NAME"),
-    # user=os.getenv("DB_USER"),
-    # password=os.getenv("DB_PASSWORD")
-    host = "csce-315-db.engr.tamu.edu",
-    database = "team_61_db",
-    user = "team_61",
-    password = "331_61"
+    host=os.getenv("DB_HOST"),
+    database=os.getenv("DB_NAME"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASSWORD")
 )
 cursor = conn.cursor()
 
@@ -38,7 +34,7 @@ names = [
 
 sugar_amounts = [0, 25, 50, 75, 100]
 
-ice_types = ["Light", "Normal", "None"]
+ice_types = ["NONE", "LESS", "REGULAR" ,"EXTRA"]
 
 peak_days = {
     datetime(2025, 1, 21).date(),
@@ -47,6 +43,8 @@ peak_days = {
     datetime(2025,10,4).date(),
     }
 
+cursor.execute('SELECT \"itemId\", \"basePrice\" FROM \"Item\";')
+prices = {row[0]: row[1] for row in cursor.fetchall()}
 #Clears data from Order and OrderLineItem
 sql_query = "DELETE FROM \"OrderLineItem\";"
 cursor.execute(sql_query)
@@ -96,9 +94,7 @@ for years in range(2024,2026):
                     actual_drink_id = random.randint(1,54)
                     sugar = random.choice(sugar_amounts)
                     ice = random.choice(ice_types)
-                    sql_query = f"SELECT \"basePrice\" FROM \"Item\" WHERE \"itemId\" = {actual_drink_id};"
-                    cursor.execute(sql_query)
-                    total += cursor.fetchone()[0]
+                    total += prices[actual_drink_id]
                     sql_query = f"INSERT INTO \"OrderLineItem\"(\"orderLineId\", \"orderId\", \"itemId\", \"quantity\",\"sugarAmount\",\"iceLevel\") VALUES ({orderlineId},{orderId},{actual_drink_id},{quantity},{sugar},\'{ice}\')"
                     cursor.execute(sql_query)
                 
