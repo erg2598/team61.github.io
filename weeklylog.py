@@ -5,6 +5,7 @@ import os
 import random
 from datetime import datetime, timedelta
 
+#Connecting to the database
 load_dotenv()
 
 conn = psycopg2.connect(
@@ -15,7 +16,9 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 
-#names
+#100 names for the purpose of genertaing a random name, Different sugar amounts
+#ice types and peak days
+
 names = [
     "Liam", "Olivia", "Noah", "Emma", "Oliver", "Charlotte", "Eli", "Amelia",
     "James", "Ava", "William", "Sophia", "Benjamin", "Isabella", "Lucas", "Mia",
@@ -43,8 +46,10 @@ peak_days = {
     datetime(2025,10,4).date(),
     }
 
+#loads in prices from database
 cursor.execute('SELECT \"itemId\", \"basePrice\" FROM \"Item\";')
 prices = {row[0]: row[1] for row in cursor.fetchall()}
+
 #Clears data from Order and OrderLineItem
 sql_query = "DELETE FROM \"OrderLineItem\";"
 cursor.execute(sql_query)
@@ -61,6 +66,7 @@ for years in range(2024,2026):
     for months in range(1,13):
 
         for days in range(1,32):
+            #skipping non real days
             if months == 2 and days >=29:
                 continue
             if months == 4 and days >=30:
@@ -78,7 +84,9 @@ for years in range(2024,2026):
                 orders = random.randint(200,250)
             else:
                 orders = random.randint(50,100)
+
             for order in range(orders):
+                #Creates all the random data to put into the orders
                 total = 0
                 orderId += 1
                 drinks = random.randint(1,3)
@@ -86,6 +94,8 @@ for years in range(2024,2026):
                 minute = random.randint(0,59)
                 second = random.randint(0,59)
                 name = random.choice(names)
+
+                #Initial insert due to not having total amount
                 sql_query = f"INSERT INTO \"Order\"(\"orderId\",\"orderDate\",\"status\",\"customerName\") VALUES ({orderId},\'{years}-{months}-{days} {hour}:{minute}:{second}',\'READY\',\'{name}\');"
                 cursor.execute(sql_query)
                 for drinks_ordered in range(drinks):
@@ -98,6 +108,7 @@ for years in range(2024,2026):
                     sql_query = f"INSERT INTO \"OrderLineItem\"(\"orderLineId\", \"orderId\", \"itemId\", \"quantity\",\"sugarAmount\",\"iceLevel\") VALUES ({orderlineId},{orderId},{actual_drink_id},{quantity},{sugar},\'{ice}\')"
                     cursor.execute(sql_query)
                 
+                #Updated final total price
                 sql_query = f"UPDATE \"Order\" SET \"totalAmount\" = {total} WHERE \"orderId\" = {orderId};"
                 cursor.execute(sql_query)
 conn.commit()
