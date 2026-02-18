@@ -26,3 +26,4 @@ INSERT INTO "Inventory" VALUES
 (25, "Brown Sugar Taro Pearl Milk Tea", 170,100),
 (26, "Brown Sugar Mango Green Milk Tea", 135,100),
 (27, "Brown Sugar Coconut Pearl Milk Tea", 145,100);
+(28, )
