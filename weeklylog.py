@@ -31,6 +31,10 @@ names = [
     "Jeremiah", "Natalie", "Charles", "Paisley"
 ]
 
+sugar_amounts = [0, 25, 50, 75, 100]
+
+ice_types = ["Light", "Normal", "None"]
+
 #Clears data from Order and OrderLineItem
 sql_query = "DELETE FROM \"Order\";"
 cursor.execute(sql_query)
@@ -49,16 +53,28 @@ for years in range(2024,2025):
             orders = random.randint(100,150)
             for orderid in range(orders):
                 total = 0
+                orderlineId = 0
                 drinks = random.randint(1,5)
                 hour = random.randint(8,20)
                 minute = random.randint(59)
                 second = random.randint(59)
                 name = random.choice(names)
-                sql_query = f"INSERT INTO \"Order\"(\"orderId\",\"orderDate\",\"status\",\"customerName\") VALUES ({orderid},\'{years}-{months}-{days}\',\'READY\',\'{name}\',"
+                sql_query = f"INSERT INTO \"Order\"(\"orderId\",\"orderDate\",\"status\",\"customerName\") VALUES ({orderid},\'{years}-{months}-{days}\',\'READY\',\'{name}\';"
+                cursor.execute(sql_query)
                 for drinks_ordered in range(drinks):
-                    sql_query = f"INSERT INTO "
+                    quantity = random.randint(1,2)
+                    orderlineId += 1
+                    actual_drink_id = random.randint(1,54)
+                    sugar = random.choice(sugar_amounts)
+                    ice = random.choice(ice_types)
+                    sql_query = f"SELECT \"basePrice\" FROM \"Item\" WHERE \"itemId\" = {actual_drink_id};"
+                    cursor.execute(sql_query)
+                    total += cursor.fetchone()
+                    sql_query = f"INSERT INTO \"OrderLineItem\"(\"orderLineId\", \"orderId\", \"itemId\", \"quantity\",\"suagrAmount\",\"iceAmount\") VALUES ({orderlineId},{orderid},{actual_drink_id},{quantity},{sugar},{ice})"
+                    cursor.execute(sql_query)
                 
-                sql_query = f"INSERT INTO \"Order\"(\"orderId\",\"orderDate\",\"status\",\"totalAmount\",\"customerName\") VALUES ({orderid},\'{years}-{months}-{days}\',\'READY\',"
+                sql_query = f"UPDATE \"Order\" SET \"totalAmount\" = {total} WHERE \"orderId\" = {orderid};"
+                cursor.execute(sql_query)
                     
                     
 
