@@ -9,12 +9,21 @@ ORDER BY week_start;
 
 -- 10 most expensive orders in a day
 SELECT
-    DATE("orderDate") AS sale_day,
-    SUM("totalAmount") AS total_sales
-FROM "Order"
+    sale_day,
+    ROUND(SUM(total)::numeric, 2) AS top_10_orders_sum
+FROM (
+    SELECT
+        DATE("orderDate") AS sale_day,
+        "totalAmount" AS total,
+        ROW_NUMBER() OVER (
+            PARTITION BY DATE("orderDate")
+            ORDER BY "totalAmount" DESC
+        ) AS rnk
+    FROM "Order"
+) ranked
+WHERE rnk <= 10
 GROUP BY sale_day
-ORDER BY total_sales DESC
-LIMIT 10;
+ORDER BY top_10_orders_sum DESC;
 
 -- Total orders and sales for a specific hour
 SELECT
@@ -129,13 +138,13 @@ GROUP BY "sugarAmount", "iceLevel"
 ORDER BY order_count DESC
 LIMIT 10;
 
--- Daily Order Count for the Last 30 Days
+-- Daily Order Count for the Last 30 Days from last order 
 SELECT
     DATE("orderDate") AS sale_day,
     COUNT(*) AS order_count,
     ROUND(SUM("totalAmount")::numeric, 2) AS daily_revenue
 FROM "Order"
-WHERE "orderDate" >= CURRENT_DATE - INTERVAL '30 days'
+WHERE "orderDate" >= (SELECT MAX("orderDate") FROM "Order") - INTERVAL '30 days'
 GROUP BY sale_day
 ORDER BY sale_day;
 
