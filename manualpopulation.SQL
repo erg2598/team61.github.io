@@ -1,3 +1,4 @@
+--- static data for Inventory 
 INSERT INTO "Inventory" ("inventoryId", name, "quantityOnHand", "reorderThreshold") VALUES
 (1, 'Milk Tea', 2312, 2000),
 (2, 'Honey', 1502, 1000),
@@ -30,6 +31,8 @@ INSERT INTO "Inventory" ("inventoryId", name, "quantityOnHand", "reorderThreshol
 (29, 'Straws', 9291, 5000),
 (30, 'Sealing Plastic', 6592, 5000),
 (31, 'Napkins', 10000, 5000);
+
+--- static data for Items 
 
 INSERT INTO "Item" ("itemId", name, "basePrice", size) VALUES
 (1, 'Classic Pearl Milk Tea', 10.30, 'Normal'),
@@ -86,6 +89,8 @@ INSERT INTO "Item" ("itemId", name, "basePrice", size) VALUES
 (52, 'Brown Sugar Taro Pearl Milk Tea', 13.00, 'Large'),
 (53, 'Brown Sugar Mango Green Milk Tea', 13.00, 'Large'),
 (54, 'Brown Sugar Coconut Pearl Milk Tea', 13.00, 'Large');
+
+--- static data for Inventory  
 
 INSERT INTO "Ingredients" ("itemId", "inventoryId", "quantityUsed") VALUES
 (1, 1, 1),  (1, 18, 1),
