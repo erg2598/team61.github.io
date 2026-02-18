@@ -75,7 +75,7 @@ INSERT INTO "Item" VALUES
 (41, "Peach Tea w/Honey Jelly", 10.25, "Large"),
 (42, "Mango & Passion Fruit Tea", 10.25, "Large"),
 (43, "Honey Lemonade", 10.25, "Large"),
-(44, "Strawberry Coconut", 10.50, "Large")
+(44, "Strawberry Coconut", 10.50, "Large"),
 (45, "Halo Halo", 10.95, "Large"),
 (46, "Wintermelon Tea", 9.80, "Large"),
 (47, "Wintermelon Milk Tea", 9.20, "Large"),
@@ -86,3 +86,10 @@ INSERT INTO "Item" VALUES
 (52, "Brown Sugar Taro Pearl Milk Tea", 10.50, "Large"),
 (53, "Brown Sugar Mango Green Milk Tea", 10.50, "Large"),
 (54, "Brown Sugar Coconut Pearl Milk Tea", 10.50, "Large");
+
+INSERT INTO "Ingredients" ("itemId", "inventoryId", "quantityUsed") VALUES
+(1, 1, 1),  (1, 18, 1),  
+(2, 1, 1),   (2, 2, 1),  (2, 18, 1), 
+(3, 3, 1),  (3, 27, 1),  
+(4, 1, 1),  (4, 3, 1),  (4, 19, 1),  
+(5, 1, 1),   (5, 27, 1), (5, 18, 1), 
