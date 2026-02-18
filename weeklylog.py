@@ -7,10 +7,14 @@ import random
 load_dotenv()
 
 conn = psycopg2.connect(
-    host=os.getenv("DB_HOST"),
-    database=os.getenv("DB_NAME"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASSWORD")
+    # host=os.getenv("DB_HOST"),
+    # database=os.getenv("DB_NAME"),
+    # user=os.getenv("DB_USER"),
+    # password=os.getenv("DB_PASSWORD")
+    host = "csce-315-db.engr.tamu.edu",
+    database = "team_61_db",
+    user = "team_61",
+    password = "331_61"
 )
 cursor = conn.cursor()
 
@@ -44,22 +48,36 @@ cursor.execute(sql_query)
 
 # 65 weeks, $1.25 million in sales, 4 peak days, 24 menu items 
 # 18 required queries, all 5 special queries
+orderlineId = 0
+orderId = 0
 for years in range(2024,2025):
 
     for months in range(1,12):
 
         for days in range(1,31):
+            if months == 2 and days >=29:
+                continue
+            if months == 4 and days >=30:
+                continue
+            if months == 6 and days >=30:
+                continue
+            if months == 9 and days >=30:
+                continue
+            if months == 11 and days >=30:
+                continue
+
+
 
             orders = random.randint(100,150)
-            for orderid in range(orders):
+            for order in range(orders):
                 total = 0
-                orderlineId = 0
+                orderId += 1
                 drinks = random.randint(1,5)
                 hour = random.randint(8,20)
-                minute = random.randint(59)
-                second = random.randint(59)
+                minute = random.randint(0,59)
+                second = random.randint(0,59)
                 name = random.choice(names)
-                sql_query = f"INSERT INTO \"Order\"(\"orderId\",\"orderDate\",\"status\",\"customerName\") VALUES ({orderid},\'{years}-{months}-{days}\',\'READY\',\'{name}\';"
+                sql_query = f"INSERT INTO \"Order\"(\"orderId\",\"orderDate\",\"status\",\"customerName\") VALUES ({orderId},\'{years}-{months}-{days}\',\'READY\',\'{name}\');"
                 cursor.execute(sql_query)
                 for drinks_ordered in range(drinks):
                     quantity = random.randint(1,2)
@@ -69,20 +87,16 @@ for years in range(2024,2025):
                     ice = random.choice(ice_types)
                     sql_query = f"SELECT \"basePrice\" FROM \"Item\" WHERE \"itemId\" = {actual_drink_id};"
                     cursor.execute(sql_query)
-                    total += cursor.fetchone()
-                    sql_query = f"INSERT INTO \"OrderLineItem\"(\"orderLineId\", \"orderId\", \"itemId\", \"quantity\",\"suagrAmount\",\"iceAmount\") VALUES ({orderlineId},{orderid},{actual_drink_id},{quantity},{sugar},{ice})"
+                    total += cursor.fetchone()[0]
+                    sql_query = f"INSERT INTO \"OrderLineItem\"(\"orderLineId\", \"orderId\", \"itemId\", \"quantity\",\"sugarAmount\",\"iceLevel\") VALUES ({orderlineId},{orderId},{actual_drink_id},{quantity},{sugar},\'{ice}\')"
                     cursor.execute(sql_query)
                 
-                sql_query = f"UPDATE \"Order\" SET \"totalAmount\" = {total} WHERE \"orderId\" = {orderid};"
+                sql_query = f"UPDATE \"Order\" SET \"totalAmount\" = {total} WHERE \"orderId\" = {orderId};"
                 cursor.execute(sql_query)
+
+conn.close()
                     
                     
 
 
 
-
-# -- Peak days -- 
-# start of fall semester, start of spring semester, first home football game, TU game
-
-
-#  
