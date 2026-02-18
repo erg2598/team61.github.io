@@ -1,3 +1,28 @@
-import psycopg2
-from dotenv import load_dotenv
-import os 
+INSERT INTO "Inventory" VALUES
+(1, "Classic Pearl Milk Tea", 119, 100),
+(2, "Honey Pearl Milk Tea", 150, 100),
+(3, "Coffee Creama", 123, 100),
+(4, "Coffee Milk Tea w/Coffee Jelly", 111, 100),
+(5, "Hokkaido Milk Tea", 130, 100),
+(6, "Thai Pearl Milk Tea", 147, 100),
+(7, "Taro Pearl Milk Tea", 162, 100),
+(8, "Mango Green Milk Tea", 128, 100),
+(9, "Coconut Pearl Milk Tea", 135, 100),
+(10, "Classic Tea", 172, 100),
+(11, "Honey Tea", 125, 100),
+(12, "Mango Green Tea", 104, 100),
+(13, "Berry Lychee Jelly",102,100),
+(14, "Peach Tea w/Honey Jelly", 118, 100),
+(15, "Mango & Passion Fruit Tea",108,100),
+(16, "Honey Lemonade", 141, 100),
+(17, "Strawberry Coconut", 162,100)
+(18, "Halo Halo",104,100),
+(19, "Wintermelon Tea", 112,100),
+(20, "Wintermelon Milk Tea", 182,100),
+(21, "Brown Sugar Pearl Milk Tea", 150,100),
+(22, "Brown Sugar Coffee Milk Tea", 130,100),
+(23, "Brown Sugar Hokkaido Milk Tea", 140,100),
+(24, "Brown Sugar Thai Pearl Milk Tea", 160,100),
+(25, "Brown Sugar Taro Pearl Milk Tea", 170,100),
+(26, "Brown Sugar Mango Green Milk Tea", 135,100),
+(27, "Brown Sugar Coconut Pearl Milk Tea", 145,100);
