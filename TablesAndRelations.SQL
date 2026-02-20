@@ -23,6 +23,19 @@ CREATE TABLE IF NOT EXISTS public."OrderLineItem"
 
 COMMENT ON TABLE public."OrderLineItem" IS 'The Specific Customized Item';
 
+CREATE TABLE IF NOT EXISTS public."CustomItem"
+(
+    "customId" SERIAL,
+    "itemId" integer NOT NULL,
+    "orderId" integer NOT NULL,
+    "inventoryId" integer NOT NULL;
+    NEED TOPPINGS
+    NEED BASE 
+    NEED HOT OR COLD
+    PRIMARY KEY ("customId")
+);
+
+
 CREATE TABLE IF NOT EXISTS public."Item"
 (
     "itemId" SERIAL,
@@ -51,6 +64,7 @@ CREATE TABLE IF NOT EXISTS public."Inventory"
     name character varying(50) NOT NULL,
     "quantityOnHand" real DEFAULT 0,
     "reorderThreshold" integer,
+    "pricePerUnit" real,
     PRIMARY KEY ("inventoryId")
 );
 
