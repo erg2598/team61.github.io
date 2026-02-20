@@ -2,10 +2,10 @@ import psycopg2
 from dotenv import load_dotenv
 import os
 import random
-import csv # Added the built-in csv module
+import csv 
 from datetime import datetime, timedelta
 
-# Connecting to the database to fetch initial prices
+
 load_dotenv()
 
 conn = psycopg2.connect(
@@ -53,12 +53,6 @@ peak_days = {
 cursor.execute('SELECT "itemId", "basePrice" FROM "Item";')
 prices = {row[0]: row[1] for row in cursor.fetchall()}
 
-# We no longer need to DELETE from the database here since we are just making CSVs.
-# You can uncomment these if you still want the script to wipe the live tables.
-# cursor.execute('DELETE FROM "OrderLineItem";')
-# cursor.execute('DELETE FROM "Order";')
-# conn.commit() 
-
 orderlineId = 0
 orderId = 0
 
@@ -103,7 +97,7 @@ with open('orders.csv', mode='w', newline='') as orders_file, \
                     second = random.randint(0, 59)
                     name = random.choice(names)
                     
-                    # Format the date string cleanly
+                    # Format the date string 
                     order_date_str = f"{years}-{months:02d}-{days:02d} {hour:02d}:{minute:02d}:{second:02d}"
 
                     for drinks_ordered in range(drinks):
@@ -117,7 +111,7 @@ with open('orders.csv', mode='w', newline='') as orders_file, \
                         # Write row to OrderLineItem CSV
                         items_writer.writerow([orderlineId, orderId, actual_drink_id, quantity, sugar, ice])
                     
-                    # Write row to Order CSV *after* the total is fully calculated
+                    # Write row to Order CSV 
                     orders_writer.writerow([orderId, order_date_str, 'READY', name, round(total, 2)])
 
 # Close the database connection
