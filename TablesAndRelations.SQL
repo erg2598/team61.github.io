@@ -97,3 +97,15 @@ ALTER TABLE IF EXISTS public."Ingredients"
     REFERENCES public."Inventory" ("inventoryId") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
+
+ALTER TABLE IF EXISTS public."CustomItem"
+    ADD FOREIGN KEY ("orderLineId")
+    REFERENCES public."OrderLineItem" ("orderLineId") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE;
+
+ALTER TABLE IF EXISTS public."CustomItem"
+    ADD FOREIGN KEY ("inventoryId")
+    REFERENCES public."Inventory" ("inventoryId") MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
