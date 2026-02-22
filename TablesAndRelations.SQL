@@ -15,9 +15,11 @@ CREATE TABLE IF NOT EXISTS public."OrderLineItem"
     "orderLineId" SERIAL,
     "orderId" integer NOT NULL,
     "itemId" integer NOT NULL,
-    quantity integer DEFAULT 0,
+    quantity integer DEFAULT 1,
     "sugarAmount" integer DEFAULT 0,
     "iceLevel" character varying(20) DEFAULT 'NONE',
+    "temperature" character varying(2) DEFAULT 'COLD',
+    "baseType" character varying(40),
     PRIMARY KEY ("orderLineId")
 );
 
@@ -26,12 +28,10 @@ COMMENT ON TABLE public."OrderLineItem" IS 'The Specific Customized Item';
 CREATE TABLE IF NOT EXISTS public."CustomItem"
 (
     "customId" SERIAL,
-    "itemId" integer NOT NULL,
-    "orderId" integer NOT NULL,
+    "orderLineId" integer NOT NULL,
     "inventoryId" integer NOT NULL;
-    NEED TOPPINGS
-    NEED BASE 
-    NEED HOT OR COLD
+    "quantity" intger DEFAULT 1;
+    "extras" real DEFAULT 0,
     PRIMARY KEY ("customId")
 );
 
