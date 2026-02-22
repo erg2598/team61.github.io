@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS public."OrderLineItem"
     quantity integer DEFAULT 1,
     "sugarAmount" integer DEFAULT 0,
     "iceLevel" character varying(20) DEFAULT 'NONE',
-    "temperature" character varying(2) DEFAULT 'COLD',
+    "temperature" character varying(20) DEFAULT 'COLD',
     "baseType" character varying(40),
     PRIMARY KEY ("orderLineId")
 );
@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS public."CustomItem"
 (
     "customId" SERIAL,
     "orderLineId" integer NOT NULL,
-    "inventoryId" integer NOT NULL;
-    "quantity" intger DEFAULT 1;
+    "inventoryId" integer NOT NULL,
+    "quantity" integer DEFAULT 1,
     "extras" real DEFAULT 0,
     PRIMARY KEY ("customId")
 );
