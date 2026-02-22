@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS public."CustomItem"
     PRIMARY KEY ("customId")
 );
 
+COMMENT ON TABLE public."CustomItem" IS 'For Fully Custom Needs to account for extra costs';
 
 CREATE TABLE IF NOT EXISTS public."Item"
 (
