@@ -240,4 +240,136 @@ public class cashierViewController {
 
     }
 
+    /*
+    This is the toggle menu buttons
+    */
+
+    @FXML
+    private RadioButton berry;
+
+    @FXML
+    private RadioButton coconut;
+
+    @FXML
+    private RadioButton coffee;
+
+    @FXML
+    private RadioButton haloHalo;
+
+    @FXML
+    private RadioButton honey;
+
+    @FXML
+    private RadioButton lemonade;
+
+    @FXML
+    private RadioButton mango;
+
+    @FXML
+    private RadioButton mangoTea;
+
+    @FXML
+    private RadioButton milkTea;
+
+    @FXML
+    private RadioButton passionFruit;
+
+    @FXML
+    private RadioButton peachTea;
+
+    @FXML
+    private RadioButton strawberry;
+
+    @FXML
+    private RadioButton taro;
+
+    @FXML
+    private RadioButton tea;
+
+    @FXML
+    private RadioButton thaiMilkTea;
+
+    @FXML
+    private RadioButton wintermelonTea;
+
+    @FXML
+    void toggleBerry(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleCoconut(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleCoffee(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleHaloHalo(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleHoney(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleLemonade(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleMango(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleMangoTea(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleMilkTea(ActionEvent event) {
+
+    }
+
+    @FXML
+    void togglePassionFruit(ActionEvent event) {
+
+    }
+
+    @FXML
+    void togglePeachTea(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleStrawberry(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleTaro(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleTea(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleThaiMilkTea(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleWintermelonTea(ActionEvent event) {
+
+    }
+
 }
