@@ -245,6 +245,12 @@ public class cashierViewController {
     */
 
     @FXML
+    private Button addToCart;
+
+    @FXML
+    private Button backButton;
+
+    @FXML
     private RadioButton berry;
 
     @FXML
@@ -254,16 +260,52 @@ public class cashierViewController {
     private RadioButton coffee;
 
     @FXML
+    private RadioButton coffeeJelly;
+
+    @FXML
+    private RadioButton cold;
+
+    @FXML
+    private RadioButton creama;
+
+    @FXML
+    private RadioButton crystalBoba;
+
+    @FXML
     private RadioButton haloHalo;
 
     @FXML
     private RadioButton honey;
 
     @FXML
+    private RadioButton honeyJelly;
+
+    @FXML
+    private RadioButton hot;
+
+    @FXML
+    private RadioButton iceCream;
+
+    @FXML
+    private RadioButton largeSize;
+
+    @FXML
     private RadioButton lemonade;
 
     @FXML
+    private RadioButton lessIce;
+
+    @FXML
+    private RadioButton lychee;
+
+    @FXML
+    private RadioButton lycheeJelly;
+
+    @FXML
     private RadioButton mango;
+
+    @FXML
+    private RadioButton mangoPoppingBoba;
 
     @FXML
     private RadioButton mangoTea;
@@ -272,13 +314,46 @@ public class cashierViewController {
     private RadioButton milkTea;
 
     @FXML
+    private RadioButton noIce;
+
+    @FXML
+    private RadioButton noSugar;
+
+    @FXML
     private RadioButton passionFruit;
 
     @FXML
     private RadioButton peachTea;
 
     @FXML
+    private RadioButton pearls;
+
+    @FXML
+    private RadioButton pudding;
+
+    @FXML
+    private RadioButton regularIce;
+
+    @FXML
+    private RadioButton regularSize;
+
+    @FXML
+    private RadioButton regularSugar;
+
+    @FXML
+    private RadioButton strawbberyPoppingBoba;
+
+    @FXML
     private RadioButton strawberry;
+
+    @FXML
+    private RadioButton sugar25;
+
+    @FXML
+    private RadioButton sugar50;
+
+    @FXML
+    private RadioButton sugar75;
 
     @FXML
     private RadioButton taro;
@@ -291,6 +366,21 @@ public class cashierViewController {
 
     @FXML
     private RadioButton wintermelonTea;
+
+    @FXML
+    void addItem(ActionEvent event) {
+
+    }
+
+    @FXML
+    void backToMenu(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggkeCoffeeJelly(ActionEvent event) {
+
+    }
 
     @FXML
     void toggleBerry(ActionEvent event) {
@@ -308,6 +398,21 @@ public class cashierViewController {
     }
 
     @FXML
+    void toggleCold(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleCreama(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleCrystalBoba(ActionEvent event) {
+
+    }
+
+    @FXML
     void toggleHaloHalo(ActionEvent event) {
 
     }
@@ -318,12 +423,52 @@ public class cashierViewController {
     }
 
     @FXML
+    void toggleHoneyJelly(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleHot(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleIceCream(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleLarge(ActionEvent event) {
+
+    }
+
+    @FXML
     void toggleLemonade(ActionEvent event) {
 
     }
 
     @FXML
+    void toggleLessIce(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleLychee(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleLycheeJelly(ActionEvent event) {
+
+    }
+
+    @FXML
     void toggleMango(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleMangoPoppingBoba(ActionEvent event) {
 
     }
 
@@ -338,6 +483,16 @@ public class cashierViewController {
     }
 
     @FXML
+    void toggleNoIce(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleNoSugar(ActionEvent event) {
+
+    }
+
+    @FXML
     void togglePassionFruit(ActionEvent event) {
 
     }
@@ -348,7 +503,52 @@ public class cashierViewController {
     }
 
     @FXML
+    void togglePearls(ActionEvent event) {
+
+    }
+
+    @FXML
+    void togglePudding(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleRegularIce(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleRegularSize(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleRegularSugar(ActionEvent event) {
+
+    }
+
+    @FXML
     void toggleStrawberry(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleStrawberryPoppingBoba(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleSugar25(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleSugar50(ActionEvent event) {
+
+    }
+
+    @FXML
+    void toggleSugar75(ActionEvent event) {
 
     }
 
@@ -371,5 +571,4 @@ public class cashierViewController {
     void toggleWintermelonTea(ActionEvent event) {
 
     }
-
 }
