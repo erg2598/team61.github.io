@@ -18,3 +18,6 @@
 .grids{
     -fx-alignment: center;
 }
+.orderbutton{
+    -fx-margin-top: 10px;
+}

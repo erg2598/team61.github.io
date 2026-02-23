@@ -3,7 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public class cashierViewController{
+public class PleaseProvideControllerClassName {
 
     @FXML
     private VBox background;
@@ -73,6 +73,9 @@ public class cashierViewController{
 
     @FXML
     private Button mangoNPassionFruitTea;
+
+    @FXML
+    private Button orderButton;
 
     @FXML
     private Button peachTeaWHoneyJelly;
@@ -229,6 +232,11 @@ public class cashierViewController{
 
     @FXML
     void goToCustomItemMenu(ActionEvent event) {
+
+    }
+
+    @FXML
+    void submitOrder(ActionEvent event) {
 
     }
 

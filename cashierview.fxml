@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -83,5 +85,14 @@
          </children>
       </HBox>
       <Button fx:id="customitem" alignment="CENTER" mnemonicParsing="false" onAction="#goToCustomItemMenu" styleClass="menubuttons" stylesheets="@cashierview.css" text="Custom Item" />
+      <Button id="orderbutton" fx:id="orderButton" alignment="CENTER" mnemonicParsing="false" onAction="#submitOrder" stylesheets="@cashierview.css" text="Submit Order">
+         <styleClass>
+            <String fx:value="menubuttons" />
+            <String fx:value="orderbutton" />
+         </styleClass>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>
