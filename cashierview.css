@@ -1,5 +1,20 @@
-.button{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+.vbox-class {
+    -fx-alignment: center;
+}
+.hbox-class {
+    -fx-alignment: center; 
+    -fx-spacing: 10;   
+}
+.menubuttons{
+    -fx-min-width: 10px;
+    -fx-pref-width: 64px;
+    -fx-max-width: 100px;
+    -fx-min-height: 30px;
+    -fx-pref-height: 30px;
+    -fx-max-height: 30px;
+    -fx-color: gray;
+    -fx-alignment: center;
+}
+.grids{
+    -fx-alignment: center;
 }

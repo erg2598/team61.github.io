@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox id="background" fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@cashierview.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox id="background" fx:id="background" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="vbox-class" stylesheets="@cashierview.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox prefHeight="274.0" prefWidth="600.0">
+      <HBox maxWidth="1.7976931348623157E308" prefHeight="286.0" prefWidth="600.0" styleClass="hbox-class" stylesheets="@cashierview.css">
          <children>
-            <GridPane>
+            <GridPane maxWidth="1.7976931348623157E308" styleClass="grids" stylesheets="@cashierview.css">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -24,18 +23,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="classicPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" />
-                  <Button fx:id="honeyPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" />
-                  <Button fx:id="coffeeCreama" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" />
-                  <Button fx:id="classicTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.rowIndex="1" />
-                  <Button fx:id="honeyTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="mangoGreenTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Button fx:id="wintermelonTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.rowIndex="2" />
-                  <Button fx:id="wintermelonMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button fx:id="brownSugarPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button fx:id="classicPearlMilkTea" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addClassicPearlMilkTea" prefHeight="26.0" prefWidth="70.0" styleClass="menubuttons" stylesheets="@cashierview.css" text=" CPMT" />
+                  <Button fx:id="honeyPearlMilkTea" mnemonicParsing="false" onAction="#addHoneyPearlMilkTea" prefHeight="26.0" prefWidth="63.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="HPMT" GridPane.columnIndex="1" />
+                  <Button fx:id="coffeeCreama" mnemonicParsing="false" onAction="#addCoffeeCreama" prefHeight="26.0" prefWidth="123.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="CC" GridPane.columnIndex="2" />
+                  <Button fx:id="classicTea" mnemonicParsing="false" onAction="#addClassicTea" prefHeight="26.0" prefWidth="90.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="CT" GridPane.rowIndex="1" />
+                  <Button fx:id="honeyTea" mnemonicParsing="false" onAction="#addHoneyTea" prefHeight="26.0" prefWidth="82.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="HT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="mangoGreenTea" mnemonicParsing="false" onAction="#addMangoGreenTea" prefHeight="26.0" prefWidth="129.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="MGT" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="wintermelonTea" mnemonicParsing="false" onAction="#addWinterMelonTea" prefHeight="26.0" prefWidth="84.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="WT" GridPane.rowIndex="2" />
+                  <Button fx:id="wintermelonMilkTea" mnemonicParsing="false" onAction="#addWintermelonMilkTea" prefHeight="26.0" prefWidth="70.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="WMT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="brownSugarPearlMilkTea" mnemonicParsing="false" onAction="#addBrownSugarPearlMilkTea" prefHeight="26.0" prefWidth="82.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="BSPMT" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <GridPane>
+            <GridPane maxWidth="1.7976931348623157E308" styleClass="grids" stylesheets="@cashierview.css">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -47,18 +46,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="coffeeMilkTeaWCoffeeJelly" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" />
-                  <Button fx:id="hokkaidoMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" />
-                  <Button fx:id="thaiPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" />
-                  <Button fx:id="berryLycheeJelly" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.rowIndex="1" />
-                  <Button fx:id="peachTeaWHoneyJelly" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="mangoNPassionFruitTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Button fx:id="brownSugarThaiPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Button fx:id="brownSugarHokkaidoMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button fx:id="brownSugarCoffeeMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.rowIndex="2" />
+                  <Button fx:id="coffeeMilkTeaWCoffeeJelly" mnemonicParsing="false" onAction="#addCoffeeMilkTeaWCoffeeJelly" prefHeight="26.0" prefWidth="67.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="CMTWCJ" />
+                  <Button fx:id="hokkaidoMilkTea" mnemonicParsing="false" onAction="#addHokkaidoMilkTea" prefHeight="26.0" prefWidth="102.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="HMT" GridPane.columnIndex="1" />
+                  <Button fx:id="thaiPearlMilkTea" mnemonicParsing="false" onAction="#addThaiPearlMilkTea" prefHeight="26.0" prefWidth="113.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="TPMT" GridPane.columnIndex="2" />
+                  <Button fx:id="berryLycheeJelly" mnemonicParsing="false" onAction="#addBerryLycheeJelly" prefHeight="26.0" prefWidth="95.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="BLJ" GridPane.rowIndex="1" />
+                  <Button fx:id="peachTeaWHoneyJelly" mnemonicParsing="false" onAction="#addPeachTeaWHoneyJelly" prefHeight="26.0" prefWidth="74.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="PTWHJ" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="mangoNPassionFruitTea" mnemonicParsing="false" onAction="#addMangoPassionFruitTea" prefHeight="26.0" prefWidth="116.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="MPFT" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="brownSugarThaiPearlMilkTea" mnemonicParsing="false" onAction="#addBrownSugarThaiPearlMilkTea" prefHeight="26.0" prefWidth="97.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="BSTPMT" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button fx:id="brownSugarHokkaidoMilkTea" mnemonicParsing="false" onAction="#addBrownSugarHokkaidoMilkTea" prefHeight="26.0" prefWidth="89.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="BSHMT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="brownSugarCoffeeMilkTea" mnemonicParsing="false" onAction="#addBrownSugarCoffeeMilkTea" prefHeight="26.0" prefWidth="102.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="BSCMT" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <GridPane>
+            <GridPane maxWidth="1.7976931348623157E308" styleClass="grids" stylesheets="@cashierview.css">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -70,19 +69,19 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="haloHalo" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Button fx:id="taroPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" />
-                  <Button fx:id="mangoGreenMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" />
-                  <Button fx:id="coconutPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" />
-                  <Button fx:id="honeyLemonade" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.rowIndex="1" />
-                  <Button fx:id="strawberryCoconut" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="brownSugarCoconutPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Button fx:id="brownSugarTaroPearlMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.rowIndex="2" />
-                  <Button fx:id="brownSugarMangoGreenMilkTea" mnemonicParsing="false" stylesheets="@cashierview.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="haloHalo" mnemonicParsing="false" onAction="#addHaloHalo" prefHeight="26.0" prefWidth="127.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="HH" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="taroPearlMilkTea" mnemonicParsing="false" onAction="#addTaroPearlMilkTea" prefHeight="26.0" prefWidth="108.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="TaPMT" />
+                  <Button fx:id="mangoGreenMilkTea" mnemonicParsing="false" onAction="#addMangoGreenMilkTea" prefHeight="26.0" prefWidth="99.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="MGMT" GridPane.columnIndex="1" />
+                  <Button fx:id="coconutPearlMilkTea" mnemonicParsing="false" onAction="#addCoconutPearlMilkTea" prefHeight="26.0" prefWidth="113.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="CPMT" GridPane.columnIndex="2" />
+                  <Button fx:id="honeyLemonade" mnemonicParsing="false" onAction="#addHoneyLemonade" prefHeight="26.0" prefWidth="90.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="HL" GridPane.rowIndex="1" />
+                  <Button fx:id="strawberryCoconut" mnemonicParsing="false" onAction="#addStrawberryCoconut" prefHeight="26.0" prefWidth="75.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="SC" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="brownSugarCoconutPearlMilkTea" mnemonicParsing="false" onAction="#addBrownSugarCoconutPearlMilkTea" prefHeight="26.0" prefWidth="108.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="BSCPMT" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button fx:id="brownSugarTaroPearlMilkTea" mnemonicParsing="false" onAction="#addBrownSugarTaroPearlMilkTea" prefHeight="26.0" prefWidth="83.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="BSTaPMT" GridPane.rowIndex="2" />
+                  <Button fx:id="brownSugarMangoGreenMilkTea" mnemonicParsing="false" onAction="#addBrownSugarMangoGreenMilkTea" prefHeight="26.0" prefWidth="82.0" styleClass="menubuttons" stylesheets="@cashierview.css" text="BSMGMT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
       </HBox>
-      <Button fx:id="customitem" alignment="CENTER" mnemonicParsing="false" stylesheets="@cashierview.css" text="Custom Item" />
+      <Button fx:id="customitem" alignment="CENTER" mnemonicParsing="false" onAction="#goToCustomItemMenu" styleClass="menubuttons" stylesheets="@cashierview.css" text="Custom Item" />
    </children>
 </VBox>
