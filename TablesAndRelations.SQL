@@ -66,6 +66,8 @@ CREATE TABLE IF NOT EXISTS public."Inventory"
     "quantityOnHand" real DEFAULT 0,
     "reorderThreshold" integer,
     "pricePerUnit" real,
+    "type" character varying(30) NOT NULL CHECK(
+        "type" IN ('Base', 'Topping', 'Other') ),
     PRIMARY KEY ("inventoryId")
 );
 
