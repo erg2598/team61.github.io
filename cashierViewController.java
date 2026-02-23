@@ -3,7 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public class PleaseProvideControllerClassName {
+public class cashierViewController{
 
     @FXML
     private VBox background;
