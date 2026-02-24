@@ -93,3 +93,13 @@ ALTER TABLE IF EXISTS public."Ingredients"
     REFERENCES public."Inventory" ("inventoryId") MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
+
+CREATE TABLE IF NOT EXISTS public."Employees"
+(
+    "employeeId" SERIAL,
+    "name" character varying(50) NOT NULL,
+    "salary" real DEFAULT 0,
+    "date_hired" date DEFAULT CURRENT_DATE,
+    "job_title" character varying(50) NOT NULL,
+    PRIMARY KEY ("employeeId")
+);
