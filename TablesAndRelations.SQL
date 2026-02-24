@@ -15,9 +15,17 @@ CREATE TABLE IF NOT EXISTS public."OrderLineItem"
     "orderLineId" SERIAL,
     "orderId" integer NOT NULL,
     "itemId" integer NOT NULL,
-    quantity integer DEFAULT 0,
+    "quantity" integer DEFAULT 1,
     "sugarAmount" integer DEFAULT 0,
     "iceLevel" character varying(20) DEFAULT 'NONE',
+    "temperature" character varying(20) DEFAULT 'COLD',
+    "baseType" character varying(40),
+    "extras" real DEFAULT 0,
+    "topping1" character varying(20) DEFAULT NULL,
+    "topping2" character varying(20) DEFAULT NULL,
+    "topping3" character varying(20) DEFAULT NULL,
+    "topping4" character varying(20) DEFAULT NULL,
+    "topping5" character varying(20) DEFAULT NULL,
     PRIMARY KEY ("orderLineId")
 );
 
@@ -51,6 +59,9 @@ CREATE TABLE IF NOT EXISTS public."Inventory"
     name character varying(50) NOT NULL,
     "quantityOnHand" real DEFAULT 0,
     "reorderThreshold" integer,
+    "pricePerUnit" real,
+    "type" character varying(30) NOT NULL CHECK(
+        "type" IN ('Base', 'Flavor', 'Topping', 'Other') ),
     PRIMARY KEY ("inventoryId")
 );
 
