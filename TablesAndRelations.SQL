@@ -15,27 +15,21 @@ CREATE TABLE IF NOT EXISTS public."OrderLineItem"
     "orderLineId" SERIAL,
     "orderId" integer NOT NULL,
     "itemId" integer NOT NULL,
-    quantity integer DEFAULT 1,
+    "quantity" integer DEFAULT 1,
     "sugarAmount" integer DEFAULT 0,
     "iceLevel" character varying(20) DEFAULT 'NONE',
     "temperature" character varying(20) DEFAULT 'COLD',
     "baseType" character varying(40),
+    "extras" real DEFAULT 0,
+    "topping1" character varying(20) DEFAULT NULL,
+    "topping2" character varying(20) DEFAULT NULL,
+    "topping3" character varying(20) DEFAULT NULL,
+    "topping4" character varying(20) DEFAULT NULL,
+    "topping5" character varying(20) DEFAULT NULL,
     PRIMARY KEY ("orderLineId")
 );
 
 COMMENT ON TABLE public."OrderLineItem" IS 'The Specific Customized Item';
-
-CREATE TABLE IF NOT EXISTS public."CustomItem"
-(
-    "customId" SERIAL,
-    "orderLineId" integer NOT NULL,
-    "inventoryId" integer NOT NULL,
-    "quantity" integer DEFAULT 1,
-    "extras" real DEFAULT 0,
-    PRIMARY KEY ("customId")
-);
-
-COMMENT ON TABLE public."CustomItem" IS 'For Fully Custom Needs to account for extra costs';
 
 CREATE TABLE IF NOT EXISTS public."Item"
 (
@@ -67,7 +61,7 @@ CREATE TABLE IF NOT EXISTS public."Inventory"
     "reorderThreshold" integer,
     "pricePerUnit" real,
     "type" character varying(30) NOT NULL CHECK(
-        "type" IN ('Base', 'Topping', 'Other') ),
+        "type" IN ('Base', 'Flavor', 'Topping', 'Other') ),
     PRIMARY KEY ("inventoryId")
 );
 
@@ -100,14 +94,12 @@ ALTER TABLE IF EXISTS public."Ingredients"
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
 
-ALTER TABLE IF EXISTS public."CustomItem"
-    ADD FOREIGN KEY ("orderLineId")
-    REFERENCES public."OrderLineItem" ("orderLineId") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE CASCADE;
-
-ALTER TABLE IF EXISTS public."CustomItem"
-    ADD FOREIGN KEY ("inventoryId")
-    REFERENCES public."Inventory" ("inventoryId") MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION;
+CREATE TABLE IF NOT EXISTS public."Employees"
+(
+    "employeeId" SERIAL,
+    "name" character varying(50) NOT NULL,
+    "salary" real DEFAULT 0,
+    "date_hired" date DEFAULT CURRENT_DATE,
+    "job_title" character varying(50) NOT NULL,
+    PRIMARY KEY ("employeeId")
+);

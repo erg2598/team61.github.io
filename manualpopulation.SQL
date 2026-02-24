@@ -147,3 +147,20 @@ INSERT INTO "Ingredients" ("itemId", "inventoryId", "quantityUsed") VALUES
 (52, 1, 1),  (52, 5, 1),  (52, 18, 1),
 (53, 1, 1),  (53, 6, 1),  (53, 9, 1),  (53, 18, 1),
 (54, 1, 1),  (54, 7, 1),  (54, 18, 1);
+
+INSERT INTO public."Employees" ("name", "salary", "date_hired", "job_title") VALUES
+('Alice Nguyen', 32000, '2022-04-12', 'Tea Barista'),
+('Brian Chen', 34000, '2021-09-03', 'Senior Tea Barista'),
+('Clara Patel', 38000, '2020-06-15', 'Shift Supervisor'),
+('Daniel Kim', 45000, '2019-03-20', 'Store Manager'),
+('Emily Tran', 30000, '2023-02-10', 'Cashier'),
+('Felix Rodriguez', 33000, '2022-08-05', 'Tea Barista'),
+('Grace Liu', 36000, '2021-11-18', 'Assistant Manager'),
+('Hannah Brooks', 29000, '2023-05-01', 'Part-Time Barista'),
+('Isaac Miller', 31000, '2022-01-14', 'Tea Brewer'),
+('Jasmine Wong', 35000, '2021-07-27', 'Customer Service Lead'),
+('Kevin Alvarez', 28000, '2023-09-09', 'Stock Clerk'),
+('Lily Park', 40000, '2020-10-22', 'Operations Manager'),
+('Marcus Reed', 37000, '2021-04-06', 'Training Coordinator'),
+('Nina Shah', 30500, '2022-12-12', 'Register Attendant'),
+('Owen Scott', 39000, '2020-02-17', 'Quality Control Specialist');
