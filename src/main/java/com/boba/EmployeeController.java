@@ -15,17 +15,42 @@ import java.sql.*;
 
 public class EmployeeController {
 
-    @FXML private Button returnHomeBtn;
-    @FXML private TextField employeeName;
-    @FXML private TextField employeeSalary;
-    @FXML private TextField dateHired;
-    @FXML private TextField employeeTitle;
-    @FXML private TextField employeeId;
-    @FXML private TextField employeeName1;
-    @FXML private TextField employeeSalary1;
-    @FXML private TextField dateHired1;
-    @FXML private TextField employeeTitle1;
-    @FXML private TextField employeeID;
+     @FXML
+    private TableColumn<?, ?> IDColumn;
+    @FXML
+    private TableColumn<?, ?> dateColumn;
+    @FXML
+    private TextField dateHired;
+    @FXML
+    private TextField dateHired1;
+    @FXML
+    private Button editEmployee;
+    @FXML
+    private TextField employeeID;
+    @FXML
+    private TextField employeeId;
+    @FXML
+    private TextField employeeName;
+    @FXML
+    private TextField employeeName1;
+    @FXML
+    private TextField employeeSalary;
+    @FXML
+    private TextField employeeSalary1;
+    @FXML
+    private TableView<?> employeeTable;
+    @FXML
+    private TextField employeeTitle;
+    @FXML
+    private TextField employeeTitle1;
+    @FXML
+    private Button returnButton;
+    @FXML
+    private TableColumn<?, ?> salaryColumn;
+    @FXML
+    private TableColumn<?, ?> tableColumn;
+    @FXML
+    private TableColumn<?, ?> titleColumn;
 
     //Connection to Database
     private static final HikariDataSource ds;
