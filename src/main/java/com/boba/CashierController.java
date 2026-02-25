@@ -117,6 +117,13 @@ public class CashierController {
         a.setContentText(msg);
         a.showAndWait();
     }
+
+    @FXML
+private void goToManagerView(ActionEvent e) {
+    Stage stage = (Stage) orderButton.getScene().getWindow();
+    MainApp.switchScene(stage, "/fxml/ManagerView.fxml");
+}
+
     @FXML
 private void goToCustomItemMenu(ActionEvent e) {
     Alert a = new Alert(Alert.AlertType.INFORMATION);
