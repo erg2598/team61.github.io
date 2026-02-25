@@ -146,18 +146,29 @@ public class ToggleMenuController {
             alert.showAndWait();
             return;
         }
+
         // Collect selected toppings (up to 5)
-        List<String> toppings = toppingInventoryId.entrySet().stream()
+        List<Map.Entry<CheckBox, Integer>> selectedToppingEntries = toppingInventoryId.entrySet().stream()
                 .filter(ent -> ent.getKey().isSelected())
-                .map(ent -> String.valueOf(ent.getValue()))
                 .limit(5)
                 .collect(Collectors.toList());
 
+        List<String> toppings = selectedToppingEntries.stream()
+                .map(ent -> String.valueOf(ent.getValue()))
+                .collect(Collectors.toList());
+
         // Price calculation
-        boolean isLarge   = largeSize.isSelected();
-        double sizeExtra  = isLarge ? 2.00 : 0.00;
-        double toppingExtra = toppings.size() * 0.50;
-        double extras     = sizeExtra + toppingExtra;
+        boolean isLarge = largeSize.isSelected();
+        double sizeExtra = isLarge ? 2.00 : 0.00;
+        double toppingExtra = 0.0;
+        for (Map.Entry<CheckBox, Integer> ent : selectedToppingEntries) {
+            try {
+                toppingExtra += MainApp.getPricePerUnit(ent.getValue());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        double extras = sizeExtra + toppingExtra;
         double finalPrice = MainApp.selectedItem.basePrice + extras;
         MainApp.OrderLineItem line = new MainApp.OrderLineItem(
                 MainApp.selectedItem.itemId,

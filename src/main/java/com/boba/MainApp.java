@@ -197,6 +197,19 @@ public class MainApp extends Application {
         }
     }
 
+    // PULL - price per unit from the database for toppings
+    public static double getPricePerUnit(int inventoryId) throws SQLException {
+    String sql = "SELECT \"pricePerUnit\" FROM public.\"Inventory\" WHERE \"inventoryId\" = ?";
+    try (Connection conn = getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, inventoryId);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) return rs.getDouble("pricePerUnit");
+        }
+    }
+    return 0.0;
+}
+
     // APP ENTRY - Jack can change once entry is set 
     @Override
     public void start(Stage stage) throws Exception {
