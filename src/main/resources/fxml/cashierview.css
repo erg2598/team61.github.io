@@ -3,15 +3,15 @@
 }
 .hbox-class {
     -fx-alignment: center; 
-    -fx-spacing: 10;   
+    -fx-spacing: 20;   
 }
 .menubuttons{
     -fx-min-width: 10px;
     -fx-pref-width: 64px;
-    -fx-max-width: 100px;
+    -fx-max-width: 150px;
     -fx-min-height: 30px;
     -fx-pref-height: 30px;
-    -fx-max-height: 30px;
+    -fx-max-height: 50px;
     -fx-color: gray;
     -fx-alignment: center;
 }
