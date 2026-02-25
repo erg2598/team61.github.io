@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,12 +42,13 @@ public class MainApp extends Application {
         public final String name;
         public final double basePrice;
         public final String size;
-
-        public Item(int itemId, String name, double basePrice, String size) {
+        public final boolean enabled;
+        public Item(int itemId, String name, double basePrice, String size, boolean enabled) {
             this.itemId = itemId;
             this.name = name;
             this.basePrice = basePrice;
             this.size = size;
+            this.enabled = enabled;
         }
     }
     public static class OrderLineItem {
@@ -80,9 +81,9 @@ public class MainApp extends Application {
     public static Item selectedItem = null;
     public static final List<OrderLineItem> cart = new ArrayList<>();
     public static double cartTotal = 0.0;
+    public static String currentCustomerName = "";
+    public static final Map<Integer, Item> itemCache = new LinkedHashMap<>();
 
-    // cache menu items (normal size) 
-    public static final Map<Integer, Item> itemCache = new HashMap<>();
     public static void addToCart(OrderLineItem line) {
         cart.add(line);
         cartTotal += line.price;
@@ -90,6 +91,7 @@ public class MainApp extends Application {
     public static void clearCart() {
         cart.clear();
         cartTotal = 0.0;
+        currentCustomerName = "";
     }
 
     // SCENE SWITCH HELPER
@@ -109,12 +111,10 @@ public class MainApp extends Application {
     }
 
     // DataBase QUERIES
-
-    // Load menu items into cache (Normal, since your cashier buttons show Normal)
     public static void loadItemCache() throws SQLException {
         itemCache.clear();
-        String sql = "SELECT \"itemId\", name, \"basePrice\", size " +
-                "FROM public.\"Item\" WHERE size = 'Normal' ORDER BY \"itemId\"";
+        String sql = "SELECT \"itemId\", name, \"basePrice\", size, enabled " +
+                "FROM public.\"Item\" WHERE enabled = TRUE AND size = 'Normal' ORDER BY \"itemId\"";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -124,14 +124,13 @@ public class MainApp extends Application {
                         rs.getInt("itemId"),
                         rs.getString("name"),
                         rs.getDouble("basePrice"),
-                        rs.getString("size")
+                        rs.getString("size"),
+                        rs.getBoolean("enabled")
                 );
                 itemCache.put(item.itemId, item);
             }
         }
     }
-
-    // InventoryIds that belong to this menu item (from Ingredients)
     public static List<Integer> getIngredientInventoryIdsForItem(int itemId) throws SQLException {
         List<Integer> ids = new ArrayList<>();
         String sql = "SELECT \"inventoryId\" FROM public.\"Ingredients\" WHERE \"itemId\" = ?";
@@ -144,8 +143,62 @@ public class MainApp extends Application {
         }
         return ids;
     }
+    public static int addItemToDB(String name, double normalPrice,
+                                   List<Integer> ingredientIds,
+                                   double quantityUsed) throws SQLException {
+        try (Connection conn = getConnection()) {
+            conn.setAutoCommit(false);
+            try {
+                String itemSql =
+                    "INSERT INTO public.\"Item\" (name, \"basePrice\", size, enabled) " +
+                    "VALUES (?, ?, ?, TRUE) RETURNING \"itemId\"";
 
-    // INSERT Order as well as OrderLineItem rows
+                int normalId;
+                try (PreparedStatement ps = conn.prepareStatement(itemSql)) {
+                    ps.setString(1, name);
+                    ps.setDouble(2, normalPrice);
+                    ps.setString(3, "Normal");
+                    try (ResultSet rs = ps.executeQuery()) {
+                        rs.next();
+                        normalId = rs.getInt("itemId");
+                    }
+                }
+                int largeId;
+                try (PreparedStatement ps = conn.prepareStatement(itemSql)) {
+                    ps.setString(1, name);
+                    ps.setDouble(2, normalPrice + 2.00);
+                    ps.setString(3, "Large");
+                    try (ResultSet rs = ps.executeQuery()) {
+                        rs.next();
+                        largeId = rs.getInt("itemId");
+                    }
+                }
+                String ingSql =
+                    "INSERT INTO public.\"Ingredients\" (\"itemId\", \"inventoryId\", \"quantityUsed\") " +
+                    "VALUES (?, ?, ?)";
+                try (PreparedStatement ps = conn.prepareStatement(ingSql)) {
+                    for (int invId : ingredientIds) {
+                        ps.setInt(1, normalId);
+                        ps.setInt(2, invId);
+                        ps.setDouble(3, quantityUsed);
+                        ps.addBatch();
+                        ps.setInt(1, largeId);
+                        ps.setInt(2, invId);
+                        ps.setDouble(3, quantityUsed);
+                        ps.addBatch();
+                    }
+                    ps.executeBatch();
+                }
+                conn.commit();
+                return normalId;
+            } catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            } finally {
+                conn.setAutoCommit(true);
+            }
+        }
+    }
     public static int submitCartToDB(String customerName) throws SQLException {
         if (cart.isEmpty()) throw new SQLException("Cart is empty.");
 
@@ -204,8 +257,6 @@ public class MainApp extends Application {
             }
         }
     }
-
-    // PULL - price per unit from the database for toppings
     public static double getPricePerUnit(int inventoryId) throws SQLException {
     String sql = "SELECT \"pricePerUnit\" FROM public.\"Inventory\" WHERE \"inventoryId\" = ?";
     try (Connection conn = getConnection();
@@ -217,7 +268,6 @@ public class MainApp extends Application {
     }
     return 0.0;
 }
-
     // APP ENTRY - Jack can change once entry is set 
     @Override
     public void start(Stage stage) throws Exception {
