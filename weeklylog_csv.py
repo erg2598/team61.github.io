@@ -137,7 +137,9 @@ with open('orders.csv', mode='w', newline='') as orders_file, \
                     for drinks_ordered in range(menuDrinks):
                         quantity = 1
                         orderLineId += 1
-                        actual_drink_id = random.randint(1, 54)
+                        actual_drink_id = random.randint(1, 55)
+                        while actual_drink_id == 28:
+                            actual_drink_id = random.randint(1,55)
                         sugar = random.choice(sugar_amounts)
                         ice = random.choice(ice_types)
                         temperature = random.choice(temps)
