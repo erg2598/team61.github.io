@@ -9,7 +9,7 @@ public class PriceController {
     @FXML
     void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        MainApp.switchScene(stage, "/fxml/managerview.fxml");
+        MainApp.switchScene(stage, "/fxml/ManagerView.fxml");
     }
 
     @FXML

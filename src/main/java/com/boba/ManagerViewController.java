@@ -12,24 +12,24 @@ public class ManagerViewController {
     @FXML
     void launchEmployeeView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        MainApp.switchScene(stage, "/fxml/employee.fxml");
+        MainApp.switchScene(stage, "/fxml/Employee.fxml");
     }
 
     @FXML
     void launchInventoryView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        MainApp.switchScene(stage, "/fxml/inventory.fxml");
+        MainApp.switchScene(stage, "/fxml/Inventory.fxml");
     }
 
     @FXML
     void launchPricesView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        MainApp.switchScene(stage, "/fxml/prices.fxml");
+        MainApp.switchScene(stage, "/fxml/Prices.fxml");
     }
 
     @FXML
     void launchReportsView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        MainApp.switchScene(stage, "/fxml/reports.fxml");
+        MainApp.switchScene(stage, "/fxml/Reports.fxml");
     }
 }
