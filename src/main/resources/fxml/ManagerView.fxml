@@ -83,6 +83,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToCashierView" text="Cashier View" />
             <Button layoutX="168.0" layoutY="67.0" mnemonicParsing="false" onAction="#launchPricesView" prefHeight="50.0" prefWidth="93.0" text="Prices" />
             <Button layoutX="390.0" layoutY="67.0" mnemonicParsing="false" onAction="#launchInventoryView" prefHeight="50.0" prefWidth="94.0" text="Inventory" />
             <Button layoutX="165.0" layoutY="167.0" mnemonicParsing="false" onAction="#launchEmployeeView" prefHeight="50.0" prefWidth="107.0" text="Employee" />

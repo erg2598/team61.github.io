@@ -32,4 +32,10 @@ public class ManagerViewController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         MainApp.switchScene(stage, "/fxml/Reports.fxml");
     }
+
+    @FXML
+    void goToCashierView(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        MainApp.switchScene(stage, "/fxml/cashierview.fxml");
+    }
 }
