@@ -33,12 +33,15 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.ReportController">
   <children>
@@ -81,9 +84,21 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
          <children>
-            <Button layoutX="512.0" layoutY="315.0" mnemonicParsing="false" onAction="#returnHome" text="Return Home" />
-         </children></AnchorPane>
+            <Button fx:id="returnHome" layoutX="536.0" layoutY="300.0" mnemonicParsing="false" onAction="#returnHome" text="Return Home" />
+            <ComboBox fx:id="reportSelector" editable="true" layoutX="55.0" layoutY="42.0" prefWidth="150.0" promptText="Select Report Type" />
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Product Usage Chart" />
+                  <String fx:value="X Report" />
+                  <String fx:value="Z Report (Max one per day)" />
+                  <String fx:value="Sales Report" />
+                  <String fx:value="Restock Report" />
+                </FXCollections>
+              </items>
+            <TextField fx:id="timeFrame" layoutX="240.0" layoutY="42.0" prefHeight="26.0" prefWidth="384.0" promptText=" Enter Time Frame" />
+         </children>
+      </AnchorPane>
   </children>
 </VBox>
