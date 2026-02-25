@@ -13,17 +13,12 @@ public class PriceController {
     }
 
     @FXML
-    void addItem(ActionEvent event) {
+    void changePrice(ActionEvent event) {
         // TODO
     }
 
     @FXML
     void saveChanges(ActionEvent event) {
-        // TODO
-    }
-
-    @FXML
-    void deleteItem(ActionEvent event) {
         // TODO
     }
 }
