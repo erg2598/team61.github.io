@@ -222,7 +222,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         loadItemCache();
-        switchScene(stage, "/fxml/main_page_gui.fxml");
+        switchScene(stage, "/fxml/MainPage.fxml");
         stage.setTitle("Boba POS");
         stage.show();
     }
