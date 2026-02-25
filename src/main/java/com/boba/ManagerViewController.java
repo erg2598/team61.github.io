@@ -24,7 +24,7 @@ public class ManagerViewController {
     @FXML
     void launchPricesView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        MainApp.switchScene(stage, "/fxml/Prices.fxml");
+        MainApp.switchScene(stage, "/fxml/ItemsAndPrices.fxml");
     }
 
     @FXML
