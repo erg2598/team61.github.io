@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class PriceController {
+public class ItemPriceController {
 
     @FXML
     void returnHome(ActionEvent event) {
