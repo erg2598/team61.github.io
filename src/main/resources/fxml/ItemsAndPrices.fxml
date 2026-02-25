@@ -32,17 +32,23 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.ItemPriceController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.InventoryController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -83,18 +89,78 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Button layoutX="504.0" layoutY="316.0" mnemonicParsing="false" onAction="#returnHome" text="Return Home" />
-            <Button layoutX="510.0" layoutY="146.0" mnemonicParsing="false" onAction="#changePrice" text="Change Price" />
-            <Button layoutX="248.0" layoutY="316.0" mnemonicParsing="false" onAction="#saveChanges" text="Save Changes" />
-            <TableView layoutX="114.0" layoutY="28.0" prefHeight="262.0" prefWidth="358.0">
-              <columns>
-                <TableColumn prefWidth="43.2000732421875" text="ItemID" />
-                <TableColumn minWidth="0.0" prefWidth="235.20001220703125" text="Item Name" />
-                  <TableColumn prefWidth="78.4000244140625" text="Price" />
-              </columns>
-            </TableView>
-         </children></AnchorPane>
+      <Accordion>
+        <panes>
+          <TitledPane animated="false" text="Current Items">
+               <content>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="160.0" text="Name" />
+                        <TableColumn prefWidth="160.0" text="Item ID" />
+                        <TableColumn prefWidth="160.0" text="Price" />
+                        <TableColumn prefWidth="160.0" text="Size" />
+                     </columns>
+                  </TableView>
+               </content>
+          </TitledPane>
+          <TitledPane animated="false" text="Add Invetory Item">
+               <content>
+                  <GridPane prefHeight="180.0" prefWidth="640.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="110.0" text="Enter Item Name:" />
+                        <Label prefHeight="18.0" prefWidth="111.0" text="Enter Item ID:" GridPane.rowIndex="1" />
+                        <Label text="Enter Item Price:" GridPane.rowIndex="2" />
+                        <Label prefHeight="18.0" prefWidth="175.0" text="Enter Item Size:" GridPane.rowIndex="3" />
+                        <TextField fx:id="itemName" GridPane.columnIndex="1" />
+                        <TextField fx:id="itemID" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="itemSize" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="itemPrice" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="addInventoryItem" mnemonicParsing="false" onAction="#addInventoryItem" text="Add Inventory Item" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+               </content>
+          </TitledPane>
+            <TitledPane animated="false" text="Edit Items">
+               <content>
+                  <GridPane prefHeight="180.0" prefWidth="640.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="221.0" text="Enter New Item Name:" />
+                        <Label prefHeight="18.0" prefWidth="111.0" text="Enter New Item ID:" GridPane.rowIndex="1" />
+                        <Label text="Enter New Item Price:" GridPane.rowIndex="2" />
+                        <Label prefHeight="18.0" prefWidth="175.0" text="Enter New Item Size:" GridPane.rowIndex="3" />
+                        <TextField fx:id="itemName1" GridPane.columnIndex="1" />
+                        <TextField fx:id="itemID1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="itemSize1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="itemPrice1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button fx:id="updateInventoryItem" mnemonicParsing="false" onAction="#updateInventoryItem" text="Update Inventory Item" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+               </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
+      <Button mnemonicParsing="false" onAction="#returnHome" text="Return Home" />
   </children>
 </VBox>
