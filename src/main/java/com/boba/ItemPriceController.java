@@ -40,7 +40,10 @@ public class ItemPriceController {
 
     @FXML
     void addInventoryItem(ActionEvent event) {
-
+        String name = itemName.getText();
+        double price = Double.parseDouble(itemPrice.getText());
+        String size = itemSize.getText();
+        MainApp.addItemToDB(name, price, size);
     }
 
     @FXML

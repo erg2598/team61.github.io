@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -141,6 +143,7 @@ public class MainApp extends Application {
         }
         return ids;
     }
+    
     public static int addItemToDB(String name, double normalPrice,
                                    List<Integer> ingredientIds,
                                    double quantityUsed) throws SQLException {
@@ -197,6 +200,23 @@ public class MainApp extends Application {
             }
         }
     }
+
+    public static void addItemToDB(String name, double basePrice, String size) {
+        try (Connection conn = getConnection()) {
+            String sql = "INSERT INTO public.\"Item\" (\"name\", \"basePrice\", \"size\") VALUES (?, ?, ?)";
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setDouble(2, basePrice);
+            ps.setString(3, size);
+            System.out.println("Executing SQL: " + ps);
+            ps.executeUpdate();
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static int submitCartToDB(String customerName) throws SQLException {
         if (cart.isEmpty()) throw new SQLException("Cart is empty.");
 
