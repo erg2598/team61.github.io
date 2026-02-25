@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TitledPane?>
@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-
-<BorderPane fx:controller="com.boba.MainApp$CustomizationController"
+<BorderPane fx:controller="com.boba.ToggleMenuController"
             maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0"
@@ -39,27 +38,23 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                      </rowConstraints>
-
                      <children>
-                        <RadioButton fx:id="milkTea" mnemonicParsing="false" onAction="#toggleMilkTea" text="Milk Tea"/>
-                        <RadioButton fx:id="honey" mnemonicParsing="false" onAction="#toggleHoney" text="Honey" GridPane.columnIndex="1"/>
-                        <RadioButton fx:id="coffee" mnemonicParsing="false" onAction="#toggleCoffee" text="Coffee" GridPane.columnIndex="2"/>
-                        <RadioButton fx:id="thaiMilkTea" mnemonicParsing="false" onAction="#toggleThaiMilkTea" text="Thai Milk Tea" GridPane.columnIndex="3"/>
-
-                        <RadioButton fx:id="taro" mnemonicParsing="false" onAction="#toggleTaro" text="Taro" GridPane.rowIndex="1"/>
-                        <RadioButton fx:id="mango" mnemonicParsing="false" onAction="#toggleMango" text="Mango" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                        <RadioButton fx:id="coconut" mnemonicParsing="false" onAction="#toggleCoconut" text="Coconut" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                        <RadioButton fx:id="tea" mnemonicParsing="false" onAction="#toggleTea" text="Tea" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-
-                        <RadioButton fx:id="mangoTea" mnemonicParsing="false" onAction="#toggleMangoTea" text="Mango Tea" GridPane.rowIndex="2"/>
-                        <RadioButton fx:id="berry" mnemonicParsing="false" onAction="#toggleBerry" text="Berry" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                        <RadioButton fx:id="peachTea" mnemonicParsing="false" onAction="#togglePeachTea" text="Peach Tea" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                        <RadioButton fx:id="passionFruit" mnemonicParsing="false" onAction="#togglePassionFruit" text="Passion Fruit" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-
-                        <RadioButton fx:id="lemonade" mnemonicParsing="false" onAction="#toggleLemonade" text="Lemonade" GridPane.rowIndex="3"/>
-                        <RadioButton fx:id="strawberry" mnemonicParsing="false" onAction="#toggleStrawberry" text="Strawberry" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                        <RadioButton fx:id="haloHalo" mnemonicParsing="false" onAction="#toggleHaloHalo" text="Halo Halo" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-                        <RadioButton fx:id="wintermelonTea" mnemonicParsing="false" onAction="#toggleWintermelonTea" text="Wintermelon Tea" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                        <CheckBox fx:id="milkTea" mnemonicParsing="false" text="Milk Tea"/>
+                        <CheckBox fx:id="honey" mnemonicParsing="false" text="Honey" GridPane.columnIndex="1"/>
+                        <CheckBox fx:id="coffee" mnemonicParsing="false" text="Coffee" GridPane.columnIndex="2"/>
+                        <CheckBox fx:id="thaiMilkTea" mnemonicParsing="false" text="Thai Milk Tea" GridPane.columnIndex="3"/>
+                        <CheckBox fx:id="taro" mnemonicParsing="false" text="Taro" GridPane.rowIndex="1"/>
+                        <CheckBox fx:id="mango" mnemonicParsing="false" text="Mango" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <CheckBox fx:id="coconut" mnemonicParsing="false" text="Coconut" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <CheckBox fx:id="tea" mnemonicParsing="false" text="Tea" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                        <CheckBox fx:id="mangoTea" mnemonicParsing="false" text="Mango Tea" GridPane.rowIndex="2"/>
+                        <CheckBox fx:id="berry" mnemonicParsing="false" text="Berry" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <CheckBox fx:id="peachTea" mnemonicParsing="false" text="Peach Tea" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                        <CheckBox fx:id="passionFruit" mnemonicParsing="false" text="Passion Fruit" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                        <CheckBox fx:id="lemonade" mnemonicParsing="false" text="Lemonade" GridPane.rowIndex="3"/>
+                        <CheckBox fx:id="strawberry" mnemonicParsing="false" text="Strawberry" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        <CheckBox fx:id="haloHalo" mnemonicParsing="false" text="Halo Halo" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                        <CheckBox fx:id="wintermelonTea" mnemonicParsing="false" text="Wintermelon Tea" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
                      </children>
                   </GridPane>
                </content>
@@ -80,21 +75,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                      </rowConstraints>
-
                      <children>
-                        <RadioButton fx:id="lychee" mnemonicParsing="false" onAction="#toggleLychee" text="Lychee"/>
-                        <RadioButton fx:id="pearls" mnemonicParsing="false" onAction="#togglePearls" text="Pearls" GridPane.columnIndex="1"/>
-                        <RadioButton fx:id="coffeeJelly" mnemonicParsing="false" onAction="#toggkeCoffeeJelly" text="Coffee Jelly" GridPane.columnIndex="2"/>
-                        <RadioButton fx:id="pudding" mnemonicParsing="false" onAction="#togglePudding" text="Pudding" GridPane.columnIndex="3"/>
-
-                        <RadioButton fx:id="lycheeJelly" mnemonicParsing="false" onAction="#toggleLycheeJelly" text="Lychee Jelly" GridPane.rowIndex="1"/>
-                        <RadioButton fx:id="honeyJelly" mnemonicParsing="false" onAction="#toggleHoneyJelly" text="Honey Jelly" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                        <RadioButton fx:id="crystalBoba" mnemonicParsing="false" onAction="#toggleCrystalBoba" text="Crystal Boba" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                        <RadioButton fx:id="mangoPoppingBoba" mnemonicParsing="false" onAction="#toggleMangoPoppingBoba" text="Mango Popping Boba" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-
-                        <RadioButton fx:id="strawbberyPoppingBoba" mnemonicParsing="false" onAction="#toggleStrawberryPoppingBoba" text="Strawberry Popping Boba" GridPane.rowIndex="2"/>
-                        <RadioButton fx:id="iceCream" mnemonicParsing="false" onAction="#toggleIceCream" text="Ice Cream" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                        <RadioButton fx:id="creama" mnemonicParsing="false" onAction="#toggleCreama" text="Creama" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                        <CheckBox fx:id="lychee" mnemonicParsing="false" text="Lychee"/>
+                        <CheckBox fx:id="pearls" mnemonicParsing="false" text="Pearls" GridPane.columnIndex="1"/>
+                        <CheckBox fx:id="coffeeJelly" mnemonicParsing="false" text="Coffee Jelly" GridPane.columnIndex="2"/>
+                        <CheckBox fx:id="pudding" mnemonicParsing="false" text="Pudding" GridPane.columnIndex="3"/>
+                        <CheckBox fx:id="lycheeJelly" mnemonicParsing="false" text="Lychee Jelly" GridPane.rowIndex="1"/>
+                        <CheckBox fx:id="honeyJelly" mnemonicParsing="false" text="Honey Jelly" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <CheckBox fx:id="crystalBoba" mnemonicParsing="false" text="Crystal Boba" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <CheckBox fx:id="mangoPoppingBoba" mnemonicParsing="false" text="Mango Popping Boba" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+                        <CheckBox fx:id="strawbberyPoppingBoba" mnemonicParsing="false" text="Strawberry Popping Boba" GridPane.rowIndex="2"/>
+                        <CheckBox fx:id="iceCream" mnemonicParsing="false" text="Ice Cream" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <CheckBox fx:id="creama" mnemonicParsing="false" text="Creama" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
                      </children>
                   </GridPane>
                </content>
@@ -105,7 +97,6 @@
                <content>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-
                         <GridPane>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -117,11 +108,10 @@
                            </rowConstraints>
                            <children>
                               <Label text="Select Size:"/>
-                              <RadioButton fx:id="regularSize" mnemonicParsing="false" onAction="#toggleRegularSize" text="Regular" GridPane.rowIndex="1"/>
-                              <RadioButton fx:id="largeSize" mnemonicParsing="false" onAction="#toggleLarge" text="Large" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                              <RadioButton fx:id="regularSize" mnemonicParsing="false" text="Regular" GridPane.rowIndex="1"/>
+                              <RadioButton fx:id="largeSize" mnemonicParsing="false" text="Large" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                            </children>
                         </GridPane>
-
                         <GridPane>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -141,7 +131,6 @@
                               <RadioButton mnemonicParsing="false" text="Extra" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
                            </children>
                         </GridPane>
-
                         <GridPane>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -157,7 +146,6 @@
                               <RadioButton fx:id="hot" mnemonicParsing="false" onAction="#toggleHot" text="Hot" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                            </children>
                         </GridPane>
-
                         <GridPane>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -179,7 +167,6 @@
                               <RadioButton fx:id="regularSugar" mnemonicParsing="false" onAction="#toggleRegularSugar" text="Regular" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
                            </children>
                         </GridPane>
-
                      </children>
                   </VBox>
                </content>
@@ -198,14 +185,12 @@
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
          </rowConstraints>
-
          <children>
             <Button fx:id="addToCart" mnemonicParsing="false" onAction="#addItem" text="Add to Cart">
                <GridPane.margin>
                   <Insets left="100.0"/>
                </GridPane.margin>
             </Button>
-
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#backToMenu" text="Back" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets left="100.0"/>
@@ -215,4 +200,4 @@
       </GridPane>
    </bottom>
 
-</BorderPane>
+</BorderPane> 
