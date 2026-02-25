@@ -119,11 +119,9 @@
                     </rowConstraints>
                      <children>
                         <Label prefHeight="18.0" prefWidth="110.0" text="Enter Item Name:" />
-                        <Label prefHeight="18.0" prefWidth="111.0" text="Enter Item ID:" GridPane.rowIndex="1" />
                         <Label text="Enter Item Price:" GridPane.rowIndex="2" />
                         <Label prefHeight="18.0" prefWidth="175.0" text="Enter Item Size:" GridPane.rowIndex="3" />
                         <TextField fx:id="itemName" GridPane.columnIndex="1" />
-                        <TextField fx:id="itemID" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="itemSize" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="itemPrice" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Button fx:id="addInventoryItem" mnemonicParsing="false" onAction="#addInventoryItem" text="Add Inventory Item" GridPane.columnIndex="1" GridPane.rowIndex="4" />
