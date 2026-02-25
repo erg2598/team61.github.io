@@ -172,17 +172,20 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
                               <Label text="New Employee Name:" />
                               <TextField fx:id="employeeName1" GridPane.columnIndex="1" />
-                              <TextField fx:id="employeeSalary1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField fx:id="dateHired1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField fx:id="employeeTitle1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label prefHeight="18.0" prefWidth="240.0" text="New Employee Salary:" GridPane.rowIndex="1" />
-                              <Label prefHeight="18.0" prefWidth="147.0" text="Date Hired:" GridPane.rowIndex="2" />
-                              <Label prefHeight="18.0" prefWidth="209.0" text="New Employee Title:" GridPane.rowIndex="3" />
-                              <Button fx:id="editEmployee" mnemonicParsing="false" onAction="#editEmployee" text="Edit Employee" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="employeeSalary1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="dateHired1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="employeeTitle1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label prefHeight="18.0" prefWidth="240.0" text="New Employee Salary:" GridPane.rowIndex="2" />
+                              <Label prefHeight="18.0" prefWidth="147.0" text="Date Hired:" GridPane.rowIndex="3" />
+                              <Label prefHeight="18.0" prefWidth="209.0" text="New Employee Title:" GridPane.rowIndex="4" />
+                              <Button fx:id="editEmployee" mnemonicParsing="false" onAction="#editEmployee" text="Edit Employee" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="employeeID" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label prefHeight="18.0" prefWidth="198.0" text="Employee ID:" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>
