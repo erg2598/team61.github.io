@@ -11,6 +11,15 @@ public class InventoryController {
     private Button addInventoryItem;
 
     @FXML
+    private Button editInventoryItem;
+
+    @FXML
+    private TextField ingredientType;
+
+    @FXML
+    private TextField ingredientType1;
+
+    @FXML
     private TextField itemID;
 
     @FXML
@@ -29,13 +38,16 @@ public class InventoryController {
     private TextField itemPrice1;
 
     @FXML
-    private TextField itemSize;
+    private TextField itemQuantity;
 
     @FXML
-    private TextField itemSize1;
+    private TextField itemQuantity1;
 
     @FXML
-    private Button updateInventoryItem;
+    private TextField reorderThreshold;
+
+    @FXML
+    private TextField reorderThreshold1;
 
     @FXML
     void addInventoryItem(ActionEvent event) {
@@ -43,12 +55,12 @@ public class InventoryController {
     }
 
     @FXML
-    void returnHome(ActionEvent event) {
+    void editInventoryItem(ActionEvent event) {
 
     }
 
     @FXML
-    void updateInventoryItem(ActionEvent event) {
+    void returnHome(ActionEvent event) {
 
     }
 
