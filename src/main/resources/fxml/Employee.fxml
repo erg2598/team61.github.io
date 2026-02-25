@@ -95,13 +95,13 @@
         <panes>
           <TitledPane animated="false" text="Current Employees">
                <content>
-                  <TableView prefHeight="200.0" prefWidth="200.0">
+                  <TableView fx:id="employeeTable" editable="true" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                      <TableColumn prefWidth="100.0" text="Name" />
-                        <TableColumn prefWidth="100.0" text="Employee ID" />
-                        <TableColumn prefWidth="100.0" text="Salary" />
-                      <TableColumn prefWidth="238.4000244140625" text="Title" />
-                        <TableColumn prefWidth="100.0" text="Date Hired" />
+                      <TableColumn fx:id="tableColumn" prefWidth="100.0" text="Name" />
+                        <TableColumn fx:id="IDColumn" prefWidth="100.0" text="Employee ID" />
+                        <TableColumn fx:id="salaryColumn" prefWidth="100.0" text="Salary" />
+                      <TableColumn fx:id="titleColumn" prefWidth="238.4000244140625" text="Title" />
+                        <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date Hired" />
                     </columns>
                   </TableView>
                </content>
