@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ItemPriceController {
 
@@ -44,7 +45,8 @@ public class ItemPriceController {
 
     @FXML
     void returnHome(ActionEvent event) {
-
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        MainApp.switchScene(stage, "/fxml/managerview.fxml");
     }
 
     @FXML
