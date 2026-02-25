@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.List;
+import java.util.ArrayList;
 
 import java.sql.*;
 
@@ -139,58 +141,84 @@ public class EmployeeController {
         }
     }
 
+    
     @FXML
-    void editEmployee(ActionEvent event){
-        //TODO
-        String name = employeeName1.getText();
-        String salary = employeeSalary1.getText();
-        String hiringDate = dateHired1.getText();
-        String title = employeeTitle1.getText();
-        String ID = employeeID.getText();
+    void editEmployee(ActionEvent event) {
+    // Get text
+    String name = employeeName1.getText().trim();
+    String salaryText = employeeSalary1.getText().trim();
+    String hiringDate = dateHired1.getText().trim();
+    String title = employeeTitle1.getText().trim();
+    String idText = employeeID.getText().trim();
 
-        String sql = "UPDATE \"Employees\" SET ????? WHERE \"employeeId\" = ?;";
-         try (Connection conn = getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
-            
-            if(name != null){
-                stmt.setString(1, "name = \'" + name + "\'");
-            } else{
-                stmt.setString(1,null);
-            }
-            if(name != null && salary != null){
-                stmt.setString(2,",");
-            } else{
-                stmt.setString(2,null);
-            }
-            if(salary != null){
-                stmt.setString(3, "salary = " + Integer.parseInt(salary));
-            } else {
-                stmt.setString(3,null);
-            }
-            if(title != null && salary != null){
-                stmt.setString(4,",");
-            } else{
-                stmt.setString(4,null);
-            }
-            if(title != null){
-                stmt.setString(5, "job_title = \'" + title + "\'");
-            } else {
-                stmt.setString(5,null);
-            }
-            stmt.setInt(6, Integer.parseInt(ID));
-            stmt.executeUpdate();
-            
-            employeeName1.clear();
-            employeeSalary1.clear();
-            dateHired1.clear();
-            employeeTitle1.clear();
-            employeeID.clear();
-
-            // loadEmployees();
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Employee editted successfully!");
-        } catch (SQLException ex){
-            ex.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Data Base Error", ex.getMessage());
-        }
+    // ID is mandatory to know who to update
+    if (idText.isEmpty()) {
+        showAlert(Alert.AlertType.WARNING, "Input Error", "Employee ID is required to edit.");
+        return;
     }
+
+    // Dynamically build the SQL and track parameters
+    StringBuilder sql = new StringBuilder("UPDATE public.\"Employees\" SET ");
+    List<Object> parameters = new ArrayList<>();
+
+    
+        if (!name.isEmpty()) {
+            sql.append("\"name\" = ?, ");
+            parameters.add(name);
+        }
+        if (!salaryText.isEmpty()) {
+            sql.append("\"salary\" = ?, ");
+            parameters.add(Double.parseDouble(salaryText));
+        }
+        if (!hiringDate.isEmpty()) {
+            sql.append("\"date_hired\" = ?, ");
+            parameters.add(Date.valueOf(hiringDate)); // Assuming format yyyy-mm-dd
+        }
+        if (!title.isEmpty()) {
+            sql.append("\"job_title\" = ?, ");
+            parameters.add(title);
+        }
+
+        // If the manager didn't fill in anything to change, abort
+        if (parameters.isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "No Changes", "Please fill out at least one field to update.");
+            return;
+        }
+
+        // Remove the trailing comma from the last appended column
+        sql.setLength(sql.length() - 2);
+
+        // Add WHERE clause and the ID parameter
+        sql.append(" WHERE \"employeeId\" = ?;");
+        parameters.add(Integer.parseInt(idText));
+
+        //Execute the dynamically built query
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+
+            // Loop through our parameter list and set them in the PreparedStatement
+            for (int i = 0; i < parameters.size(); i++) {
+                stmt.setObject(i + 1, parameters.get(i)); 
+            }
+
+            int rowsAffected = stmt.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                employeeName1.clear();
+                employeeSalary1.clear();
+                dateHired1.clear();
+                employeeTitle1.clear();
+                employeeID.clear();
+                // loadEmployees();
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Employee edited successfully!");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Not Found", "No employee found with that ID.");
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Database Error", ex.getMessage());
+        }
+
+}
 }
