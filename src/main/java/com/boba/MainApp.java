@@ -1,6 +1,16 @@
 package com.boba;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +18,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import java.sql.*;
-import java.util.*;
 public class MainApp extends Application {
     // DB POOL (Hikari) - allows more stable connection? 
     private static final HikariDataSource ds;
@@ -214,7 +222,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         loadItemCache();
-        switchScene(stage, "/fxml/cashierview.fxml");
+        switchScene(stage, "/fxml/MainPage.fxml");
         stage.setTitle("Boba POS");
         stage.show();
     }
