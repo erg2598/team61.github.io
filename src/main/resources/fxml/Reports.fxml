@@ -97,6 +97,7 @@
                   <String fx:value="Restock Report" />
                 </FXCollections>
               </items>
+            </ComboBox>
             <TextField fx:id="timeFrame" layoutX="240.0" layoutY="42.0" prefHeight="26.0" prefWidth="384.0" promptText=" Enter Time Frame" />
          </children>
       </AnchorPane>
