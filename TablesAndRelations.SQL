@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS public."Item"
     name character varying(50) NOT NULL,
     "basePrice" real DEFAULT 0,
     size character varying(20) DEFAULT 'SMALL',
+    enabled BOOLEAN NOT NULL DEFAULT TRUE,
     PRIMARY KEY ("itemId")
 );
 
