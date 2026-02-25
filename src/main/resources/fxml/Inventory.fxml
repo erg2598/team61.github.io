@@ -103,7 +103,7 @@
                   </TableView>
                </content>
           </TitledPane>
-          <TitledPane animated="false" text="Add Invetory Item">
+          <TitledPane animated="false" text="Add Inventory Item">
                <content>
                   <GridPane prefHeight="180.0" prefWidth="640.0">
                     <columnConstraints>
