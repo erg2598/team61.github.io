@@ -149,7 +149,7 @@
                           </rowConstraints>
                            <children>
                               <Label prefHeight="18.0" prefWidth="190.0" text="Enter Employee ID:" />
-                              <TextField prefHeight="26.0" prefWidth="293.0" GridPane.columnIndex="1" />
+                              <TextField fx:id="employeeId" prefHeight="26.0" prefWidth="293.0" GridPane.columnIndex="1" />
                               <Button mnemonicParsing="false" onAction="#removeEmployee" prefHeight="26.0" prefWidth="114.0" text="Remove Employee" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
