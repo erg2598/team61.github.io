@@ -1,5 +1,9 @@
 package com.boba;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.time.LocalDate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -106,6 +110,8 @@ public class EmployeeController {
         if (jobStr == null) return;
 
         //date is the type in the database
+        //TODO FIX BUG WHERE DATE DIALOG SCREEN DOESN'T POP UP
+        //IT SHOWS JOB TITLE TWICE
         TextInputDialog dateDialog = new TextInputDialog("");
         dateDialog.setTitle("Add Employee");
         dateDialog.setHeaderText(null);
@@ -118,7 +124,7 @@ public class EmployeeController {
         try {
             int    id      = Integer.parseInt(IDStr);
             Float wage = Float.parseFloat(salaryStr);
-            //dateStr = Date.parseDate(dateStr);
+            Date date = java.sql.Date.valueOf(dateStr);
             String sql = "INSERT INTO public.\"Employees\" " +
                          "(\"employeeId\", \"name\", \"salary\", \"date_hired\", \"job_title\") " +
                          "VALUES (?, ?, ?, ?, ?)";
@@ -127,7 +133,7 @@ public class EmployeeController {
                 ps.setInt(1, id);
                 ps.setString(2, nameStr);
                 ps.setFloat(3, wage);
-                ps.setString(4, dateStr);
+                ps.setDate(4, date);
                 ps.setString(5, jobStr);
                 ps.executeUpdate();
             }
@@ -141,6 +147,28 @@ public class EmployeeController {
 
     @FXML
     void removeEmployee(ActionEvent event) {
+        TextInputDialog IDDialog = new TextInputDialog();
+        IDDialog.setTitle("Delete Employee");
+        IDDialog.setHeaderText(null);
+        IDDialog.setContentText("Employee Id:");
+        String IDStr = IDDialog.showAndWait().orElse(null);
+        if (IDStr == null || IDStr.isBlank()) return;
+
+         try {
+            int id = Integer.parseInt(IDStr);
+            String sql = "DELETE FROM public.\"Employees\" " +
+                         "WHERE \"employeeId\" = ?";
+            try (Connection conn = MainApp.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ps.executeUpdate();
+            }
+            loadTable(null);
+            showAlert("Success", "Deleted Employee.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", e.getMessage());
+        }
     }
 
     
