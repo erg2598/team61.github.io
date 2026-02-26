@@ -12,16 +12,18 @@
       <children>
         <TableView fx:id="itemTable" layoutX="14.0" layoutY="14.0" prefHeight="380.0" prefWidth="660.0">
           <columns>
-            <TableColumn fx:id="idCol"    prefWidth="60.0"  text="ID" />
-            <TableColumn fx:id="nameCol"  prefWidth="300.0" text="Name" />
-            <TableColumn fx:id="priceCol" prefWidth="150.0" text="Price" />
-            <TableColumn fx:id="sizeCol"  prefWidth="150.0" text="Size" />
+            <TableColumn fx:id="idCol"      prefWidth="60.0"  text="ID" />
+            <TableColumn fx:id="nameCol"    prefWidth="250.0" text="Name" />
+            <TableColumn fx:id="priceCol"   prefWidth="100.0" text="Price" />
+            <TableColumn fx:id="sizeCol"    prefWidth="100.0" text="Size" />
+            <TableColumn fx:id="enabledCol" prefWidth="100.0" text="Enabled" />
           </columns>
         </TableView>
-        <Button layoutX="14.0"  layoutY="410.0" text="Refresh"     onAction="#loadTable" />
-        <Button layoutX="120.0" layoutY="410.0" text="Add Item"     onAction="#addMenuItem" />
-        <Button layoutX="226.0" layoutY="410.0" text="Update Price" onAction="#updateMenuItem" />
-        <Button layoutX="438.0" layoutY="410.0" text="Return Home"  onAction="#returnHome" />
+        <Button layoutX="14.0"  layoutY="410.0" text="Refresh"       onAction="#loadTable" />
+        <Button layoutX="120.0" layoutY="410.0" text="Add Item"       onAction="#addMenuItem" />
+        <Button layoutX="226.0" layoutY="410.0" text="Update Price"   onAction="#updateMenuItem" />
+        <Button layoutX="356.0" layoutY="410.0" text="Toggle Enabled" onAction="#toggleMenuItem" />
+        <Button layoutX="510.0" layoutY="410.0" text="Return Home"    onAction="#returnHome" />
       </children>
     </AnchorPane>
   </children>
