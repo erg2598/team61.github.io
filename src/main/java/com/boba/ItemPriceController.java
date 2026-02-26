@@ -18,34 +18,39 @@ public class ItemPriceController {
     @FXML private TableColumn<ItemRow, String>  nameCol;
     @FXML private TableColumn<ItemRow, Double>  priceCol;
     @FXML private TableColumn<ItemRow, String>  sizeCol;
+    @FXML private TableColumn<ItemRow, Boolean> enabledCol;  // ← new column
 
     public static class ItemRow {
         public final IntegerProperty itemId;
         public final StringProperty  name;
         public final DoubleProperty  price;
         public final StringProperty  size;
+        public final BooleanProperty enabled;  // ← new field
 
-        public ItemRow(int id, String name, double price, String size) {
-            this.itemId = new SimpleIntegerProperty(id);
-            this.name   = new SimpleStringProperty(name);
-            this.price  = new SimpleDoubleProperty(price);
-            this.size   = new SimpleStringProperty(size);
+        public ItemRow(int id, String name, double price, String size, boolean enabled) {
+            this.itemId  = new SimpleIntegerProperty(id);
+            this.name    = new SimpleStringProperty(name);
+            this.price   = new SimpleDoubleProperty(price);
+            this.size    = new SimpleStringProperty(size);
+            this.enabled = new SimpleBooleanProperty(enabled);  // ← new
         }
     }
 
     @FXML
     public void initialize() {
-        idCol.setCellValueFactory(c    -> c.getValue().itemId.asObject());
-        nameCol.setCellValueFactory(c  -> c.getValue().name);
-        priceCol.setCellValueFactory(c -> c.getValue().price.asObject());
-        sizeCol.setCellValueFactory(c  -> c.getValue().size);
+        idCol.setCellValueFactory(c      -> c.getValue().itemId.asObject());
+        nameCol.setCellValueFactory(c    -> c.getValue().name);
+        priceCol.setCellValueFactory(c   -> c.getValue().price.asObject());
+        sizeCol.setCellValueFactory(c    -> c.getValue().size);
+        enabledCol.setCellValueFactory(c -> c.getValue().enabled.asObject());  // ← new
         loadTable(null);
     }
 
     @FXML
     public void loadTable(ActionEvent event) {
         ObservableList<ItemRow> rows = FXCollections.observableArrayList();
-        String sql = "SELECT \"itemId\", name, \"basePrice\", size FROM public.\"Item\" ORDER BY \"itemId\"";
+        String sql = "SELECT \"itemId\", name, \"basePrice\", size, enabled " +
+                     "FROM public.\"Item\" ORDER BY \"itemId\"";
         try (Connection conn = MainApp.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -54,7 +59,8 @@ public class ItemPriceController {
                         rs.getInt("itemId"),
                         rs.getString("name"),
                         rs.getDouble("basePrice"),
-                        rs.getString("size")));
+                        rs.getString("size"),
+                        rs.getBoolean("enabled")));  // ← new
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,7 +93,8 @@ public class ItemPriceController {
 
         try {
             double price = Double.parseDouble(priceStr);
-            String sql = "INSERT INTO public.\"Item\" (name, \"basePrice\", size) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO public.\"Item\" (name, \"basePrice\", size, enabled) " +
+                         "VALUES (?, ?, ?, true)";
             try (Connection conn = MainApp.getConnection();
                  PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, name);
@@ -143,6 +150,30 @@ public class ItemPriceController {
         }
     }
 
+    // ← new toggle method
+    @FXML
+    void toggleMenuItem(ActionEvent event) {
+        ItemRow selected = itemTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            showAlert("No Selection", "Click on a row first, then press Toggle.");
+            return;
+        }
+        boolean newStatus = !selected.enabled.get();
+        String sql = "UPDATE public.\"Item\" SET enabled = ? WHERE \"itemId\" = ?";
+        try (Connection conn = MainApp.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setBoolean(1, newStatus);
+            ps.setInt(2, selected.itemId.get());
+            ps.executeUpdate();
+            loadTable(null);
+            showAlert("Success", "Item " + selected.name.get() +
+                      " is now " + (newStatus ? "ENABLED" : "DISABLED"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", e.getMessage());
+        }
+    }
+
     @FXML
     void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -154,6 +185,7 @@ public class ItemPriceController {
         a.setTitle(title);
         a.setHeaderText(null);
         a.setContentText(msg);
+        a.showAndWait();
         a.showAndWait();
     }
 }
