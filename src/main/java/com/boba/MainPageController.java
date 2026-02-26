@@ -43,7 +43,7 @@ public class MainPageController {
     @FXML
     void launchManagerView(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/fxml/ManagerView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ManagerView.fxml"));
             Scene scene = new Scene(loader.load());
 
             Stage stage = new Stage();
