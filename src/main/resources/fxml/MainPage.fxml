@@ -35,9 +35,6 @@
                      </BorderPane.margin>
                   </Button>
                </bottom>
-               <right>
-                  <Button fx:id="managerSide" mnemonicParsing="false" onAction="#launchManagerView" text="This Button launches manager view and is temporary" BorderPane.alignment="CENTER" />
-               </right>
             </BorderPane>
          </children>
       </VBox>
