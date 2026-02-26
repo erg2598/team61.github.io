@@ -39,7 +39,7 @@ public class ItemPriceController {
     private Button updateInventoryItem;
 
     @FXML
-    void addInventoryItem(ActionEvent event) {
+    void addMenuItem(ActionEvent event) {
         String name = itemName.getText();
         double price = Double.parseDouble(itemPrice.getText());
         String size = itemSize.getText();
@@ -53,7 +53,7 @@ public class ItemPriceController {
     }
 
     @FXML
-    void updateInventoryItem(ActionEvent event) {
+    void updateMenuItem(ActionEvent event) {
 
     }
 

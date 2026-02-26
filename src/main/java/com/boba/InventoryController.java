@@ -138,6 +138,71 @@ public class InventoryController {
     }
 
     @FXML
+    void updateInventoryItem(ActionEvent event) {
+        // Get the ID of the item to update
+        TextInputDialog idDialog = new TextInputDialog();
+        idDialog.setTitle("Update Inventory Item");
+        idDialog.setHeaderText(null);
+        idDialog.setContentText("Enter Inventory ID to update:");
+        String idStr = idDialog.showAndWait().orElse(null);
+        if (idStr == null || idStr.isBlank()) return;
+
+        // Get new quantity
+        TextInputDialog qtyDialog = new TextInputDialog();
+        qtyDialog.setTitle("Update Inventory Item");
+        qtyDialog.setHeaderText(null);
+        qtyDialog.setContentText("New Quantity On Hand:");
+        String qtyStr = qtyDialog.showAndWait().orElse(null);
+        if (qtyStr == null) return;
+
+        // Get new price
+        TextInputDialog priceDialog = new TextInputDialog();
+        priceDialog.setTitle("Update Inventory Item");
+        priceDialog.setHeaderText(null);
+        priceDialog.setContentText("New Price Per Unit:");
+        String priceStr = priceDialog.showAndWait().orElse(null);
+        if (priceStr == null) return;
+
+        // Get new reorder threshold
+        TextInputDialog reorderDialog = new TextInputDialog();
+        reorderDialog.setTitle("Update Inventory Item");
+        reorderDialog.setHeaderText(null);
+        reorderDialog.setContentText("New Reorder Threshold:");
+        String reorderStr = reorderDialog.showAndWait().orElse(null);
+        if (reorderStr == null) return;
+
+        try {
+            int    id      = Integer.parseInt(idStr);
+            double qty     = Double.parseDouble(qtyStr);
+            double price   = Double.parseDouble(priceStr);
+            int    reorder = Integer.parseInt(reorderStr);
+
+            String sql = "UPDATE public.\"Inventory\" SET " +
+                        "\"quantityOnHand\" = ?, " +
+                        "\"pricePerUnit\" = ?, " +
+                        "\"reorderThreshold\" = ? " +
+                        "WHERE \"inventoryId\" = ?";
+            try (Connection conn = MainApp.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setDouble(1, qty);
+                ps.setDouble(2, price);
+                ps.setInt(3, reorder);
+                ps.setInt(4, id);
+                int rows = ps.executeUpdate();
+                if (rows == 0) {
+                    showAlert("Not Found", "No inventory item found with ID " + id);
+                } else {
+                    loadTable(null);
+                    showAlert("Success", "Inventory item updated.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", e.getMessage());
+        }
+    }
+
+    @FXML
     void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         MainApp.switchScene(stage, "/fxml/ManagerView.fxml");

@@ -20,9 +20,10 @@
             <TableColumn fx:id="typeCol"      prefWidth="100.0" text="Type" />
           </columns>
         </TableView>
-        <Button layoutX="14.0"  layoutY="410.0" text="Refresh"      onAction="#loadTable" />
-        <Button layoutX="120.0" layoutY="410.0" text="Add Item"      onAction="#addInventoryItem" />
-        <Button layoutX="226.0" layoutY="410.0" text="Return Home"   onAction="#returnHome" />
+        <Button layoutX="14.0"  layoutY="410.0" text="Refresh"       onAction="#loadTable" />
+        <Button layoutX="120.0" layoutY="410.0" text="Add Item"       onAction="#addInventoryItem" />
+        <Button layoutX="226.0" layoutY="410.0" text="Update Item"    onAction="#updateInventoryItem" />
+        <Button layoutX="332.0" layoutY="410.0" text="Return Home"    onAction="#returnHome" />
       </children>
     </AnchorPane>
   </children>
