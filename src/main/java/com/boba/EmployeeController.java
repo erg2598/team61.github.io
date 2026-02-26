@@ -77,7 +77,66 @@ public class EmployeeController {
 
     @FXML
     void addEmployee(ActionEvent event) {
-        
+        TextInputDialog nameDialog = new TextInputDialog();
+        nameDialog.setTitle("Add Employee");
+        nameDialog.setHeaderText(null);
+        nameDialog.setContentText("Employee Name:");
+        String nameStr = nameDialog.showAndWait().orElse(null);
+        if (nameStr == null || nameStr.isBlank()) return;
+
+        TextInputDialog IDDialog = new TextInputDialog("");
+        IDDialog.setTitle("Add Employee");
+        IDDialog.setHeaderText(null);
+        IDDialog.setContentText("Employee ID:");
+        String IDStr = IDDialog.showAndWait().orElse(null);
+        if (IDStr == null) return;
+
+        TextInputDialog salaryDialog = new TextInputDialog("");
+        salaryDialog.setTitle("Add Employee");
+        salaryDialog.setHeaderText(null);
+        salaryDialog.setContentText("Employee Salary:");
+        String salaryStr = salaryDialog.showAndWait().orElse(null);
+        if (salaryStr == null) return;
+
+        TextInputDialog jobDialog = new TextInputDialog("");
+        jobDialog.setTitle("Add Employee");
+        jobDialog.setHeaderText(null);
+        jobDialog.setContentText("Job Title:");
+        String jobStr = jobDialog.showAndWait().orElse(null);
+        if (jobStr == null) return;
+
+        //date is the type in the database
+        TextInputDialog dateDialog = new TextInputDialog("");
+        dateDialog.setTitle("Add Employee");
+        dateDialog.setHeaderText(null);
+        dateDialog.setContentText("Employee Hire Date (yyyy-mm-dd):");
+        String dateStr = jobDialog.showAndWait().orElse(null);
+        if (dateStr == null) return;
+
+
+
+        try {
+            int    id      = Integer.parseInt(IDStr);
+            Float wage = Float.parseFloat(salaryStr);
+            //dateStr = Date.parseDate(dateStr);
+            String sql = "INSERT INTO public.\"Employees\" " +
+                         "(\"employeeId\", \"name\", \"salary\", \"date_hired\", \"job_title\") " +
+                         "VALUES (?, ?, ?, ?, ?)";
+            try (Connection conn = MainApp.getConnection();
+                 PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ps.setString(2, nameStr);
+                ps.setFloat(3, wage);
+                ps.setString(4, dateStr);
+                ps.setString(5, jobStr);
+                ps.executeUpdate();
+            }
+            loadTable(null);
+            showAlert("Success", "Employee added.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", e.getMessage());
+        }
     }
 
     @FXML
