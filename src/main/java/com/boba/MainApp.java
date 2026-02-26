@@ -275,20 +275,40 @@ public class MainApp extends Application {
             }
         }
     }
+
+    
     public static double getPricePerUnit(int inventoryId) throws SQLException {
-    String sql = "SELECT \"pricePerUnit\" FROM public.\"Inventory\" WHERE \"inventoryId\" = ?";
-    try (Connection conn = getConnection();
-         PreparedStatement ps = conn.prepareStatement(sql)) {
-        ps.setInt(1, inventoryId);
-        try (ResultSet rs = ps.executeQuery()) {
-            if (rs.next()) return rs.getDouble("pricePerUnit");
+        String sql = "SELECT \"pricePerUnit\" FROM public.\"Inventory\" WHERE \"inventoryId\" = ?";
+        try (Connection conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, inventoryId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return rs.getDouble("pricePerUnit");
+            }
+        }
+        return 0.0;
+    }
+
+    // UPDATES ORDERS everytime to the most recent so orderids are added correctly
+    private static void resetSequences() {
+        String[] sqls = {
+            "SELECT setval(pg_get_serial_sequence('public.\"Order\"', 'orderId'), COALESCE((SELECT MAX(\"orderId\") FROM public.\"Order\"), 0))",
+            "SELECT setval(pg_get_serial_sequence('public.\"Inventory\"', 'inventoryId'), COALESCE((SELECT MAX(\"inventoryId\") FROM public.\"Inventory\"), 0))",
+            "SELECT setval(pg_get_serial_sequence('public.\"Item\"', 'itemId'), COALESCE((SELECT MAX(\"itemId\") FROM public.\"Item\"), 0))",
+            "SELECT setval(pg_get_serial_sequence('public.\"OrderLineItem\"', 'orderLineId'), COALESCE((SELECT MAX(\"orderLineId\") FROM public.\"OrderLineItem\"), 0))"
+        };
+        try (Connection conn = getConnection()) {
+            for (String sql : sqls) {
+                conn.prepareStatement(sql).execute();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-    return 0.0;
-}
     // APP ENTRY - Jack can change once entry is set 
     @Override
     public void start(Stage stage) throws Exception {
+        resetSequences();
         loadItemCache();
         switchScene(stage, "/fxml/MainPage.fxml");
         stage.setTitle("Boba POS");
