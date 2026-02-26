@@ -38,11 +38,11 @@ public class ReportController {
 
     @FXML
     public void initialize() {
-        orderIdCol.setCellValueFactory(c  -> c.getValue().orderId.asObject());
-        customerCol.setCellValueFactory(c -> c.getValue().customer);
-        statusCol.setCellValueFactory(c   -> c.getValue().status);
-        totalCol.setCellValueFactory(c    -> c.getValue().total.asObject());
-        dateCol.setCellValueFactory(c     -> c.getValue().date);
+        orderIdCol.setCellValueFactory(c->c.getValue().orderId.asObject());
+        customerCol.setCellValueFactory(c->c.getValue().customer);
+        statusCol.setCellValueFactory(c->c.getValue().status);
+        totalCol.setCellValueFactory(c->c.getValue().total.asObject());
+        dateCol.setCellValueFactory(c->c.getValue().date);
     }
 
     @FXML
