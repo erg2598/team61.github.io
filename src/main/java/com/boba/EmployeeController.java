@@ -110,13 +110,11 @@ public class EmployeeController {
         if (jobStr == null) return;
 
         //date is the type in the database
-        //TODO FIX BUG WHERE DATE DIALOG SCREEN DOESN'T POP UP
-        //IT SHOWS JOB TITLE TWICE
         TextInputDialog dateDialog = new TextInputDialog("");
         dateDialog.setTitle("Add Employee");
         dateDialog.setHeaderText(null);
         dateDialog.setContentText("Employee Hire Date (yyyy-mm-dd):");
-        String dateStr = jobDialog.showAndWait().orElse(null);
+        String dateStr = dateDialog.showAndWait().orElse(null);
         if (dateStr == null) return;
 
 
