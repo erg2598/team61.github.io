@@ -120,7 +120,7 @@ public class EmployeeController {
 
 
         try {
-            int    id      = Integer.parseInt(IDStr);
+            int id = Integer.parseInt(IDStr);
             Float wage = Float.parseFloat(salaryStr);
             Date date = java.sql.Date.valueOf(dateStr);
             String sql = "INSERT INTO public.\"Employees\" " +
@@ -172,7 +172,103 @@ public class EmployeeController {
     
     @FXML
     void editEmployee(ActionEvent event) {
+        TextInputDialog IDDialog = new TextInputDialog("");
+        IDDialog.setTitle("Edit Employee");
+        IDDialog.setHeaderText(null);
+        IDDialog.setContentText("Employee ID:");
+        String IDStr = IDDialog.showAndWait().orElse(null);
+        if (IDStr == null) return;
 
+        TextInputDialog nameDialog = new TextInputDialog();
+        nameDialog.setTitle("Edit Employee");
+        nameDialog.setHeaderText(null);
+        nameDialog.setContentText("Employee Name:");
+        String nameStr = nameDialog.showAndWait().orElse(null);
+        if (nameStr == null || nameStr.isBlank()) return;
+
+        TextInputDialog salaryDialog = new TextInputDialog("");
+        salaryDialog.setTitle("Edit Employee");
+        salaryDialog.setHeaderText(null);
+        salaryDialog.setContentText("Employee Salary:");
+        String salaryStr = salaryDialog.showAndWait().orElse(null);
+        if (salaryStr == null) return;
+
+        TextInputDialog jobDialog = new TextInputDialog("");
+        jobDialog.setTitle("Edit Employee");
+        jobDialog.setHeaderText(null);
+        jobDialog.setContentText("Job Title:");
+        String jobStr = jobDialog.showAndWait().orElse(null);
+        if (jobStr == null) return;
+
+        //date is the type in the database
+        TextInputDialog dateDialog = new TextInputDialog("");
+        dateDialog.setTitle("Edit Employee");
+        dateDialog.setHeaderText(null);
+        dateDialog.setContentText("Employee Hire Date (yyyy-mm-dd):");
+        String dateStr = dateDialog.showAndWait().orElse(null);
+        if (dateStr == null) return;
+
+
+
+        try {
+            int id = Integer.parseInt(IDStr);
+            String sql = "UPDATE public.\"Employees\" SET";
+            if(!nameStr.isEmpty()){
+                sql = sql + " \"name\" = ?";
+                if((!salaryStr.isEmpty() ) || (!jobStr.isEmpty()) || (!dateStr.isEmpty())){
+                    sql = sql + ",";
+                }
+            }
+            if(!salaryStr.isEmpty()){
+                sql = sql + " \"salary\" = ?";
+                
+                if((!jobStr.isEmpty()) || (!dateStr.isEmpty())){
+                    sql = sql + ",";
+                }
+            }
+            if(!jobStr.isEmpty()){
+                sql = sql + " \"job_title\" = ?";
+                if((!dateStr.isEmpty())){
+                    sql = sql + ",";
+                }
+            }
+            if(!dateStr.isEmpty()){
+                sql = sql + " \"date_hired\" = ?";
+                
+            }
+            sql = sql + " WHERE \"employeeId\" = ?";
+            
+
+            try (Connection conn = MainApp.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+                    int count = 1;
+                    if(!nameStr.isEmpty()){
+                        ps.setString(count, nameStr);
+                        count += 1;
+                    }
+                    if(!salaryStr.isEmpty()){
+                        Float wage = Float.parseFloat(salaryStr);
+                        ps.setFloat(count, wage);
+                        count += 1;
+                    }
+                    if(!jobStr.isEmpty()){
+                        ps.setString(count, jobStr);
+                        count += 1;
+                    }
+                    if(!dateStr.isEmpty()){
+                        Date date = java.sql.Date.valueOf(dateStr);
+                        ps.setDate(count, date);
+                        count += 1;
+                    }
+                    ps.setInt(count, id);
+                    ps.executeUpdate();                
+                }
+            loadTable(null);
+            showAlert("Success", "Employee edited.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", e.getMessage());
+        }
 
     }
 
