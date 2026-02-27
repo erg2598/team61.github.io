@@ -1,10 +1,10 @@
 package com.boba;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
-import javafx.geometry.Insets;
 import javafx.stage.Stage;
 public class CashierController {
     @FXML private FlowPane menuGrid;
@@ -61,6 +61,7 @@ public class CashierController {
     @FXML
     private void goToManagerView(ActionEvent e) {
         Stage stage = (Stage) orderButton.getScene().getWindow();
+        stage.setTitle("Manager View");
         MainApp.switchScene(stage, "/fxml/ManagerView.fxml");
     }
     @FXML

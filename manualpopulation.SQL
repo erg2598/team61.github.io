@@ -150,19 +150,22 @@ INSERT INTO "Ingredients" ("itemId", "inventoryId", "quantityUsed") VALUES
 (54, 1, 1),  (54, 6, 1),  (54, 9, 1),  (54, 18, 1),
 (55, 1, 1),  (55, 7, 1),  (55, 18, 1);
 
-INSERT INTO public."Employees" ("name", "salary", "date_hired", "job_title") VALUES
-('Alice Nguyen', 32000, '2022-04-12', 'Tea Barista'),
-('Brian Chen', 34000, '2021-09-03', 'Senior Tea Barista'),
-('Clara Patel', 38000, '2020-06-15', 'Shift Supervisor'),
-('Daniel Kim', 45000, '2019-03-20', 'Store Manager'),
-('Emily Tran', 30000, '2023-02-10', 'Cashier'),
-('Felix Rodriguez', 33000, '2022-08-05', 'Tea Barista'),
-('Grace Liu', 36000, '2021-11-18', 'Assistant Manager'),
-('Hannah Brooks', 29000, '2023-05-01', 'Part-Time Barista'),
-('Isaac Miller', 31000, '2022-01-14', 'Tea Brewer'),
-('Jasmine Wong', 35000, '2021-07-27', 'Customer Service Lead'),
-('Kevin Alvarez', 28000, '2023-09-09', 'Stock Clerk'),
-('Lily Park', 40000, '2020-10-22', 'Operations Manager'),
-('Marcus Reed', 37000, '2021-04-06', 'Training Coordinator'),
-('Nina Shah', 30500, '2022-12-12', 'Register Attendant'),
-('Owen Scott', 39000, '2020-02-17', 'Quality Control Specialist');
+INSERT INTO public."Employees" ("name", "salary", "job_title", "username", "password", "view") VALUES
+('Alice Chen', 15.50, 'Barista', 'alice.tea', 'pearlMilk17', 'Cashier'),
+('Brian Lopez', 16.00, 'Shift Lead', 'bri_lopez7', 'lopez_90210', 'Manager'),
+('Cindy Nguyen', 15.00, 'Barista', 'cindy_ng', 'tar0time', 'Cashier'),
+('Daniel Park', 17.50, 'Assistant Manager', 'parkd_admin', 'AdminPark!', 'Manager'),
+('Emily Tran', 15.25, 'Cashier', 'em.tran', 'emT2022', 'Cashier'),
+('Frank Rivera', 14.75, 'Barista', 'frankR_tea', 'rivera88', 'Cashier'),
+('Marcel Reed', 18.50, 'Store Manager', 'gkim_mgr', 'TeaQueen', 'Manager'),
+('Henry Patel', 15.00, 'Barista', 'henry.patel', 'hpatel123', 'Cashier'),
+('Isabella Martinez', 15.50, 'Cashier', 'bella.mart', 'bella!cash', 'Cashier'),
+('Jason Wu', 16.75, 'Shift Lead', 'wu_jason99', 'shift99wu', 'Manager'),
+('Kathy Zhou', 15.00, 'Barista', 'kzhou_boba', 'zhou_k7', 'Cashier'),
+('Leo Johnson', 14.50, 'Barista', 'leo.johns', 'johnsonLeo', 'Cashier'),
+('Mia Singh', 15.25, 'Cashier', 'mia.s_cash', 'm1a_singh', 'Cashier'),
+('Noah Brown', 16.00, 'Shift Lead', 'nbrown.shift', 'nbrown!', 'Manager'),
+('Olivia Davis', 15.75, 'Barista', 'oliviaD_tea', 'olivD45','Cashier'),
+('Peter Li', 17.00, 'Assistant Manager', 'peter.li_am', 'li.peter', 'Manager'),
+('Quinn Anderson', 14.75, 'Barista', 'quinnA_boba', 'and3rs0n', 'Cashier'),
+('Sophia Ramirez', 15.50, 'Cashier', 'sophR_cash', 'ramirez_s', 'Cashier');
