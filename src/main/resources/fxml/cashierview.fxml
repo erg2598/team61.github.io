@@ -16,8 +16,8 @@
       xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <FlowPane fx:id="menuGrid"
-                prefWrapLength="640.0"
-                hgap="6" vgap="6"
+                prefWrapLength="240.0"
+                hgap="4" vgap="6"
                 VBox.vgrow="ALWAYS">
          <padding>
             <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
