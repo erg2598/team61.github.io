@@ -102,5 +102,7 @@ CREATE TABLE IF NOT EXISTS public."Employees"
     "salary" real DEFAULT 0,
     "date_hired" date DEFAULT CURRENT_DATE,
     "job_title" character varying(50) NOT NULL,
+    "username" character varying(50) NOT NULL UNIQUE,
+    "password" character varying(255) NOT NULL,
     PRIMARY KEY ("employeeId")
 );
