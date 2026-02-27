@@ -104,5 +104,7 @@ CREATE TABLE IF NOT EXISTS public."Employees"
     "job_title" character varying(50) NOT NULL,
     "username" character varying(50) NOT NULL UNIQUE,
     "password" character varying(255) NOT NULL,
+    "view" character varying(20) NOT NULL CHECK(
+        "view" IN ('Manager', 'Cashier') ),
     PRIMARY KEY ("employeeId")
 );
