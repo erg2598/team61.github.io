@@ -47,8 +47,8 @@
                   <TableColumn fx:id="employeeColumn" prefWidth="100.0" text="employeeID" />
                   <TableColumn fx:id="IDColumn" prefWidth="100.0" text="name" />
                   <TableColumn fx:id="salaryColumn" prefWidth="100.0" text="salary" />
-                  <TableColumn fx:id="dateColumn" prefWidth="100.0" text="date_hired" />
-                  <TableColumn fx:id="titleColumn" prefWidth="238.4000244140625" text="job_title" />
+                  <TableColumn fx:id="dateColumn" prefWidth="100.0" text="job_title" />
+                  <TableColumn fx:id="titleColumn" prefWidth="238.4000244140625" text="date_hired" />
                </columns>
             </TableView>
             <Button layoutX="215.0" layoutY="410.0" mnemonicParsing="false" onAction="#editEmployee" text="Edit Employee" />
