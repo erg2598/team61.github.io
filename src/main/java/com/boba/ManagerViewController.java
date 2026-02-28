@@ -30,7 +30,7 @@ public class ManagerViewController {
     @FXML
     void launchReportsView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        MainApp.switchScene(stage, "/fxml/Reports.fxml");
+        MainApp.switchScene(stage, "/fxml/AllReports.fxml");
     }
 
     @FXML
