@@ -33,7 +33,9 @@ public class CashierController {
     private void goToToggleMenu(int itemId) {
         MainApp.selectedItem = MainApp.itemCache.get(itemId);
         Stage stage = (Stage) orderButton.getScene().getWindow();
+        
         MainApp.switchScene(stage, "/fxml/togglemenu.fxml");
+        stage.setMaximized(true);
     }
     @FXML
     void submitOrder(ActionEvent e) {
