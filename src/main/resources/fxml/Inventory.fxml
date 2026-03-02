@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/25" 
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.InventoryController">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.InventoryController" stylesheets="@managerview.css">
   <children>
     <AnchorPane VBox.vgrow="ALWAYS">
       <children>
