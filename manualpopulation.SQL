@@ -150,22 +150,24 @@ INSERT INTO "Ingredients" ("itemId", "inventoryId", "quantityUsed") VALUES
 (54, 1, 1),  (54, 6, 1),  (54, 9, 1),  (54, 18, 1),
 (55, 1, 1),  (55, 7, 1),  (55, 18, 1);
 
-INSERT INTO public."Employees" ("name", "salary", "job_title", "username", "password", "view") VALUES
-('Alice Chen', 15.50, 'Barista', 'alice.tea', 'pearlMilk17', 'Cashier'),
-('Brian Lopez', 16.00, 'Shift Lead', 'bri_lopez7', 'lopez_90210', 'Manager'),
-('Cindy Nguyen', 15.00, 'Barista', 'cindy_ng', 'tar0time', 'Cashier'),
-('Daniel Park', 17.50, 'Assistant Manager', 'parkd_admin', 'AdminPark!', 'Manager'),
-('Emily Tran', 15.25, 'Cashier', 'em.tran', 'emT2022', 'Cashier'),
-('Frank Rivera', 14.75, 'Barista', 'frankR_tea', 'rivera88', 'Cashier'),
-('Marcel Reed', 18.50, 'Store Manager', 'gkim_mgr', 'TeaQueen', 'Manager'),
-('Henry Patel', 15.00, 'Barista', 'henry.patel', 'hpatel123', 'Cashier'),
-('Isabella Martinez', 15.50, 'Cashier', 'bella.mart', 'bella!cash', 'Cashier'),
-('Jason Wu', 16.75, 'Shift Lead', 'wu_jason99', 'shift99wu', 'Manager'),
-('Kathy Zhou', 15.00, 'Barista', 'kzhou_boba', 'zhou_k7', 'Cashier'),
-('Leo Johnson', 14.50, 'Barista', 'leo.johns', 'johnsonLeo', 'Cashier'),
-('Mia Singh', 15.25, 'Cashier', 'mia.s_cash', 'm1a_singh', 'Cashier'),
-('Noah Brown', 16.00, 'Shift Lead', 'nbrown.shift', 'nbrown!', 'Manager'),
-('Olivia Davis', 15.75, 'Barista', 'oliviaD_tea', 'olivD45','Cashier'),
-('Peter Li', 17.00, 'Assistant Manager', 'peter.li_am', 'li.peter', 'Manager'),
-('Quinn Anderson', 14.75, 'Barista', 'quinnA_boba', 'and3rs0n', 'Cashier'),
-('Sophia Ramirez', 15.50, 'Cashier', 'sophR_cash', 'ramirez_s', 'Cashier');
+INSERT INTO public."Employees"
+("name", "salary", "date_hired", "job_title", "username", "password", "view")
+VALUES
+('Aisha Patel', 45000, '2023-02-15', 'Store Manager', 'apatel', 'xP9@Lq2Z!', 'Manager'),
+('Ben Carter', 32000, '2024-01-10', 'Cashier', 'bcarter', '7#M!dR3Q', 'Cashier'),
+('Lily Nguyen', 33000, '2023-09-05', 'Cashier', 'lnguyen', 'Qw8$TzE1', 'Cashier'),
+('Marcus Johnson', 34000, '2023-11-20', 'Cashier', 'mjohnson', 'A!4Jm0%K', 'Cashier'),
+('Sofia Ramirez', 46000, '2022-08-01', 'Assistant Manager', 'sramirez', 'Z9^p2N@E', 'Manager'),
+('Daniel Kim', 31500, '2024-02-01', 'Cashier', 'dkim', 'r5#C@7xM', 'Cashier'),
+('Emma Thompson', 35000, '2023-06-18', 'Cashier', 'ethompson', 'T@9mQ2!s', 'Cashier'),
+('Noah Wilson', 30000, '2024-03-12', 'Cashier', 'nwilson', '8%WZL0@F', 'Cashier'),
+('Priya Shah', 47000, '2022-04-10', 'General Manager', 'pshah', 'M3#Q!xK2', 'Manager'),
+('Ethan Brooks', 32500, '2023-12-03', 'Cashier', 'ebrooks', 'V@N8!Q0C', 'Cashier'),
+('Mia Chen', 31000, '2024-01-25', 'Cashier', 'mchen', '5x@P!9Dq', 'Cashier'),
+('Oliver Brown', 36000, '2023-05-14', 'Shift Lead', 'obrown', 'R2!@F9wL', 'Manager'),
+('Hannah Lee', 33000, '2023-07-07', 'Cashier', 'hlee', 'Z#7A9!Qw', 'Cashier'),
+('Jacob Miller', 34000, '2022-11-30', 'Senior Cashier', 'jmiller', '0@x!R3M9', 'Cashier'),
+('Fatima Ali', 35000, '2023-10-09', 'Trainer', 'fali', 'Q!8@K0Zx', 'Manager'),
+('Ryan Scott', 30500, '2024-02-14', 'Cashier', 'rscott', 'M@5Z!L8x', 'Cashier'),
+('Chloe Martin', 33500, '2023-08-22', 'Cashier', 'cmartin', '9!Qx@2ZP', 'Cashier'),
+('Kevin Anderson', 38000, '2022-09-15', 'Operations Manager', 'kanderson', '7@K!Q9xM', 'Manager');
