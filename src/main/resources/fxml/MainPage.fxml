@@ -29,7 +29,7 @@
                   <TextField fx:id="passwordEntry" maxWidth="-Infinity" promptText="Password..." BorderPane.alignment="CENTER" />
                </center>
                <bottom>
-                  <Button fx:id="enterButton" mnemonicParsing="false" onAction="#launchCashierView" text="Enter" BorderPane.alignment="TOP_CENTER">
+                  <Button fx:id="enterButton" mnemonicParsing="false" onAction="#launchView" text="Enter" BorderPane.alignment="TOP_CENTER">
                      <BorderPane.margin>
                         <Insets bottom="50.0" />
                      </BorderPane.margin>

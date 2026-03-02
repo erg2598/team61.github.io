@@ -30,16 +30,17 @@ public class MainPageController {
     private TextField usernameEntry;
 
     @FXML
-    void launchCashierView(ActionEvent event) {
+    void launchView(ActionEvent event) {
         String usernameInput = usernameEntry.getText();
         String passwordInput = passwordEntry.getText();
         try{
-            String sql = "SELECT \"password\", \"view\" FROM public.\"Employee\" WHERE username = ?";
+            String sql = "SELECT \"password\", \"view\" FROM public.\"Employees\" WHERE username = ?";
     
             Connection conn = MainApp.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, usernameInput);
             var rs = ps.executeQuery();
+            rs.next();
             String password = rs.getString("password");
             String view = rs.getString("view");
 
