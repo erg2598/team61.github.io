@@ -1,0 +1,46 @@
+.vbox-class {
+    -fx-alignment: center;
+}
+.hbox-class {
+    -fx-alignment: center; 
+    -fx-spacing: 20;   
+}
+.menubuttons {
+    -fx-pref-width: 130px;
+    -fx-pref-height: 52px;
+    -fx-max-width: 160px;
+    -fx-min-width: 90px;
+    -fx-min-height: 40px;
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+    -fx-font-size: 11px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: rgb(255, 255, 255);
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+.menubuttons:hover {
+    -fx-background-color: #ffffff;
+}
+.menubuttons:pressed {
+    -fx-background-color: #ffffff;
+}
+#menuGrid {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4px;
+}
+.orderbutton {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: rgb(0, 0, 0);
+    -fx-font-weight: bold;
+    -fx-pref-width: 160px;
+    -fx-pref-height: 38px;
+}
+.orderbutton:hover {
+    -fx-background-color: #ffffff;
+}
+.grids {
+    -fx-alignment: center;
+}
