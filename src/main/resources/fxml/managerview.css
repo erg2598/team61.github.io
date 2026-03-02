@@ -83,8 +83,9 @@
     -fx-border-color: transparent;
 }
 
+/* header */
 .table-view .column-header {
-    fx-background-color: rgba(229, 57, 53, .6);
+    -fx-background-color: rgba(229, 57, 53, .6);
     -fx-background-color: rgba(229, 57, 53, .1);
 }
 
@@ -98,4 +99,45 @@
 
 .table-view .filler {
     fx-background-color: rgba(229, 57, 53, .6);
+}
+
+.table-view .filler {
+    -fx-background-color: rgba(229, 57, 53, .1);
+}
+
+.table-view .corner {
+    -fx-background-color: rgba(229, 57, 53, .6);
+}
+
+/* scroll bar */
+
+.scroll-bar {
+    -fx-background-color: rgba(255, 255, 255, .05);
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(229, 57, 53, .6);
+    -fx-background-radius: 6px;
+    -fx-background-insets: 2px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: rgba(229, 57, 53, .9);
+}
+
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #e53935
+}
+
+/*hide arrow buttons*/
+.scroll-bar .incriment-button,
+.scroll-bar .decriment-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .incriment-arrow,
+.scroll-bar .decriment-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
 }
