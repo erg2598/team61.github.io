@@ -13,6 +13,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -100,7 +101,9 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(fxmlPath));
             Parent root = loader.load();
             stage.setScene(new Scene(root));
+            stage.setMaximized(false);
             stage.setMaximized(true);
+            
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
