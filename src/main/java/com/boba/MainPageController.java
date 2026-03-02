@@ -54,6 +54,7 @@ public class MainPageController {
                 Stage stage = new Stage();
                 stage.setTitle("Cashier View");
                 stage.setScene(scene);
+                stage.setMaximized(true);
                 stage.show();
             } else {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ManagerView.fxml"));
@@ -62,6 +63,7 @@ public class MainPageController {
                 Stage stage = new Stage();
                 stage.setTitle("Manager View");
                 stage.setScene(scene);
+                stage.setMaximized(true);
                 stage.show();
             }
         } catch (Exception e) {
