@@ -78,7 +78,6 @@ public class EmployeeController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         
         MainApp.switchScene(stage, "/fxml/managerview.fxml");
-        stage.setMaximized(true);
     }
 
     @FXML

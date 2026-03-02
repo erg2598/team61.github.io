@@ -19,29 +19,24 @@ public class ManagerViewController {
     @FXML
     void launchInventoryView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setMaximized(true);
         MainApp.switchScene(stage, "/fxml/Inventory.fxml");
     }
 
     @FXML
     void launchPricesView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setMaximized(true);
         MainApp.switchScene(stage, "/fxml/ItemsAndPrices.fxml");
     }
 
     @FXML
     void launchReportsView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setMaximized(true);
         MainApp.switchScene(stage, "/fxml/AllReports.fxml");
     }
 
     @FXML
     void goToCashierView(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        
         MainApp.switchScene(stage, "/fxml/cashierview.fxml");
-        stage.setMaximized(true);
     }
 }

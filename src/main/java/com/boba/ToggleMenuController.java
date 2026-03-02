@@ -167,8 +167,6 @@ double finalPrice = MainApp.selectedItem.basePrice + extras;
     }
     private void goBack() {
         Stage stage = (Stage) addToCart.getScene().getWindow();
-        
         MainApp.switchScene(stage, "/fxml/cashierview.fxml");
-        stage.setMaximized(true);
     }
 }

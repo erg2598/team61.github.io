@@ -100,10 +100,13 @@ public class MainApp extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(fxmlPath));
             Parent root = loader.load();
-            stage.setScene(new Scene(root));
-            stage.setMaximized(false);
-            stage.setMaximized(true);
-            
+            if (stage.getScene() == null) {
+                stage.setScene(new Scene(root));
+                stage.setMaximized(true);
+            } else {
+                stage.getScene().setRoot(root);
+            }
+                
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);

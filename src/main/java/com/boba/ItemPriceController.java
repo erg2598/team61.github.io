@@ -179,7 +179,6 @@ public class ItemPriceController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         
         MainApp.switchScene(stage, "/fxml/ManagerView.fxml");
-        stage.setMaximized(true);
     }
 
     private void showAlert(String title, String msg) {

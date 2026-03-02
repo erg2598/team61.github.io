@@ -35,7 +35,6 @@ public class CashierController {
         Stage stage = (Stage) orderButton.getScene().getWindow();
         
         MainApp.switchScene(stage, "/fxml/togglemenu.fxml");
-        stage.setMaximized(true);
     }
     @FXML
     void submitOrder(ActionEvent e) {
@@ -64,7 +63,6 @@ public class CashierController {
     private void goToManagerView(ActionEvent e) {
         Stage stage = (Stage) orderButton.getScene().getWindow();
         stage.setTitle("Manager View");
-        MainApp.switchScene(stage, "/fxml/ManagerView.fxml");
     }
     @FXML
     private void goToCustomItemMenu(ActionEvent e) {
