@@ -311,7 +311,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         resetSequences();
         loadItemCache();
-        switchScene(stage, "/fxml/cashierview.fxml");
+        switchScene(stage, "/fxml/MainPage.fxml");
         stage.setTitle("Boba POS");
         stage.show();
     }
