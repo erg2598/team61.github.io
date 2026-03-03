@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-
 import io.github.cdimascio.dotenv.Dotenv;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -317,7 +315,7 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         resetSequences();
         loadItemCache();
-        switchScene(stage, "/fxml/MainPage.fxml");
+        switchScene(stage, "/fxml/cashierview.fxml");
         stage.setTitle("Boba POS");
         stage.show();
     }
