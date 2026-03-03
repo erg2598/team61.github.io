@@ -24,7 +24,7 @@ public class CashierController {
             btn.setWrapText(true);
             btn.setPrefWidth(140);
             btn.setPrefHeight(70);
-            btn.setStyle("-fx-font-size: 12px;");
+            btn.getStyleClass().add("menu-item-button");
             final int id = item.itemId;
             btn.setOnAction(e -> goToToggleMenu(id));
             menuGrid.getChildren().add(btn);
@@ -73,4 +73,4 @@ public class CashierController {
         a.setContentText("Custom Item screen not implemented yet.");
         a.showAndWait();
     }
-}
+} 
