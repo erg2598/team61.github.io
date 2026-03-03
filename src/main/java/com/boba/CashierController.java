@@ -63,6 +63,7 @@ public class CashierController {
     private void goToManagerView(ActionEvent e) {
         Stage stage = (Stage) orderButton.getScene().getWindow();
         stage.setTitle("Manager View");
+        MainApp.switchScene(stage, "/fxml/ManagerView.fxml");
     }
     @FXML
     private void goToCustomItemMenu(ActionEvent e) {
