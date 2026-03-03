@@ -141,3 +141,26 @@
     -fx-shape: "";
     -fx-padding: 0;
 }
+
+/* for the accordian */
+.accordion {
+    -fx-background-color: transparent;
+}
+
+.titled-pane .title {
+    -fx-background-color: rgba(229, 57, 53, .6);
+    -fx-border-color: rgba(255, 255, 255, .1);
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.titled-pane .title:hover {
+    -fx-background-color: rgba(229, 57, 53, .9);
+}
+
+.titled-pane .title .text {
+    -fx-fill: #ffffff;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
