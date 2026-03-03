@@ -7,8 +7,8 @@
 <VBox id="background"
       fx:id="background"
       fx:controller="com.boba.CashierController"
-      maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-      minHeight="-Infinity" minWidth="-Infinity"
+      alignment="TOP_CENTER"
+      spacing="10"
       prefHeight="480.0" prefWidth="660.0"
       styleClass="vbox-class"
       stylesheets="@cashierview.css"
@@ -28,7 +28,6 @@
               mnemonicParsing="false"
               onAction="#goToManagerView"
               styleClass="menubuttons"
-              stylesheets="@cashierview.css"
               text="Manager View">
          <VBox.margin>
             <Insets top="5.0"/>
@@ -40,7 +39,6 @@
               alignment="CENTER"
               mnemonicParsing="false"
               onAction="#submitOrder"
-              stylesheets="@cashierview.css"
               text="Submit Order">
          <styleClass>
             <String fx:value="menubuttons"/>
