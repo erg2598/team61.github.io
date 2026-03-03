@@ -11,16 +11,16 @@
 
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="1080.0" minWidth="1920.0" stylesheets="@managerview.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.AllReportsController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="anchor-pane" stylesheets="@managerview.css">
          <children>
-            <Accordion layoutX="40.0" layoutY="30.0" prefHeight="680.0" prefWidth="1460.0">
+            <Accordion layoutX="40.0" layoutY="30.0" prefHeight="680.0" prefWidth="1460.0" stylesheets="@managerview.css">
               <panes>
                 <TitledPane animated="false" text="Product Usage Chart">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="600.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="600.0" styleClass="anchor-pane" stylesheets="@managerview.css">
                            <children>
-                              <TextField fx:id="endTimeProductUsage" layoutX="250.0" layoutY="50.0" prefWidth="190.0" promptText="Enter End Time (hh-mm-ss):" />
-                              <TextField fx:id="startTimeProductUsage" layoutX="30.0" layoutY="50.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Time (hh-mm-ss):" />
+                              <TextField fx:id="endTimeProductUsage" layoutX="250.0" layoutY="50.0" prefWidth="190.0" promptText="Enter End Time (hh:mm:ss):" />
+                              <TextField fx:id="startTimeProductUsage" layoutX="30.0" layoutY="50.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Time (hh:mm:ss):" />
                               <TextField fx:id="startDateProductUsage" layoutX="30.0" layoutY="12.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Date (yyyy-dd-mm):" />
                               <TextField fx:id="endDateProductUsage" layoutX="250.0" layoutY="12.0" prefWidth="190.0" promptText="Enter End Date (yyyy-dd-mm):" />
                               <Button fx:id="generateProductUsage" layoutX="470.0" layoutY="47.0" mnemonicParsing="false" onAction="#generateProductUsage" prefWidth="140.0" text="Generate Report" />
@@ -37,7 +37,7 @@
                 </TitledPane>
                 <TitledPane animated="false" text="X-Report (Total Sales per Hour of Current Day)">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="598.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="598.0" styleClass="anchor-pane" stylesheets="@managerview.css">
                            <children>
                               <TableView layoutX="30.0" layoutY="90.0" prefHeight="470.0" prefWidth="1400.0" fx:id="xReportTable">
                                 <columns>
@@ -52,7 +52,7 @@
                 </TitledPane>
                 <TitledPane animated="false" text="Z-Report (Totals for Current Day, Can Be Run Once Per Day)">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="598.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="598.0" styleClass="anchor-pane" stylesheets="@managerview.css">
                            <children>
                               <TableView fx:id="zReportTable" layoutX="30.0" layoutY="90.0" prefHeight="470.0" prefWidth="1400.0">
                                 <columns>
@@ -68,10 +68,10 @@
                 </TitledPane>
                   <TitledPane animated="false" text="Sales Report Chart">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="598.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="598.0" styleClass="anchor-pane" stylesheets="@managerview.css">
                            <children>
-                              <TextField fx:id="endTImeSalesReport" layoutX="250.0" layoutY="50.0" prefWidth="190.0" promptText="Enter End Time (hh-mm-ss):" />
-                              <TextField fx:id="startTimeSalesReport" layoutX="30.0" layoutY="50.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Time (hh-mm-ss):" />
+                              <TextField fx:id="endTImeSalesReport" layoutX="250.0" layoutY="50.0" prefWidth="190.0" promptText="Enter End Time (hh:mm:ss):" />
+                              <TextField fx:id="startTimeSalesReport" layoutX="30.0" layoutY="50.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Time (hh:mm:ss):" />
                               <TextField fx:id="startDateSalesReport" layoutX="30.0" layoutY="12.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Date (yyyy-dd-mm):" />
                               <TextField fx:id="endDateSalesReport" layoutX="250.0" layoutY="12.0" prefWidth="190.0" promptText="Enter End Date (yyyy-dd-mm):" />
                               <Button fx:id="generateSalesReport" layoutX="470.0" layoutY="47.0" mnemonicParsing="false" onAction="#generateSalesReport" prefWidth="140.0" text="Generate Report" />
