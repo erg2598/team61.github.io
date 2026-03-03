@@ -10,101 +10,51 @@ import javafx.stage.Stage;
 
 public class AllReportsController {
 
-    @FXML
-    private TextField endDateProductUsage;
-
-    @FXML
-    private TextField endDateSalesReport;
-
-    @FXML
-    private TextField endTImeSalesReport;
-
-    @FXML
-    private TextField endTimeProductUsage;
-
-    @FXML
-    private Button generateProductUsage;
-
-    @FXML
-    private Button generateSalesReport;
-
-    @FXML
-    private Button generateXReport;
-
-    @FXML
-    private Button generateZReport;
-
-    @FXML
-    private TableColumn<?, ?> hourXReport;
-
-    @FXML
-    private TableColumn<?, ?> itemIdProductUsage;
-
-    @FXML
-    private TableColumn<?, ?> itemIdSalesReport;
-
-    @FXML
-    private TableColumn<?, ?> nameProductUsage;
-
-    @FXML
-    private TableColumn<?, ?> nameSalesReport;
-
-    @FXML
-    private TableView<?> productUsageTable;
-
-    @FXML
-    private TableView<?> productUsageTable1;
-
-    @FXML
-    private TableColumn<?, ?> salesXReport;
-
-    @FXML
-    private TextField startDateProductUsage;
-
-    @FXML
-    private TextField startDateSalesReport;
-
-    @FXML
-    private TextField startTimeProductUsage;
-
-    @FXML
-    private TextField startTimeSalesReport;
-
-    @FXML
-    private TableColumn<?, ?> totalItemsUsedZReport;
-
-    @FXML
-    private TableColumn<?, ?> totalOrdersZReport;
-
-    @FXML
-    private TableColumn<?, ?> totalSalesZReport;
-
-    @FXML
-    private TableColumn<?, ?> totalSold;
-
-    @FXML
-    private TableColumn<?, ?> totalUsedProductUsage;
-
-    @FXML
-    private TableView<?> xReportTable;
-
-    @FXML
-    private TableView<?> zReportTable;
+    @FXML private TextField endDateProductUsage;
+    @FXML private TextField endTimeProductUsage;
+    @FXML private TextField startDateProductUsage;
+    @FXML private TextField startTimeProductUsage;
+    @FXML private Button generateProductUsage;
+    @FXML private TableView<?> productUsageTable;
+    @FXML private TableColumn<?, ?> totalUsedProductUsage;
+    @FXML private TableColumn<?, ?> itemIdProductUsage;
+    @FXML private TableColumn<?, ?> nameProductUsage;
 
     @FXML
     void generateProductUsage(ActionEvent event) {
 
     }
 
+    @FXML private TextField startDateSalesReport;
+    @FXML private TextField endDateSalesReport;
+    @FXML private TextField startTimeSalesReport;
+    @FXML private TextField endTImeSalesReport;
+    @FXML private Button generateSalesReport;
+    @FXML private TableView<?> salesReportTable;
+    @FXML private TableColumn<?, ?> itemIdSalesReport;
+    @FXML private TableColumn<?, ?> nameSalesReport;
+    @FXML private TableColumn<?, ?> totalSoldSalesReport;
+    
     @FXML
     void generateSalesReport(ActionEvent event) {
 
     }
 
+    @FXML private Button generateXReport;
+    @FXML private TableView<?> xReportTable;
+    @FXML private TableColumn<?, ?> hourXReport;
+    @FXML private TableColumn<?, ?> salesXReport;
+
     @FXML
     void generateXReport(ActionEvent event) {
 
     }
+
+    @FXML private Button generateZReport;
+    @FXML private TableColumn<?, ?> totalItemsUsedZReport;
+    @FXML private TableColumn<?, ?> totalOrdersZReport;
+    @FXML private TableColumn<?, ?> totalSalesZReport;
+    @FXML private TableView<?> zReportTable;
 
     @FXML
     void generateZReport(ActionEvent event) {
