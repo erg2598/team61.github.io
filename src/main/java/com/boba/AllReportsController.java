@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,7 +39,24 @@ public class AllReportsController {
 
     public int getTotal() { return total.get(); }
     public SimpleIntegerProperty totalProperty() { return total; }
-}
+
+    
+    }
+    public class XReportRow {
+    private final SimpleIntegerProperty hour;
+    private final SimpleDoubleProperty revenue;
+
+    public XReportRow(int hour, double revenue) {
+        this.hour = new SimpleIntegerProperty(hour);
+        this.revenue = new SimpleDoubleProperty(revenue);
+    }
+
+    public int getHour() { return hour.get(); }
+    public SimpleIntegerProperty hourProperty() { return hour; }
+
+    public double getRevenue() { return revenue.get(); }
+    public SimpleDoubleProperty revenueProperty() { return revenue; }
+    }
 
     @FXML private TextField endDateProductUsage;
     @FXML private TextField endTimeProductUsage;
@@ -70,6 +88,9 @@ public class AllReportsController {
         itemIdSalesReport.setCellValueFactory(new PropertyValueFactory<>("itemId"));
         nameSalesReport.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         totalSoldSalesReport.setCellValueFactory(new PropertyValueFactory<>("total"));
+
+        hourXReport.setCellValueFactory(new PropertyValueFactory<>("hour"));
+        salesXReport.setCellValueFactory(new PropertyValueFactory<>("revenue"));
     }
 
     private ObservableList<SalesReportRow> fetchSalesReport(Timestamp start, Timestamp end) {
@@ -125,13 +146,42 @@ public class AllReportsController {
     }
 
     @FXML private Button generateXReport;
-    @FXML private TableView<?> xReportTable;
-    @FXML private TableColumn<?, ?> hourXReport;
-    @FXML private TableColumn<?, ?> salesXReport;
+    @FXML private TableView<XReportRow> xReportTable;
+    @FXML private TableColumn<XReportRow, Integer> hourXReport;
+    @FXML private TableColumn<XReportRow, Double> salesXReport;
+
+   private ObservableList<XReportRow> fetchXReport() {
+        ObservableList<XReportRow> rows = FXCollections.observableArrayList();
+
+        String sql = """
+            SELECT EXTRACT(HOUR FROM "orderDate") AS order_hour, SUM("totalAmount") AS revenue
+            FROM "Order"
+            WHERE DATE("orderDate") = CURRENT_DATE
+            GROUP BY EXTRACT(HOUR FROM "orderDate")
+            ORDER BY order_hour
+            """;
+
+        try (Connection conn = MainApp.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                rows.add(new XReportRow(
+                    rs.getInt("order_hour"),
+                    rs.getDouble("revenue")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rows;
+    }
 
     @FXML
     void generateXReport(ActionEvent event) {
-
+        xReportTable.setItems(fetchXReport());
     }
 
     @FXML private Button generateZReport;
