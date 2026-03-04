@@ -17,6 +17,9 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.LocalDate;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class AllReportsController {
 
@@ -58,6 +61,27 @@ public class AllReportsController {
     public SimpleDoubleProperty revenueProperty() { return revenue; }
     }
 
+    public class ZReportRow {
+        private final SimpleDoubleProperty totalSales;
+        private final SimpleIntegerProperty totalOrders;
+        private final SimpleIntegerProperty totalItems;
+
+        public ZReportRow(double totalSales, int totalOrders, int totalItems) {
+            this.totalSales = new SimpleDoubleProperty(totalSales);
+            this.totalOrders = new SimpleIntegerProperty(totalOrders);
+            this.totalItems = new SimpleIntegerProperty(totalItems);
+        }
+
+        public double getTotalSales() { return totalSales.get(); }
+        public SimpleDoubleProperty totalSalesProperty() { return totalSales; }
+
+        public int getTotalOrders() { return totalOrders.get(); }
+        public SimpleIntegerProperty totalOrdersProperty() { return totalOrders; }
+
+        public int getTotalItems() { return totalItems.get(); }
+        public SimpleIntegerProperty totalItemsProperty() { return totalItems; }
+    }
+
     @FXML private TextField endDateProductUsage;
     @FXML private TextField endTimeProductUsage;
     @FXML private TextField startDateProductUsage;
@@ -91,6 +115,10 @@ public class AllReportsController {
 
         hourXReport.setCellValueFactory(new PropertyValueFactory<>("hour"));
         salesXReport.setCellValueFactory(new PropertyValueFactory<>("revenue"));
+
+        totalSalesZReport.setCellValueFactory(new PropertyValueFactory<>("totalSales"));
+        totalOrdersZReport.setCellValueFactory(new PropertyValueFactory<>("totalOrders"));
+        totalItemsUsedZReport.setCellValueFactory(new PropertyValueFactory<>("totalItems"));
     }
 
     private ObservableList<SalesReportRow> fetchSalesReport(Timestamp start, Timestamp end) {
@@ -150,6 +178,7 @@ public class AllReportsController {
     @FXML private TableColumn<XReportRow, Integer> hourXReport;
     @FXML private TableColumn<XReportRow, Double> salesXReport;
 
+
    private ObservableList<XReportRow> fetchXReport() {
         ObservableList<XReportRow> rows = FXCollections.observableArrayList();
 
@@ -185,14 +214,64 @@ public class AllReportsController {
     }
 
     @FXML private Button generateZReport;
-    @FXML private TableColumn<?, ?> totalItemsUsedZReport;
-    @FXML private TableColumn<?, ?> totalOrdersZReport;
-    @FXML private TableColumn<?, ?> totalSalesZReport;
-    @FXML private TableView<?> zReportTable;
+    @FXML private TableColumn<ZReportRow, Integer> totalItemsUsedZReport;
+    @FXML private TableColumn<ZReportRow, Integer> totalOrdersZReport;
+    @FXML private TableColumn<ZReportRow, Double> totalSalesZReport;
+    @FXML private TableView<ZReportRow> zReportTable;
+    private LocalDate lastZReportDate = null;
+
+    private ObservableList<ZReportRow> fetchZReport() {
+        ObservableList<ZReportRow> rows = FXCollections.observableArrayList();
+
+        String sql = """
+            SELECT
+                (SELECT COUNT("orderId") FROM "Order" WHERE DATE("orderDate") = CURRENT_DATE) AS total_orders,
+                (SELECT COALESCE(SUM("totalAmount"), 0) FROM "Order" WHERE DATE("orderDate") = CURRENT_DATE) AS total_sales,
+                (SELECT COALESCE(SUM(oli."quantity"), 0)
+                 FROM "Order" o
+                 JOIN "OrderLineItem" oli ON o."orderId" = oli."orderId"
+                 WHERE DATE(o."orderDate") = CURRENT_DATE) AS total_items
+            """;
+
+        try (Connection conn = MainApp.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                rows.add(new ZReportRow(
+                    rs.getDouble("total_sales"),
+                    rs.getInt("total_orders"),
+                    rs.getInt("total_items")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rows;
+    }
 
     @FXML
     void generateZReport(ActionEvent event) {
+        LocalDate today = LocalDate.now();
 
+        if (today.equals(lastZReportDate)) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Z-Report Restriction");
+            alert.setHeaderText("Report Already Generated");
+            alert.setContentText("The Z-Report can only be run once per day. You have already generated it for today.");
+            alert.showAndWait();
+            return; 
+        }
+
+        zReportTable.setItems(fetchZReport());
+        
+        lastZReportDate = today;
+        
+        // Disable the button so they visually know they can't click it again
+        generateZReport.setDisable(true); 
     }
 
     @FXML
