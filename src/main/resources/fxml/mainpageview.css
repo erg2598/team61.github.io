@@ -33,4 +33,7 @@
     -fx-border-color: #b71c1c;
     -fx-effect: none;
 }
+.login{
+    -fx-text-fill: rgba(183, 28, 28, .8);
+}
 
