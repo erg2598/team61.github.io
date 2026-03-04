@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.MainPageController" stylesheets="@mainpageview.css">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@mainpageview.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.MainPageController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
             <TextField fx:id="usernameEntry" maxWidth="-Infinity" promptText="Username..." BorderPane.alignment="CENTER" />
          </center>
          <top>
-            <Label fx:id="loginLabel" alignment="CENTER" text="Log In Page" BorderPane.alignment="CENTER">
+            <Label id="loginLabel" fx:id="loginLabel" alignment="CENTER" styleClass="login" stylesheets="@mainpageview.css" text="Log In Page" BorderPane.alignment="CENTER">
                <font>
                   <Font size="48.0" />
                </font>
