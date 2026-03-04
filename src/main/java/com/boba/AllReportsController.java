@@ -97,6 +97,7 @@ public class AllReportsController {
     @FXML private TableColumn<ProductUsageRow, Integer> totalUsedProductUsage;
     @FXML private TableColumn<ProductUsageRow, Integer> itemIdProductUsage;
     @FXML private TableColumn<ProductUsageRow, String> nameProductUsage;
+    public boolean zReportRun = false;
 
     @FXML
     void generateProductUsage(ActionEvent event) {
@@ -174,6 +175,7 @@ public class AllReportsController {
     @FXML private TableColumn<SalesReportRow, Integer> itemIdSalesReport;
     @FXML private TableColumn<SalesReportRow, String> nameSalesReport;
     @FXML private TableColumn<SalesReportRow, Integer> totalSoldSalesReport;
+    @FXML private TableColumn<SalesReportRow, Double> totalRevenueSalesReport;
 
     @FXML
     public void initialize() {
@@ -255,14 +257,24 @@ public class AllReportsController {
 
    private ObservableList<XReportRow> fetchXReport() {
         ObservableList<XReportRow> rows = FXCollections.observableArrayList();
-
-        String sql = """
+        String sql;
+        if(zReportRun){
+            sql = """
+            SELECT EXTRACT(HOUR FROM "orderDate") AS order_hour, 0 AS revenue
+            FROM "Order"
+            WHERE DATE("orderDate") = CURRENT_DATE
+            GROUP BY EXTRACT(HOUR FROM "orderDate")
+            ORDER BY order_hour
+            """;
+        } else{
+            sql = """
             SELECT EXTRACT(HOUR FROM "orderDate") AS order_hour, SUM("totalAmount") AS revenue
             FROM "Order"
             WHERE DATE("orderDate") = CURRENT_DATE
             GROUP BY EXTRACT(HOUR FROM "orderDate")
             ORDER BY order_hour
             """;
+        }
 
         try (Connection conn = MainApp.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -327,6 +339,7 @@ public class AllReportsController {
         return rows;
     }
 
+    
     @FXML
     void generateZReport(ActionEvent event) {
         LocalDate today = LocalDate.now();
@@ -345,7 +358,8 @@ public class AllReportsController {
         lastZReportDate = today;
         
         // Disable the button so they visually know they can't click it again
-        generateZReport.setDisable(true); 
+        generateZReport.setDisable(true);
+        zReportRun = true; 
     }
 
     @FXML
@@ -358,7 +372,6 @@ public class AllReportsController {
         a.setTitle(title);
         a.setHeaderText(null);
         a.setContentText(msg);
-        a.showAndWait();
         a.showAndWait();
     }
 
