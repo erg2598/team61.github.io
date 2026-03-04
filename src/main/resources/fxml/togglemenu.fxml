@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-
 <BorderPane fx:controller="com.boba.ToggleMenuController"
             maxHeight="-Infinity" maxWidth="-Infinity"
             minHeight="-Infinity" minWidth="-Infinity"
@@ -21,8 +20,6 @@
             stylesheets="@cashierview.css"
             xmlns="http://javafx.com/javafx/25"
             xmlns:fx="http://javafx.com/fxml/1">
-
-   <!-- TOP: Customer name bar -->
    <top>
       <HBox spacing="12.0" alignment="CENTER_LEFT"
             style="-fx-background-color: rgba(255,255,255,0.04); -fx-border-color: rgba(255,255,255,0.08); -fx-border-width: 0 0 1 0;">
@@ -45,16 +42,12 @@
                            -fx-padding: 6 10 6 10;"/>
       </HBox>
    </top>
-
-   <!-- CENTER: All customisation options as flat VBox sections -->
    <center>
       <ScrollPane fitToWidth="true" fitToHeight="false"
                   style="-fx-background-color: transparent; -fx-background: transparent;">
          <content>
             <VBox spacing="0"
                   style="-fx-background-color: transparent;">
-
-               <!-- BASES & FLAVORINGS -->
                <VBox spacing="0">
                   <Label text="Bases and Flavorings"
                          style="-fx-text-fill: #ffffff;
@@ -74,8 +67,6 @@
                      </padding>
                   </FlowPane>
                </VBox>
-
-               <!-- TOPPINGS -->
                <VBox spacing="0">
                   <Label text="Toppings  (select up to 5)"
                          style="-fx-text-fill: #ffffff;
@@ -93,8 +84,6 @@
                      </padding>
                   </FlowPane>
                </VBox>
-
-               <!-- SIZE -->
                <VBox spacing="0">
                   <Label text="Size"
                          style="-fx-text-fill: #ffffff;
@@ -114,8 +103,6 @@
                                   style="-fx-text-fill: #ffffff; -fx-font-family: 'Segoe UI'; -fx-font-size: 13px;"/>
                   </HBox>
                </VBox>
-
-               <!-- ICE LEVEL -->
                <VBox spacing="0">
                   <Label text="Ice Level"
                          style="-fx-text-fill: #ffffff;
@@ -137,8 +124,6 @@
                                   style="-fx-text-fill: #ffffff; -fx-font-family: 'Segoe UI'; -fx-font-size: 13px;"/>
                   </HBox>
                </VBox>
-
-               <!-- TEMPERATURE -->
                <VBox spacing="0">
                   <Label text="Temperature"
                          style="-fx-text-fill: #ffffff;
@@ -158,8 +143,6 @@
                                   style="-fx-text-fill: #ffffff; -fx-font-family: 'Segoe UI'; -fx-font-size: 13px;"/>
                   </HBox>
                </VBox>
-
-               <!-- SUGAR LEVEL -->
                <VBox spacing="0">
                   <Label text="Sugar Level"
                          style="-fx-text-fill: #ffffff;
@@ -188,8 +171,6 @@
          </content>
       </ScrollPane>
    </center>
-
-   <!-- BOTTOM: Action buttons -->
    <bottom>
       <HBox spacing="16" alignment="CENTER"
             style="-fx-background-color: rgba(255,255,255,0.04); -fx-border-color: rgba(255,255,255,0.08); -fx-border-width: 1 0 0 0;">
