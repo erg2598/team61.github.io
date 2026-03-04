@@ -1,25 +1,31 @@
 package com.boba;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import java.sql.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.LocalDate;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class AllReportsController {
 
@@ -87,14 +93,76 @@ public class AllReportsController {
     @FXML private TextField startDateProductUsage;
     @FXML private TextField startTimeProductUsage;
     @FXML private Button generateProductUsage;
-    @FXML private TableView<?> productUsageTable;
-    @FXML private TableColumn<?, ?> totalUsedProductUsage;
-    @FXML private TableColumn<?, ?> itemIdProductUsage;
-    @FXML private TableColumn<?, ?> nameProductUsage;
+    @FXML private TableView<ProductUsageRow> productUsageTable;
+    @FXML private TableColumn<ProductUsageRow, Integer> totalUsedProductUsage;
+    @FXML private TableColumn<ProductUsageRow, Integer> itemIdProductUsage;
+    @FXML private TableColumn<ProductUsageRow, String> nameProductUsage;
 
     @FXML
     void generateProductUsage(ActionEvent event) {
+            
+        DateTimeFormatter dateFormatter =
+        DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
+        LocalDate startDate = LocalDate.parse(startDateProductUsage.getText(), dateFormatter);
+        LocalDate endDate   = LocalDate.parse(endDateProductUsage.getText(), dateFormatter);
+
+        LocalTime startTime = LocalTime.parse(startTimeProductUsage.getText(), timeFormatter);
+        LocalTime endTime   = LocalTime.parse(endTimeProductUsage.getText(), timeFormatter);
+
+        LocalDateTime startDT = LocalDateTime.of(startDate, startTime);
+        LocalDateTime endDT   = LocalDateTime.of(endDate, endTime);
+
+        try {
+
+            if (startDT.isAfter(endDT)) {
+                showAlert("Invalid Range", "Start date/time must be before end date/time.");
+                return;
+            }
+
+            ObservableList<ProductUsageRow> data = FXCollections.observableArrayList();
+
+            String sql = """
+            SELECT inv."inventoryId" AS item_id,
+            inv.name AS inventory_name,
+            SUM(oli.quantity * ing."quantityUsed") AS total_used
+            FROM public."Order" o
+            JOIN public."OrderLineItem" oli 
+                ON o."orderId" = oli."orderId"
+            JOIN public."Ingredients" ing 
+                ON oli."itemId" = ing."itemId"
+            JOIN public."Inventory" inv 
+                ON ing."inventoryId" = inv."inventoryId"
+            WHERE o."orderDate" BETWEEN ? AND ?
+            GROUP BY inv."inventoryId", inv.name
+            ORDER BY total_used DESC""";
+
+            try (Connection conn = MainApp.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+
+                ps.setTimestamp(1, Timestamp.valueOf(startDT));
+                ps.setTimestamp(2, Timestamp.valueOf(endDT));
+
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    data.add(new ProductUsageRow(
+                        rs.getInt("item_id"),
+                        rs.getString("inventory_name"),
+                        rs.getInt("total_used")
+                    ));
+                }
+            }
+
+            productUsageTable.setItems(data);
+
+        } catch (DateTimeParseException e) {
+            showAlert("Input Error", "Dates must be yyyy-MM-dd and times must be HH:mm.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Database Error", e.getMessage());
+        }
     }
 
     @FXML private TextField startDateSalesReport;
@@ -119,6 +187,12 @@ public class AllReportsController {
         totalSalesZReport.setCellValueFactory(new PropertyValueFactory<>("totalSales"));
         totalOrdersZReport.setCellValueFactory(new PropertyValueFactory<>("totalOrders"));
         totalItemsUsedZReport.setCellValueFactory(new PropertyValueFactory<>("totalItems"));
+
+        itemIdProductUsage.setCellValueFactory(new PropertyValueFactory<>("itemId"));
+
+        nameProductUsage.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        totalUsedProductUsage.setCellValueFactory(new PropertyValueFactory<>("totalUsed"));
     }
 
     private ObservableList<SalesReportRow> fetchSalesReport(Timestamp start, Timestamp end) {
@@ -279,5 +353,37 @@ public class AllReportsController {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         MainApp.switchScene(stage, "/fxml/managerview.fxml");
     }
+    private void showAlert(String title, String msg) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle(title);
+        a.setHeaderText(null);
+        a.setContentText(msg);
+        a.showAndWait();
+        a.showAndWait();
+    }
 
+    public class ProductUsageRow {
+
+        private final SimpleIntegerProperty itemId;
+        private final SimpleStringProperty name;
+        private final SimpleIntegerProperty totalUsed;
+
+        public ProductUsageRow(int itemId, String name, int totalUsed) {
+            this.itemId = new SimpleIntegerProperty(itemId);
+            this.name = new SimpleStringProperty(name);
+            this.totalUsed = new SimpleIntegerProperty(totalUsed);
+        }
+
+        public int getItemId() {
+            return itemId.get();
+        }
+
+        public String getName() {
+            return name.get();
+        }
+
+        public int getTotalUsed() {
+            return totalUsed.get();
+        }
+    }
 }
