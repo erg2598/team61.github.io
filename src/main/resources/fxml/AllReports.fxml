@@ -77,9 +77,10 @@
                               <Button fx:id="generateSalesReport" layoutX="470.0" layoutY="47.0" mnemonicParsing="false" onAction="#generateSalesReport" prefWidth="140.0" text="Generate Report" />
                               <TableView fx:id="salesReportTable" layoutX="30.0" layoutY="90.0" prefHeight="470.0" prefWidth="1400.0">
                                  <columns>
-                                    <TableColumn fx:id="nameSalesReport" prefWidth="460.0" text="name" />
-                                    <TableColumn fx:id="itemIdSalesReport" prefWidth="460.0" text="itemId" />
-                                    <TableColumn fx:id="totalSoldSalesReport" prefWidth="460.0" text="Total Sold" />
+                                    <TableColumn fx:id="nameSalesReport" prefWidth="350.0" text="name" />
+                                    <TableColumn fx:id="itemIdSalesReport" prefWidth="350.0" text="itemId" />
+                                    <TableColumn fx:id="totalSoldSalesReport" prefWidth="350.0" text="Total Sold" />
+                                    <TableColumn fx:id="totalRevenueSalesReport" prefWidth="350.0" text="Total Revenue" />
                                  </columns>
                               </TableView>
                            </children>
