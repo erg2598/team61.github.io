@@ -21,8 +21,8 @@
                            <children>
                               <TextField fx:id="endTimeProductUsage" layoutX="250.0" layoutY="50.0" prefWidth="190.0" promptText="Enter End Time (hh:mm:ss):" />
                               <TextField fx:id="startTimeProductUsage" layoutX="30.0" layoutY="50.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Time (hh:mm:ss):" />
-                              <TextField fx:id="startDateProductUsage" layoutX="30.0" layoutY="12.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Date (yyyy-dd-mm):" />
-                              <TextField fx:id="endDateProductUsage" layoutX="250.0" layoutY="12.0" prefWidth="190.0" promptText="Enter End Date (yyyy-dd-mm):" />
+                              <TextField fx:id="startDateProductUsage" layoutX="30.0" layoutY="12.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Date (yyyy-mm-dd):" />
+                              <TextField fx:id="endDateProductUsage" layoutX="250.0" layoutY="12.0" prefWidth="190.0" promptText="Enter End Date (yyyy-mm-dd):" />
                               <Button fx:id="generateProductUsage" layoutX="470.0" layoutY="47.0" mnemonicParsing="false" onAction="#generateProductUsage" prefWidth="140.0" text="Generate Report" />
                               <TableView fx:id="productUsageTable" layoutX="30.0" layoutY="90.0" prefHeight="470.0" prefWidth="1400.0">
                                 <columns>
@@ -72,8 +72,8 @@
                            <children>
                               <TextField fx:id="endTImeSalesReport" layoutX="250.0" layoutY="50.0" prefWidth="190.0" promptText="Enter End Time (hh:mm:ss):" />
                               <TextField fx:id="startTimeSalesReport" layoutX="30.0" layoutY="50.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Time (hh:mm:ss):" />
-                              <TextField fx:id="startDateSalesReport" layoutX="30.0" layoutY="12.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Date (yyyy-dd-mm):" />
-                              <TextField fx:id="endDateSalesReport" layoutX="250.0" layoutY="12.0" prefWidth="190.0" promptText="Enter End Date (yyyy-dd-mm):" />
+                              <TextField fx:id="startDateSalesReport" layoutX="30.0" layoutY="12.0" prefHeight="26.0" prefWidth="190.0" promptText="Enter Start Date (yyyy-mm-dd):" />
+                              <TextField fx:id="endDateSalesReport" layoutX="250.0" layoutY="12.0" prefWidth="190.0" promptText="Enter End Date (yyyy-mm-dd):" />
                               <Button fx:id="generateSalesReport" layoutX="470.0" layoutY="47.0" mnemonicParsing="false" onAction="#generateSalesReport" prefWidth="140.0" text="Generate Report" />
                               <TableView fx:id="salesReportTable" layoutX="30.0" layoutY="90.0" prefHeight="470.0" prefWidth="1400.0">
                                  <columns>

@@ -33,11 +33,13 @@ public class AllReportsController {
     private final SimpleIntegerProperty itemId;
     private final SimpleStringProperty itemName;
     private final SimpleIntegerProperty total;
+    private final SimpleDoubleProperty totalRevenue;
 
-    public SalesReportRow(int itemId, String itemName, int total) {
+    public SalesReportRow(int itemId, String itemName, int total, Double totalRevenue) {
         this.itemId = new SimpleIntegerProperty(itemId);
         this.itemName = new SimpleStringProperty(itemName);
         this.total = new SimpleIntegerProperty(total);
+        this.totalRevenue = new SimpleDoubleProperty(totalRevenue);
     }
 
     public int getItemId() { return itemId.get(); }
@@ -49,7 +51,8 @@ public class AllReportsController {
     public int getTotal() { return total.get(); }
     public SimpleIntegerProperty totalProperty() { return total; }
 
-    
+    public Double getTotalRevenue() {return totalRevenue.get();}
+    public SimpleDoubleProperty totalRevenueProperty() {return totalRevenue;}
     }
     public class XReportRow {
     private final SimpleIntegerProperty hour;
@@ -182,6 +185,7 @@ public class AllReportsController {
         itemIdSalesReport.setCellValueFactory(new PropertyValueFactory<>("itemId"));
         nameSalesReport.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         totalSoldSalesReport.setCellValueFactory(new PropertyValueFactory<>("total"));
+        totalRevenueSalesReport.setCellValueFactory(new PropertyValueFactory<>("totalRevenue"));
 
         hourXReport.setCellValueFactory(new PropertyValueFactory<>("hour"));
         salesXReport.setCellValueFactory(new PropertyValueFactory<>("revenue"));
@@ -201,7 +205,8 @@ public class AllReportsController {
     ObservableList<SalesReportRow> rows = FXCollections.observableArrayList();
 
     String sql = """
-        SELECT i."itemId", i."name", SUM(oli."quantity") AS total
+        SELECT i."itemId", i."name", SUM(oli."quantity") AS total,
+               SUM(oli."quantity" * i."basePrice") AS total_revenue
         FROM "Order" o
         JOIN "OrderLineItem" oli ON o."orderId" = oli."orderId"
         JOIN "Item" i ON oli."itemId" = i."itemId"
@@ -218,12 +223,13 @@ public class AllReportsController {
 
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
-            rows.add(new SalesReportRow(
-                rs.getInt("itemId"),
-                rs.getString("name"),
-                rs.getInt("total")
-            ));
-        }
+        rows.add(new SalesReportRow(
+            rs.getInt("itemId"),
+            rs.getString("name"),
+            rs.getInt("total"),
+            rs.getDouble("total_revenue")
+        ));
+}
 
     } catch (SQLException e) {
         e.printStackTrace();
