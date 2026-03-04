@@ -33,7 +33,36 @@
     -fx-border-color: #b71c1c;
     -fx-effect: none;
 }
-.login{
-    -fx-text-fill: rgba(183, 28, 28, .8);
+
+.label{
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Segoe UI", sans-serif;
 }
 
+.text-field {
+    -fx-font-size: 15px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: rgba(255, 255, 255, .5);
+    -fx-background-color: rgba(255, 255, 255, .08);
+    -fx-border-color: rgba(255, 255, 255, .2);
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,.3), 6, 0, 0, 3);
+}
+
+.text-field:focused {
+    -fx-border-color: #e53935;
+    -fx-border-width: 2;
+    -fx-background-color: rgba(255, 255, 255, .12);
+    -fx-effect: dropshadow(gaussian, rgba(229, 57, 53, .4), 8, 0, 0, 3);
+}
+
+.vbox {
+    -fx-border-color: transparent;
+}
+
+.border-pane {
+    -fx-border-color: transparent;
+}
