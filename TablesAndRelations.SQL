@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS public."Item"
     name character varying(50) NOT NULL,
     "basePrice" real DEFAULT 0,
     size character varying(20) DEFAULT 'SMALL',
+    enabled BOOLEAN NOT NULL DEFAULT TRUE,
     PRIMARY KEY ("itemId")
 );
 
@@ -101,5 +102,9 @@ CREATE TABLE IF NOT EXISTS public."Employees"
     "salary" real DEFAULT 0,
     "date_hired" date DEFAULT CURRENT_DATE,
     "job_title" character varying(50) NOT NULL,
+    "username" character varying(50) NOT NULL UNIQUE,
+    "password" character varying(255) NOT NULL,
+    "view" character varying(20) NOT NULL CHECK(
+        "view" IN ('Manager', 'Cashier') ),
     PRIMARY KEY ("employeeId")
 );

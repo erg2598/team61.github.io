@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="1080.0" prefWidth="1920.0" stylesheets="@managerview.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.boba.InventoryController">
+  <children>
+    <AnchorPane VBox.vgrow="ALWAYS">
+      <children>
+        <TableView fx:id="inventoryTable" layoutX="40.0" layoutY="30.0" prefHeight="680.0" prefWidth="1460.0">
+          <columns>
+            <TableColumn fx:id="idCol" prefWidth="240.0" text="ID" />
+            <TableColumn fx:id="nameCol" prefWidth="240.0" text="Name" />
+            <TableColumn fx:id="qtyCol" prefWidth="240.0" text="Quantity" />
+            <TableColumn fx:id="priceCol" prefWidth="240.0" text="Price/Unit" />
+            <TableColumn fx:id="reorderCol" prefWidth="240.0" text="Reorder At" />
+            <TableColumn fx:id="typeCol" prefWidth="240.0" text="Type" />
+          </columns>
+        </TableView>
+        <Button layoutX="40.0" layoutY="740.0" onAction="#loadTable" prefHeight="30.0" prefWidth="140.0" text="Refresh" />
+        <Button layoutX="200.0" layoutY="740.0" onAction="#addInventoryItem" prefHeight="30.0" prefWidth="140.0" text="Add Item" />
+        <Button layoutX="360.0" layoutY="740.0" onAction="#updateInventoryItem" prefHeight="30.0" prefWidth="140.0" text="Update Item" />
+        <Button layoutX="520.0" layoutY="740.0" onAction="#returnHome" prefHeight="30.0" prefWidth="140.0" text="Return Home" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
