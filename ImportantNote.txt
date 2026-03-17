@@ -1,0 +1,10 @@
+To generate the documentation, you have to use Maven
+
+In the terminal, run:
+mvn javadoc:javadoc
+
+
+It throws a bunch of errors but for some reason still generates all of the files just fine. It's set to
+put everything inside the docs folder so that the GitHub will host the site correctly.
+
+-Eli
