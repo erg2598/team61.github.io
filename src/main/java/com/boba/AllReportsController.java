@@ -29,15 +29,19 @@ import javafx.stage.Stage;
 
 /**
  * This class contains all of the logic for
- * the manager to be able to generate reports
+ * the manager to be able to generate reports.
  * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
  */
 public class AllReportsController {
+    /**
+     * This class does not have a constructor.
+     */
+    public AllReportsController(){}
 
     /**
-     * This is a nested class within the AllReportsController
+     * This is a nested class within the AllReportsController.
      * It contains the values of each row in a table
-     * of the Sales Report
+     * of the Sales Report.
      * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
      */
     public class SalesReportRow {
@@ -47,11 +51,11 @@ public class AllReportsController {
     private final SimpleDoubleProperty totalRevenue;
     
     /**
-     * The constructor for each row in the Sales Report table
-     * @param itemId The ID for each item 
-     * @param itemName The name for each item
-     * @param total The total number of the item that have been sold
-     * @param totalRevenue The total revenue made from selling this item
+     * The constructor for each row in the Sales Report table.
+     * @param itemId The ID for each item.
+     * @param itemName The name for each item.
+     * @param total The total number of the item that have been sold.
+     * @param totalRevenue The total revenue made from selling this item.
      */
     public SalesReportRow(int itemId, String itemName, int total, Double totalRevenue) {
         this.itemId = new SimpleIntegerProperty(itemId);
@@ -61,47 +65,50 @@ public class AllReportsController {
     }
     /**
      * 
-     * @return Returns the item's ID
+     * @return Returns the item's ID.
      */
     public int getItemId() { return itemId.get(); }
     /**
      * 
-     * @return Returns the item's ID
+     * @return Returns the item's ID.
      */
     public SimpleIntegerProperty itemIdProperty() { return itemId; }
-
+    /**
+     * 
+     * @return Returns the item's name.
+     */
     public String getItemName() { return itemName.get(); }
     /**
      * 
-     * @return Returns the item's name
+     * @return Returns the item's name.
      */
     public SimpleStringProperty itemNameProperty() { return itemName; }
     /**
      * 
-     * @return Returns the total amount of the item that have been sold
+     * @return Returns the total amount of the item that have been sold.
      */
     public int getTotal() { return total.get(); }
     /**
      * 
-     * @return Returns the total amount of the item being sold
+     * @return Returns the total amount of the item being sold.
      */
     public SimpleIntegerProperty totalProperty() { return total; }
     /**
      * 
-     * @return Returns the total revenue of the item being sold
+     * @return Returns the total revenue of the item being sold.
      */
     public Double getTotalRevenue() {return totalRevenue.get();}
     /**
      * 
-     * @return Returns the total revenue of the item being sold
+     * @return Returns the total revenue of the item being sold.
      */
     public SimpleDoubleProperty totalRevenueProperty() {return totalRevenue;}
     }
 
     /**
-     * This is a nested class within the AllReportsController
+     * This is a nested class within the AllReportsController.
      * It contains the values of each row in a table
-     * of the X report
+     * of the X report.
      * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
      */
     public class XReportRow {
@@ -109,9 +116,9 @@ public class AllReportsController {
     private final SimpleDoubleProperty revenue;
     
     /**
-     * The constructor for each row in the X Report table
-     * @param hour The current hour in the day
-     * @param revenue How much revenue was made during the hour
+     * The constructor for each row in the X Report table.
+     * @param hour The current hour in the day.
+     * @param revenue How much revenue was made during the hour.
      */
     public XReportRow(int hour, double revenue) {
         this.hour = new SimpleIntegerProperty(hour);
@@ -119,29 +126,29 @@ public class AllReportsController {
     }
     /**
      * 
-     * @return Returns the hour
+     * @return Returns the hour.
      */
     public int getHour() { return hour.get(); }
     /**
      * 
-     * @return Returns the hour
+     * @return Returns the hour.
      */
     public SimpleIntegerProperty hourProperty() { return hour; }
     /**
      * 
-     * @return Returns the revenue within the current hour
+     * @return Returns the revenue within the current hour.
      */
     public double getRevenue() { return revenue.get(); }
     /**
      * 
-     * @return Returns the revenue within the current hour
+     * @return Returns the revenue within the current hour.
      */
     public SimpleDoubleProperty revenueProperty() { return revenue; }
     }
     /**
-     * This is a nested class within the AllReportsController
+     * This is a nested class within the AllReportsController.
      * It contains the values of each row in a table
-     * of the Z report
+     * of the Z report.
      * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
      */
     public class ZReportRow {
@@ -149,10 +156,10 @@ public class AllReportsController {
         private final SimpleIntegerProperty totalOrders;
         private final SimpleIntegerProperty totalItems;
         /**
-         * The constructor for each row in the Z Report table
-         * @param totalSales The total sales made that day in dollars
-         * @param totalOrders The total numbers of orders taken that day
-         * @param totalItems The total number of items sold that day
+         * The constructor for each row in the Z Report table.
+         * @param totalSales The total sales made that day in dollars.
+         * @param totalOrders The total numbers of orders taken that day.
+         * @param totalItems The total number of items sold that day.
          */
         public ZReportRow(double totalSales, int totalOrders, int totalItems) {
             this.totalSales = new SimpleDoubleProperty(totalSales);
@@ -161,32 +168,32 @@ public class AllReportsController {
         }
         /**
          * 
-         * @return Returns the total sales made that day in dollars
+         * @return Returns the total sales made that day in dollars.
          */
         public double getTotalSales() { return totalSales.get(); }
         /**
          * 
-         * @return Returns the total sales made that day in dollars
+         * @return Returns the total sales made that day in dollars.
          */
         public SimpleDoubleProperty totalSalesProperty() { return totalSales; }
         /**
          * 
-         * @return Returns the total number of orders made that day
+         * @return Returns the total number of orders made that day.
          */
         public int getTotalOrders() { return totalOrders.get(); }
         /**
          * 
-         * @return Returns the total number of orders made that day
+         * @return Returns the total number of orders made that day.
          */
         public SimpleIntegerProperty totalOrdersProperty() { return totalOrders; }
         /**
          * 
-         * @return Returns the total number of items sold that day
+         * @return Returns the total number of items sold that day.
          */
         public int getTotalItems() { return totalItems.get(); }
         /**
          * 
-         * @return Returns the total number of items sold that day
+         * @return Returns the total number of items sold that day.
          */
         public SimpleIntegerProperty totalItemsProperty() { return totalItems; }
     }
@@ -200,10 +207,16 @@ public class AllReportsController {
     @FXML private TableColumn<ProductUsageRow, Integer> totalUsedProductUsage;
     @FXML private TableColumn<ProductUsageRow, Integer> itemIdProductUsage;
     @FXML private TableColumn<ProductUsageRow, String> nameProductUsage;
-    public boolean zReportRun = false;
+    private boolean zReportRun = false;
 
     @FXML
-    void generateProductUsage(ActionEvent event) {
+    /**
+     * Generates the table for the Product Usage Chart.
+     * @param event This function triggers when a button is pressed.
+     * @throws showAlert An error that occurs when the manager inputs dates in an incorrect format or there is an error with the database.
+     *
+     */
+    public void generateProductUsage(ActionEvent event) {
             
         DateTimeFormatter dateFormatter =
         DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -281,7 +294,7 @@ public class AllReportsController {
     @FXML private TableColumn<SalesReportRow, Double> totalRevenueSalesReport;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         itemIdSalesReport.setCellValueFactory(new PropertyValueFactory<>("itemId"));
         nameSalesReport.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         totalSoldSalesReport.setCellValueFactory(new PropertyValueFactory<>("total"));
@@ -339,7 +352,13 @@ public class AllReportsController {
 }
     
     @FXML
-    void generateSalesReport(ActionEvent event) {
+    /**
+     * Generates the table for the Sales Report Chart.
+     * @param event This function triggers when a button is pressed.
+     * @throws showAlert An error that occurs when the manager inputs dates in an incorrect format or there is an error with the database.
+     *
+     */
+    public void generateSalesReport(ActionEvent event) {
         try {
             String startTimestamp = startDateSalesReport.getText().trim() + " " + startTimeSalesReport.getText().trim();
             String endTimestamp   = endDateSalesReport.getText().trim()   + " " + endTImeSalesReport.getText().trim();
@@ -401,7 +420,11 @@ public class AllReportsController {
     }
 
     @FXML
-    void generateXReport(ActionEvent event) {
+    /**
+     * Generates the table for the X Report.
+     * @param event This function triggers when a button is pressed.
+     */
+    public void generateXReport(ActionEvent event) {
         xReportTable.setItems(fetchXReport());
     }
 
@@ -447,7 +470,11 @@ public class AllReportsController {
 
     
     @FXML
-    void generateZReport(ActionEvent event) {
+    /**
+     * Generates the table for the Z Report.
+     * @param event This function triggers when a button is pressed.
+     */
+    public void generateZReport(ActionEvent event) {
         LocalDate today = LocalDate.now();
 
         if (today.equals(lastZReportDate)) {
@@ -469,7 +496,11 @@ public class AllReportsController {
     }
 
     @FXML
-    void returnHome(ActionEvent event) {
+    /**
+     * Returns the page where a manager can select which report to view
+     * @param event This function triggers when a button is pressed.
+     */
+    public void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         MainApp.switchScene(stage, "/fxml/managerview.fxml");
     }
@@ -480,27 +511,46 @@ public class AllReportsController {
         a.setContentText(msg);
         a.showAndWait();
     }
-
+    /**
+     * This is a nested class within the AllReportsController.
+     * It contains the values of each row in a table
+     * of the Product Usage Chart.
+     * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+     */
     public class ProductUsageRow {
 
         private final SimpleIntegerProperty itemId;
         private final SimpleStringProperty name;
         private final SimpleIntegerProperty totalUsed;
-
+        /**
+         * The constructor for each row in the Product Usage Chart.
+         * @param itemId The ID of the item.
+         * @param name The name of the item.
+         * @param totalUsed The total amount of each item used.
+         */
         public ProductUsageRow(int itemId, String name, int totalUsed) {
             this.itemId = new SimpleIntegerProperty(itemId);
             this.name = new SimpleStringProperty(name);
             this.totalUsed = new SimpleIntegerProperty(totalUsed);
         }
-
+        /**
+         * 
+         * @return Returns the item's ID.
+         */
         public int getItemId() {
             return itemId.get();
         }
-
+        /**
+         * 
+         * @return Returns the item's name.
+         */
         public String getName() {
             return name.get();
         }
-
+        /**
+         * 
+         * @return Returns the total of each item used.
+         */
         public int getTotalUsed() {
             return totalUsed.get();
         }
