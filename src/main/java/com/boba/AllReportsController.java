@@ -27,67 +27,167 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * This class contains all of the logic for
+ * the manager to be able to generate reports
+ * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+ */
 public class AllReportsController {
 
+    /**
+     * This is a nested class within the AllReportsController
+     * It contains the values of each row in a table
+     * of the Sales Report
+     * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+     */
     public class SalesReportRow {
     private final SimpleIntegerProperty itemId;
     private final SimpleStringProperty itemName;
     private final SimpleIntegerProperty total;
     private final SimpleDoubleProperty totalRevenue;
-
+    
+    /**
+     * The constructor for each row in the Sales Report table
+     * @param itemId The ID for each item 
+     * @param itemName The name for each item
+     * @param total The total number of the item that have been sold
+     * @param totalRevenue The total revenue made from selling this item
+     */
     public SalesReportRow(int itemId, String itemName, int total, Double totalRevenue) {
         this.itemId = new SimpleIntegerProperty(itemId);
         this.itemName = new SimpleStringProperty(itemName);
         this.total = new SimpleIntegerProperty(total);
         this.totalRevenue = new SimpleDoubleProperty(totalRevenue);
     }
-
+    /**
+     * 
+     * @return Returns the item's ID
+     */
     public int getItemId() { return itemId.get(); }
+    /**
+     * 
+     * @return Returns the item's ID
+     */
     public SimpleIntegerProperty itemIdProperty() { return itemId; }
 
     public String getItemName() { return itemName.get(); }
+    /**
+     * 
+     * @return Returns the item's name
+     */
     public SimpleStringProperty itemNameProperty() { return itemName; }
-
+    /**
+     * 
+     * @return Returns the total amount of the item that have been sold
+     */
     public int getTotal() { return total.get(); }
+    /**
+     * 
+     * @return Returns the total amount of the item being sold
+     */
     public SimpleIntegerProperty totalProperty() { return total; }
-
+    /**
+     * 
+     * @return Returns the total revenue of the item being sold
+     */
     public Double getTotalRevenue() {return totalRevenue.get();}
+    /**
+     * 
+     * @return Returns the total revenue of the item being sold
+     */
     public SimpleDoubleProperty totalRevenueProperty() {return totalRevenue;}
     }
+
+    /**
+     * This is a nested class within the AllReportsController
+     * It contains the values of each row in a table
+     * of the X report
+     * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+     */
     public class XReportRow {
     private final SimpleIntegerProperty hour;
     private final SimpleDoubleProperty revenue;
-
+    
+    /**
+     * The constructor for each row in the X Report table
+     * @param hour The current hour in the day
+     * @param revenue How much revenue was made during the hour
+     */
     public XReportRow(int hour, double revenue) {
         this.hour = new SimpleIntegerProperty(hour);
         this.revenue = new SimpleDoubleProperty(revenue);
     }
-
+    /**
+     * 
+     * @return Returns the hour
+     */
     public int getHour() { return hour.get(); }
+    /**
+     * 
+     * @return Returns the hour
+     */
     public SimpleIntegerProperty hourProperty() { return hour; }
-
+    /**
+     * 
+     * @return Returns the revenue within the current hour
+     */
     public double getRevenue() { return revenue.get(); }
+    /**
+     * 
+     * @return Returns the revenue within the current hour
+     */
     public SimpleDoubleProperty revenueProperty() { return revenue; }
     }
-
+    /**
+     * This is a nested class within the AllReportsController
+     * It contains the values of each row in a table
+     * of the Z report
+     * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+     */
     public class ZReportRow {
         private final SimpleDoubleProperty totalSales;
         private final SimpleIntegerProperty totalOrders;
         private final SimpleIntegerProperty totalItems;
-
+        /**
+         * The constructor for each row in the Z Report table
+         * @param totalSales The total sales made that day in dollars
+         * @param totalOrders The total numbers of orders taken that day
+         * @param totalItems The total number of items sold that day
+         */
         public ZReportRow(double totalSales, int totalOrders, int totalItems) {
             this.totalSales = new SimpleDoubleProperty(totalSales);
             this.totalOrders = new SimpleIntegerProperty(totalOrders);
             this.totalItems = new SimpleIntegerProperty(totalItems);
         }
-
+        /**
+         * 
+         * @return Returns the total sales made that day in dollars
+         */
         public double getTotalSales() { return totalSales.get(); }
+        /**
+         * 
+         * @return Returns the total sales made that day in dollars
+         */
         public SimpleDoubleProperty totalSalesProperty() { return totalSales; }
-
+        /**
+         * 
+         * @return Returns the total number of orders made that day
+         */
         public int getTotalOrders() { return totalOrders.get(); }
+        /**
+         * 
+         * @return Returns the total number of orders made that day
+         */
         public SimpleIntegerProperty totalOrdersProperty() { return totalOrders; }
-
+        /**
+         * 
+         * @return Returns the total number of items sold that day
+         */
         public int getTotalItems() { return totalItems.get(); }
+        /**
+         * 
+         * @return Returns the total number of items sold that day
+         */
         public SimpleIntegerProperty totalItemsProperty() { return totalItems; }
     }
 
