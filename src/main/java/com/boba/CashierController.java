@@ -6,6 +6,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+
+/**
+ * This class contains all of the logic for
+ *actions by cashiers.
+ * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+ */
 public class CashierController {
     @FXML private FlowPane menuGrid;
     @FXML private Button orderButton;

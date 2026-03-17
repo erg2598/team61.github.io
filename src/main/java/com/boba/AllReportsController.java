@@ -64,42 +64,42 @@ public class AllReportsController {
         this.totalRevenue = new SimpleDoubleProperty(totalRevenue);
     }
     /**
-     * 
+     * Returns the item's ID as an integer.
      * @return Returns the item's ID.
      */
     public int getItemId() { return itemId.get(); }
     /**
-     * 
+     *  Returns the item's ID as an integer.
      * @return Returns the item's ID.
      */
     public SimpleIntegerProperty itemIdProperty() { return itemId; }
     /**
-     * 
+     * Returns the item's name as a string.
      * @return Returns the item's name.
      */
     public String getItemName() { return itemName.get(); }
     /**
-     * 
+     * Returns the item's name as a string.
      * @return Returns the item's name.
      */
     public SimpleStringProperty itemNameProperty() { return itemName; }
     /**
-     * 
+     * Returns the total amount of the item that have been sold as an integer.
      * @return Returns the total amount of the item that have been sold.
      */
     public int getTotal() { return total.get(); }
     /**
-     * 
+     * Returns the total amount of the item that have been sold as an integer.
      * @return Returns the total amount of the item being sold.
      */
     public SimpleIntegerProperty totalProperty() { return total; }
     /**
-     * 
+     * Returns the total revenue of the item being sold as a double.
      * @return Returns the total revenue of the item being sold.
      */
     public Double getTotalRevenue() {return totalRevenue.get();}
     /**
-     * 
+     * Returns the total revenue of the item being sold as a double.
      * @return Returns the total revenue of the item being sold.
      */
     public SimpleDoubleProperty totalRevenueProperty() {return totalRevenue;}
@@ -125,22 +125,22 @@ public class AllReportsController {
         this.revenue = new SimpleDoubleProperty(revenue);
     }
     /**
-     * 
+     * Returns the hour as an integer.
      * @return Returns the hour.
      */
     public int getHour() { return hour.get(); }
     /**
-     * 
+     * Returns the hour as an integer.
      * @return Returns the hour.
      */
     public SimpleIntegerProperty hourProperty() { return hour; }
     /**
-     * 
+     * Returns the revenue within the current hour as a double.
      * @return Returns the revenue within the current hour.
      */
     public double getRevenue() { return revenue.get(); }
     /**
-     * 
+     * Returns the revenue within the current hour as a double.
      * @return Returns the revenue within the current hour.
      */
     public SimpleDoubleProperty revenueProperty() { return revenue; }
@@ -172,27 +172,27 @@ public class AllReportsController {
          */
         public double getTotalSales() { return totalSales.get(); }
         /**
-         * 
+         * Returns the total sales made that day in dollars as a double.
          * @return Returns the total sales made that day in dollars.
          */
         public SimpleDoubleProperty totalSalesProperty() { return totalSales; }
         /**
-         * 
+         * Returns the total number of orders made that day as an integer.
          * @return Returns the total number of orders made that day.
          */
         public int getTotalOrders() { return totalOrders.get(); }
         /**
-         * 
+         * Returns the total number of orders made that day as an integer.
          * @return Returns the total number of orders made that day.
          */
         public SimpleIntegerProperty totalOrdersProperty() { return totalOrders; }
         /**
-         * 
+         * Returns the total number of items sold that day as an integer.
          * @return Returns the total number of items sold that day.
          */
         public int getTotalItems() { return totalItems.get(); }
         /**
-         * 
+         * Returns the total number of items sold that day as an integer.
          * @return Returns the total number of items sold that day.
          */
         public SimpleIntegerProperty totalItemsProperty() { return totalItems; }
@@ -512,7 +512,7 @@ public class AllReportsController {
         a.showAndWait();
     }
     /**
-     * This is a nested class within the AllReportsController.
+     * This is a nested class within the AllReportsController for each row in the Product Usage Table.
      * It contains the values of each row in a table
      * of the Product Usage Chart.
      * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
@@ -534,22 +534,22 @@ public class AllReportsController {
             this.totalUsed = new SimpleIntegerProperty(totalUsed);
         }
         /**
-         * 
-         * @return Returns the item's ID.
+         * Returns the item's ID.
+         * @return Returns the item's ID as an integer.
          */
         public int getItemId() {
             return itemId.get();
         }
         /**
-         * 
-         * @return Returns the item's name.
+         * Returns the item's name.
+         * @return Returns the item's name as a string.
          */
         public String getName() {
             return name.get();
         }
         /**
-         * 
-         * @return Returns the total of each item used.
+         * Returns the total of each item used.
+         * @return Returns the total of each item used as an integer.
          */
         public int getTotalUsed() {
             return totalUsed.get();
