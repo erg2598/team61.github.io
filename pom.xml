@@ -63,7 +63,7 @@
                 
                 <useStandardDocletOptions>true</useStandardDocletOptions>
                 
-                <show>private</show>
+                <show>public</show>
             </configuration>
         </plugin>
         </plugins>
