@@ -22,6 +22,9 @@ public class CashierController {
     public void initialize() {
         buildMenuButtons();
     }
+    /**
+     * builds menu buttons dynamically and toggles to menu once selected 
+     */
     public void buildMenuButtons() {
         menuGrid.getChildren().clear();
         menuGrid.setHgap(8);
