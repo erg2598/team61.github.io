@@ -170,6 +170,7 @@ public class MainApp extends Application {
     // DataBase QUERIES
     /**
      * This functions loads the menu items from the database.
+     * @throws SQLException Throws an exception when the connection to the database fails.
      */
     public static void loadItemCache() throws SQLException {
         itemCache.clear();

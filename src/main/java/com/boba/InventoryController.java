@@ -10,9 +10,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
+/**
+ * This class contains all of the logic for the inventory table when management wants to view it.
+ * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+ */
 public class InventoryController {
-
+    /**
+     * This class does not have a constructor.
+     */
+    public InventoryController(){}
     @FXML private TableView<InventoryRow> inventoryTable;
     @FXML private TableColumn<InventoryRow, Integer> idCol;
     @FXML private TableColumn<InventoryRow, String>  nameCol;
@@ -20,15 +26,26 @@ public class InventoryController {
     @FXML private TableColumn<InventoryRow, Double>  priceCol;
     @FXML private TableColumn<InventoryRow, Integer> reorderCol;
     @FXML private TableColumn<InventoryRow, String>  typeCol;
-
+    /**
+     * This is a nested class within the Inventory Controller.
+     * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+    */
     public static class InventoryRow {
-        public final IntegerProperty inventoryId;
-        public final StringProperty  name;
-        public final DoubleProperty  quantity;
-        public final DoubleProperty  price;
-        public final IntegerProperty reorder;
-        public final StringProperty  type;
-
+        private final IntegerProperty inventoryId;
+        private final StringProperty  name;
+        private final DoubleProperty  quantity;
+        private final DoubleProperty  price;
+        private final IntegerProperty reorder;
+        private final StringProperty  type;
+        /**
+         * The constructor for a row in the Inventory table.
+         * @param id The ID of the item.
+         * @param name The name of the item.
+         * @param qty How many of the item are currently in the inventory.
+         * @param price How much the item costs.
+         * @param reorder How many of the item the store will have when it needs to be reordered.
+         * @param type The category the item falls into, base, topping, etc.
+         */
         public InventoryRow(int id, String name, double qty, double price, int reorder, String type) {
             this.inventoryId = new SimpleIntegerProperty(id);
             this.name        = new SimpleStringProperty(name);
@@ -38,7 +55,9 @@ public class InventoryController {
             this.type        = new SimpleStringProperty(type);
         }
     }
-
+    /**
+     * Initializes the Inventory table.
+     */
     @FXML
     public void initialize() {
         idCol.setCellValueFactory(c      -> c.getValue().inventoryId.asObject());
@@ -51,6 +70,10 @@ public class InventoryController {
     }
 
     // LOADS the table in the viewer
+    /**
+     * Loads the table from the database.
+     * @param event Triggered when a button is clicked.
+     */
     @FXML
     public void loadTable(ActionEvent event) {
         ObservableList<InventoryRow> rows = FXCollections.observableArrayList();
@@ -76,6 +99,10 @@ public class InventoryController {
 
 
     // ADDS inventory item with the necessary data
+    /**
+     * Adds an item to the database.
+     * @param event Triggered when the 'Add Item' button is pressed.
+     */
     @FXML
     void addInventoryItem(ActionEvent event) {
         TextInputDialog nameDialog = new TextInputDialog();
@@ -136,7 +163,10 @@ public class InventoryController {
             showAlert("Error", e.getMessage());
         }
     }
-
+    /**
+     * Updates an inventory item's information.
+     * @param event Triggered when the 'Update Item' button is pressed.
+     */
     @FXML
     void updateInventoryItem(ActionEvent event) {
         // Get the ID of the item to update
@@ -201,7 +231,10 @@ public class InventoryController {
             showAlert("Error", e.getMessage());
         }
     }
-
+    /**
+     * Returns the main view of the managers interface.
+     * @param event Triggered when the 'Return Home' button is pressed.
+     */
     @FXML
     void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

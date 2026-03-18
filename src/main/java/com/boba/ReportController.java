@@ -56,10 +56,10 @@ public class ReportController {
         }
     }
 
-    @FXML
     /**
      * Initializes the report table for each column.
      */
+    @FXML
     public void initialize() {
         orderIdCol.setCellValueFactory(c->c.getValue().orderId.asObject());
         customerCol.setCellValueFactory(c->c.getValue().customer);
@@ -68,11 +68,11 @@ public class ReportController {
         dateCol.setCellValueFactory(c->c.getValue().date);
     }
 
-    @FXML
     /**
      * Generates the daily report by querying the database for all orders on the present day
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void dailyReport(ActionEvent event) {
         ObservableList<OrderRow> rows = FXCollections.observableArrayList();
         double dailyTotal = 0.0;
@@ -112,11 +112,11 @@ public class ReportController {
         }
     }
 
-    @FXML
     /**
      * Returns the page where a manager can select which report to view.
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         MainApp.switchScene(stage, "/fxml/ManagerView.fxml");

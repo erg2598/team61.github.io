@@ -238,12 +238,13 @@ public class EmployeeController {
     }
 
     
-    @FXML
+    
     /**
      * This function allows a manger to edit an employee's information.
      * @param event This function is triggered when the 'Edit Employee' button is pressed.
      *
      */
+    @FXML
     public void editEmployee(ActionEvent event) {
         TextInputDialog IDDialog = new TextInputDialog("");
         IDDialog.setTitle("Edit Employee");

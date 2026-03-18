@@ -36,12 +36,12 @@ public class ToggleMenuController {
     private String selectedIce   = "NONE";
     private String selectedTemp  = "COLD";
     private int    selectedSugar = 100;
-    @FXML
     /**
      * Initializes the toggle menu by setting up toggle groups for size, ice,
      * temperature, and sugar level.
      * Loads bases and toppings from the database and then checks for selected item
      */
+    @FXML
     public void initialize() {
         if (MainApp.selectedItem == null) return;
         if (MainApp.currentCustomerName != null && !MainApp.currentCustomerName.isBlank()) {

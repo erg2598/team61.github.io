@@ -13,12 +13,17 @@ import javafx.stage.Stage;
  * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
  */
 public class CashierController {
+    /**
+     * This class does not have a constructor.
+     */
+    public CashierController(){}
     @FXML private FlowPane menuGrid;
     @FXML private Button orderButton;
-    @FXML
+    
     /**
      * This functions calls buildMenuButtons on application start up.
      */
+    @FXML
     public void initialize() {
         buildMenuButtons();
     }

@@ -55,10 +55,11 @@ public class ItemPriceController {
         }
     }
 
-    @FXML
+    
     /**
      * Initializes the item table for each column and loading the table data.
      */
+    @FXML
     public void initialize() {
         idCol.setCellValueFactory(c      -> c.getValue().itemId.asObject());
         nameCol.setCellValueFactory(c    -> c.getValue().name);
@@ -68,11 +69,12 @@ public class ItemPriceController {
         loadTable(null);
     }
 
-    @FXML
+    
     /**
      * Loads all menu items from the database and displays them in the table.
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void loadTable(ActionEvent event) {
         ObservableList<ItemRow> rows = FXCollections.observableArrayList();
         String sql = "SELECT \"itemId\", name, \"basePrice\", size, enabled " +
@@ -94,12 +96,13 @@ public class ItemPriceController {
         itemTable.setItems(rows);
     }
 
-    @FXML
+    
     /**
      * Adds a new menu item to the database.
      * Allows input for a name, base price, and size.
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void addMenuItem(ActionEvent event) {
         TextInputDialog nameDialog = new TextInputDialog();
         nameDialog.setTitle("Add Menu Item");
@@ -142,12 +145,13 @@ public class ItemPriceController {
         }
     }
 
-    @FXML
+    
     /**
      * Updates the base price of an existing item
      * appends the item ID and new price. 
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void updateMenuItem(ActionEvent event) {
         TextInputDialog idDialog = new TextInputDialog();
         idDialog.setTitle("Update Item Price");
@@ -186,11 +190,12 @@ public class ItemPriceController {
         }
     }
 
-    @FXML
+    
     /**
      * Toggles the enabled status of a menu item in the database.
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void toggleMenuItem(ActionEvent event) {
         ItemRow selected = itemTable.getSelectionModel().getSelectedItem();
         if (selected == null) {
@@ -213,11 +218,12 @@ public class ItemPriceController {
         }
     }
 
-    @FXML
+    
     /**
      * Returns to the previous page. 
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         

@@ -167,7 +167,7 @@ public class AllReportsController {
             this.totalItems = new SimpleIntegerProperty(totalItems);
         }
         /**
-         * 
+         * Returns the total sales made that day in dollars.
          * @return Returns the total sales made that day in dollars.
          */
         public double getTotalSales() { return totalSales.get(); }
@@ -209,12 +209,13 @@ public class AllReportsController {
     @FXML private TableColumn<ProductUsageRow, String> nameProductUsage;
     private boolean zReportRun = false;
 
-    @FXML
+    
     /**
      * Generates the table for the Product Usage Chart.
      * @param event This function triggers when a button is pressed.
      * 
      */
+    @FXML
     public void generateProductUsage(ActionEvent event) {
             
         DateTimeFormatter dateFormatter =
@@ -350,12 +351,13 @@ public class AllReportsController {
     return rows;
 }
     
-    @FXML
+    
     /**
      * Generates the table for the Sales Report Chart.
      * @param event This function triggers when a button is pressed.
      * 
      */
+    @FXML
     public void generateSalesReport(ActionEvent event) {
         try {
             String startTimestamp = startDateSalesReport.getText().trim() + " " + startTimeSalesReport.getText().trim();
@@ -417,11 +419,12 @@ public class AllReportsController {
         return rows;
     }
 
-    @FXML
+    
     /**
      * Generates the table for the X Report.
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void generateXReport(ActionEvent event) {
         xReportTable.setItems(fetchXReport());
     }
@@ -467,11 +470,12 @@ public class AllReportsController {
     }
 
     
-    @FXML
+    
     /**
      * Generates the table for the Z Report.
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void generateZReport(ActionEvent event) {
         LocalDate today = LocalDate.now();
 
@@ -493,11 +497,12 @@ public class AllReportsController {
         zReportRun = true; 
     }
 
-    @FXML
+    
     /**
      * Returns the page where a manager can select which report to view
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         MainApp.switchScene(stage, "/fxml/managerview.fxml");

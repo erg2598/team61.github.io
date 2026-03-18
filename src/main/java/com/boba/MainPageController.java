@@ -37,13 +37,14 @@ public class MainPageController {
     @FXML
     private TextField usernameEntry;
 
-    @FXML
+    
     /**
      * checks the username and password entered by the user
      * and launches either the cashier view or manager view
      * based on database log in 
      * @param event This function triggers when a button is pressed.
      */
+    @FXML
     public void launchView(ActionEvent event) {
         String usernameInput = usernameEntry.getText();
         String passwordInput = passwordEntry.getText();
