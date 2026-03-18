@@ -60,10 +60,10 @@ public class EmployeeController {
     }   
 
     //populates and load table in the viewer
-    @FXML
     /**
      * This function loads and populates the table of employees for the manager.
      */
+    @FXML
     public void initialize() {
         employeeColumn.setCellValueFactory(c      -> c.getValue().name);
         salaryColumn.setCellValueFactory(c    -> c.getValue().salary);
@@ -74,11 +74,12 @@ public class EmployeeController {
     }
 
     // LOADS the table in the viewer
-    @FXML
+    
     /**
      * A helper function that loads the table of employees
      * @param event This function triggers upon navigating to the employee menu, or when a button is pressed.
      */
+    @FXML
     public void loadTable(ActionEvent event) {
         ObservableList<Employee> rows = FXCollections.observableArrayList();
         String sql = "SELECT \"employeeId\", \"name\", \"salary\", \"date_hired\", " +
@@ -99,23 +100,25 @@ public class EmployeeController {
         }
         employeeTable.setItems(rows);
     }
-    @FXML
+    
     /**
      * This function returns to the main view of the manager's screen.
      * @param event This function triggers when the back button is pressed.
      */
+    @FXML
     public void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         
         MainApp.switchScene(stage, "/fxml/managerview.fxml");
     }
 
-    @FXML
+    
     /**
      * This function allows managers to add employees into the database.
      * @param event This function triggers when the 'Add Employee' button is pressed.
      *
      */
+    @FXML
     public void addEmployee(ActionEvent event) {
         TextInputDialog nameDialog = new TextInputDialog();
         nameDialog.setTitle("Add Employee");
@@ -202,12 +205,13 @@ public class EmployeeController {
         }
     }
 
-    @FXML
+    
     /**
      * This function allows a manager to remove an employee from the database.
      * @param event This function is triggered when the 'Remove Employee' button is pressed.
      * 
      */
+    @FXML
     public void removeEmployee(ActionEvent event) {
         TextInputDialog IDDialog = new TextInputDialog();
         IDDialog.setTitle("Delete Employee");
