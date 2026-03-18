@@ -1,7 +1,6 @@
 package com.boba;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +10,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+/**
+ * This class contains all of the logic for
+ * the main login page where individuals can enter their
+ * ID to access the cashier or manager view.
+ * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+ */
 public class MainPageController {
+    /**
+     * This class does not have a constructor.
+     */
+    public MainPageController(){}
 
     @FXML
     private Button enterButton;
@@ -30,7 +38,13 @@ public class MainPageController {
     private TextField usernameEntry;
 
     @FXML
-    void launchView(ActionEvent event) {
+    /**
+     * checks the username and password entered by the user
+     * and launches either the cashier view or manager view
+     * based on database log in 
+     * @param event This function triggers when a button is pressed.
+     */
+    public void launchView(ActionEvent event) {
         String usernameInput = usernameEntry.getText();
         String passwordInput = passwordEntry.getText();
         try{
