@@ -1,0 +1,7 @@
+{
+"name": "boba-shop-pos",
+"version": "1.0.0",
+"description": "This is a boba shop point of sale system that was created from the ground up.",
+"main": "index.js"
+
+    }
