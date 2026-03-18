@@ -17,7 +17,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
+/**
+ * This is the main class of our app. It connects to the database and launches the main view.
+ */
 public class MainApp extends Application {
+    /**
+     * This class does not have a constructor.
+     */
+    public MainApp(){}
     // DB POOL (Hikari) - allows more stable connection? 
     private static final HikariDataSource ds;
     static {
@@ -31,17 +39,34 @@ public class MainApp extends Application {
         config.setMaximumPoolSize(10);
         ds = new HikariDataSource(config);
     }
+    /**
+     * Returns the connection to the database.
+     * @return Returns the connection to the database.
+     * @throws SQLException Throws an exception when the app is unable to connect to the database.
+     */
     public static Connection getConnection() throws SQLException {
         return ds.getConnection();
     }
 
     // SHARED STATE
+    /**
+     * A nested class within the main app. It is used for sending default menu items for each order to the database.
+     */
     public static class Item {
-        public final int itemId;
-        public final String name;
-        public final double basePrice;
-        public final String size;
-        public final boolean enabled;
+        private final int itemId;
+        private final String name;
+        private final double basePrice;
+        private final String size;
+        private final boolean enabled;
+        /**
+         * The constructor for the item class.
+         * @param itemId The item's ID.
+         * @param name The item's name.
+         * @param basePrice The item's default price.
+         * @param size The item's size, regular or large.
+         * @param enabled A boolean that determines whether the item is able to be sold at the time. It's useful for tracking seasonal or discontinued menu items.
+         *
+         */
         public Item(int itemId, String name, double basePrice, String size, boolean enabled) {
             this.itemId = itemId;
             this.name = name;
@@ -50,17 +75,33 @@ public class MainApp extends Application {
             this.enabled = enabled;
         }
     }
+    /**
+     * A nested class within the main app. It is used for sending items that have been customized to the database.
+     */
     public static class OrderLineItem {
-        public final int itemId;
-        public final String drinkName;
-        public final String size;
-        public final String baseType;
-        public final String iceLevel;
-        public final String temperature;
-        public final int sugarAmount;
-        public final double extras;
-        public final List<String> toppings; 
-        public final double price;          
+        private final int itemId;
+        private final String drinkName;
+        private final String size;
+        private final String baseType;
+        private final String iceLevel;
+        private final String temperature;
+        private final int sugarAmount;
+        private final double extras;
+        private final List<String> toppings; 
+        private final double price;
+        /**
+         * The constructor for each item in an order.
+         * @param itemId The item's ID.
+         * @param drinkName The name of the item.
+         * @param size The size of the item.
+         * @param baseType The liquid base of the item.
+         * @param iceLevel How much ice the drink has.
+         * @param temperature The temperature of the drink, either hot or cold.
+         * @param sugarAmount The sugar amount of the drink.
+         * @param extras Any extra add ins in the drink.
+         * @param toppings Any extra toppings in the drink.
+         * @param price The price of the drink after any extra costs.
+         */      
         public OrderLineItem(int itemId, String drinkName, String size,
                              String baseType, String iceLevel, String temperature,
                              int sugarAmount, double extras, List<String> toppings,
@@ -77,16 +118,22 @@ public class MainApp extends Application {
             this.price = price;
         }
     }
-    public static Item selectedItem = null;
-    public static final List<OrderLineItem> cart = new ArrayList<>();
-    public static double cartTotal = 0.0;
-    public static String currentCustomerName = "";
-    public static final Map<Integer, Item> itemCache = new LinkedHashMap<>();
-
+    private static Item selectedItem = null;
+    private static final List<OrderLineItem> cart = new ArrayList<>();
+    private static double cartTotal = 0.0;
+    private static String currentCustomerName = "";
+    private static final Map<Integer, Item> itemCache = new LinkedHashMap<>();
+    /**
+     * This function adds an item to the cart, readying it to be added to the database in an order.
+     * @param line This function takes in an OrderLineItem.
+     */
     public static void addToCart(OrderLineItem line) {
         cart.add(line);
         cartTotal += line.price;
     }
+    /**
+     * This functions removes any items that are in the cart.
+     */
     public static void clearCart() {
         cart.clear();
         cartTotal = 0.0;
@@ -94,6 +141,11 @@ public class MainApp extends Application {
     }
 
     // SCENE SWITCH HELPER
+    /**
+     * This functions switches the scene of the app.
+     * @param stage The current view.
+     * @param fxmlPath The file path of the new view to switch to.
+     */
     public static void switchScene(Stage stage, String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(fxmlPath));
@@ -116,6 +168,9 @@ public class MainApp extends Application {
     }
 
     // DataBase QUERIES
+    /**
+     * This functions loads the menu items from the database.
+     */
     public static void loadItemCache() throws SQLException {
         itemCache.clear();
         String sql = "SELECT \"itemId\", name, \"basePrice\", size, enabled " +
@@ -136,6 +191,12 @@ public class MainApp extends Application {
             }
         }
     }
+    /**
+     * This function searches the database for an item ID.
+     * @param itemId The item ID to search for
+     * @return The function returns an array of items IDs.
+     * @throws SQLException This function throws an exception when the database connection fails.
+     */
     public static List<Integer> getIngredientInventoryIdsForItem(int itemId) throws SQLException {
         List<Integer> ids = new ArrayList<>();
         String sql = "SELECT \"inventoryId\" FROM public.\"Ingredients\" WHERE \"itemId\" = ?";
@@ -148,7 +209,15 @@ public class MainApp extends Application {
         }
         return ids;
     }
-    
+    /**
+     * This functions adds items in the database.
+     * @param name The name of the item.
+     * @param normalPrice The price of the item.
+     * @param ingredientIds A list of ingredient IDs of the ingredients that make up the item.
+     * @param quantityUsed The quantity of each item that has been used.
+     * @return This function returns an integer.
+     * @throws SQLException This function throws an exception when the database connection fails.
+     */
     public static int addItemToDB(String name, double normalPrice,
                                    List<Integer> ingredientIds,
                                    double quantityUsed) throws SQLException {
@@ -205,7 +274,12 @@ public class MainApp extends Application {
             }
         }
     }
-
+    /**
+     * This function adds an item to the database.
+     * @param name The name of the item.
+     * @param basePrice The price of the item
+     * @param size The size of the item.
+     */
     public static void addItemToDB(String name, double basePrice, String size) {
         try (Connection conn = getConnection()) {
             String sql = "INSERT INTO public.\"Item\" (\"name\", \"basePrice\", \"size\") VALUES (?, ?, ?)";
@@ -221,7 +295,12 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-
+    /**
+     * This functions submits everything in the customers cart to the database as an order.
+     * @param customerName The customer name for the order.
+     * @return This function returns the ID of the order.
+     * @throws SQLException This function throws an exception when the database connection fails.
+     */
     public static int submitCartToDB(String customerName) throws SQLException {
         if (cart.isEmpty()) throw new SQLException("Cart is empty.");
 
@@ -281,7 +360,12 @@ public class MainApp extends Application {
         }
     }
 
-    
+    /**
+     * This function gets the price of an item from the database.
+     * @param inventoryId The ID of the item to seach for.
+     * @return This function returns the price of the item.
+     * @throws SQLException This function throws an exception when the database connection fails.
+     */
     public static double getPricePerUnit(int inventoryId) throws SQLException {
         String sql = "SELECT \"pricePerUnit\" FROM public.\"Inventory\" WHERE \"inventoryId\" = ?";
         try (Connection conn = getConnection();
@@ -312,6 +396,9 @@ public class MainApp extends Application {
     }
     // APP ENTRY - Jack can change once entry is set 
     @Override
+    /**
+     * This function launches the main view of the app upon startup.
+     */
     public void start(Stage stage) throws Exception {
         resetSequences();
         loadItemCache();
@@ -319,6 +406,10 @@ public class MainApp extends Application {
         stage.setTitle("Boba POS");
         stage.show();
     }
+    /**
+     * The main function of the program. It launches the app.
+     * @param args No commandline arguments are used in this program.
+     */
     public static void main(String[] args) {
         launch(args);
     }
