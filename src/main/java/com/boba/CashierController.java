@@ -17,11 +17,14 @@ public class CashierController {
     @FXML private Button orderButton;
     @FXML
     /**
-     * This functions creates all of the menu buttons for the cashier view.
+     * This functions calls buildMenuButtons on application start up.
      */
     public void initialize() {
         buildMenuButtons();
     }
+    /**
+     * This function creates the buttons for the items of the menu.
+     */
     public void buildMenuButtons() {
         menuGrid.getChildren().clear();
         menuGrid.setHgap(8);
@@ -46,7 +49,7 @@ public class CashierController {
         MainApp.switchScene(stage, "/fxml/togglemenu.fxml");
     }
     @FXML
-    void submitOrder(ActionEvent e) {
+     private void submitOrder(ActionEvent e) {
         if (MainApp.cart.isEmpty()) {
             alert("Empty Order", "Add at least one drink first.");
             return;
