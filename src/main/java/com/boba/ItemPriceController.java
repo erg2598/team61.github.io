@@ -46,7 +46,6 @@ public class ItemPriceController {
          * @param size The size of the item.
          * @param enabled Whether the item is currently enabled.
          */
-
         public ItemRow(int id, String name, double price, String size, boolean enabled) {
             this.itemId  = new SimpleIntegerProperty(id);
             this.name    = new SimpleStringProperty(name);

@@ -114,7 +114,7 @@ public class EmployeeController {
     /**
      * This function allows managers to add employees into the database.
      * @param event This function triggers when the 'Add Employee' button is pressed.
-     * @throws showAlert This throws an error when a manager inputs employee data in an incorrect format.
+     *
      */
     public void addEmployee(ActionEvent event) {
         TextInputDialog nameDialog = new TextInputDialog();
@@ -206,7 +206,7 @@ public class EmployeeController {
     /**
      * This function allows a manager to remove an employee from the database.
      * @param event This function is triggered when the 'Remove Employee' button is pressed.
-     * @throws showAlert This function throws an error when the manager inputs employee data in an incorrect format.
+     * 
      */
     public void removeEmployee(ActionEvent event) {
         TextInputDialog IDDialog = new TextInputDialog();
@@ -237,8 +237,8 @@ public class EmployeeController {
     @FXML
     /**
      * This function allows a manger to edit an employee's information.
-     ** @param event This function is triggered when the 'Edit Employee' button is pressed.
-     * @throws IllegalArgumentException This function throws an error when a manager inputs employee data in an incorrect format.
+     * @param event This function is triggered when the 'Edit Employee' button is pressed.
+     *
      */
     public void editEmployee(ActionEvent event) {
         TextInputDialog IDDialog = new TextInputDialog("");

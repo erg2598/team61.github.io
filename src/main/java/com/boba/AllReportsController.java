@@ -213,8 +213,7 @@ public class AllReportsController {
     /**
      * Generates the table for the Product Usage Chart.
      * @param event This function triggers when a button is pressed.
-     * @throws showAlert An error that occurs when the manager inputs dates in an incorrect format or there is an error with the database.
-     *
+     * 
      */
     public void generateProductUsage(ActionEvent event) {
             
@@ -355,8 +354,7 @@ public class AllReportsController {
     /**
      * Generates the table for the Sales Report Chart.
      * @param event This function triggers when a button is pressed.
-     * @throws showAlert An error that occurs when the manager inputs dates in an incorrect format or there is an error with the database.
-     *
+     * 
      */
     public void generateSalesReport(ActionEvent event) {
         try {
