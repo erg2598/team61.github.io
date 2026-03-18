@@ -16,6 +16,9 @@ public class CashierController {
     @FXML private FlowPane menuGrid;
     @FXML private Button orderButton;
     @FXML
+    /**
+     * This functions creates all of the menu buttons for the cashier view.
+     */
     public void initialize() {
         buildMenuButtons();
     }
