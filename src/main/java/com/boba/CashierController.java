@@ -22,9 +22,6 @@ public class CashierController {
     public void initialize() {
         buildMenuButtons();
     }
-    /**
-     * This function creates the buttons for the items of the menu.
-     */
     public void buildMenuButtons() {
         menuGrid.getChildren().clear();
         menuGrid.setHgap(8);

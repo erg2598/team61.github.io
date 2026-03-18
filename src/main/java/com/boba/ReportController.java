@@ -21,11 +21,11 @@ public class ReportController {
     @FXML private TableColumn<OrderRow, String>  dateCol;
 
     public static class OrderRow {
-        public final IntegerProperty orderId;
-        public final StringProperty  customer;
-        public final StringProperty  status;
-        public final DoubleProperty  total;
-        public final StringProperty  date;
+        private final IntegerProperty orderId;
+        private final StringProperty  customer;
+        private final StringProperty  status;
+        private final DoubleProperty  total;
+        private final StringProperty  date;
 
         public OrderRow(int id, String customer, String status, double total, String date) {
             this.orderId  = new SimpleIntegerProperty(id);

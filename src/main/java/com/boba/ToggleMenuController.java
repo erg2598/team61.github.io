@@ -9,7 +9,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
 import java.util.stream.Collectors;
+/**
+ * This class contains all of the logic for
+ * the toggle menu where customers can customize their drink 
+ * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+ */
 public class ToggleMenuController {
+    /**
+     * This class does not have a constructor.
+     */
+    public ToggleMenuController(){}
     @FXML private TextField customerNameField;
     @FXML private FlowPane basesPane;
     @FXML private FlowPane toppingsPane;
@@ -28,6 +37,11 @@ public class ToggleMenuController {
     private String selectedTemp  = "COLD";
     private int    selectedSugar = 100;
     @FXML
+    /**
+     * Initializes the toggle menu by setting up toggle groups for size, ice,
+     * temperature, and sugar level.
+     * Loads bases and toppings from the database and then checks for selected item
+     */
     public void initialize() {
         if (MainApp.selectedItem == null) return;
         if (MainApp.currentCustomerName != null && !MainApp.currentCustomerName.isBlank()) {
