@@ -237,8 +237,8 @@ public class EmployeeController {
     @FXML
     /**
      * This function allows a manger to edit an employee's information.
-     * @param event This function is triggered when the 'Edit Employee' button is pressed.
-     * @throws showAlert This function throws an error when a manager inputs employee data in an incorrect format.
+     ** @param event This function is triggered when the 'Edit Employee' button is pressed.
+     * @throws IllegalArgumentException This function throws an error when a manager inputs employee data in an incorrect format.
      */
     public void editEmployee(ActionEvent event) {
         TextInputDialog IDDialog = new TextInputDialog("");
