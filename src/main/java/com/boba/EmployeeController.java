@@ -14,8 +14,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
+/**
+ * This class contains all of the logic for
+ *manager actions including employees such as adding, removing, and editing their information.
+ * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+ */
 public class EmployeeController {
+    /**
+     * This class does not have a constructor.
+     */
+    public EmployeeController(){}
     //simple employee class to populate the table
     @FXML private TableView<Employee> employeeTable;
     @FXML private TableColumn<Employee, String> employeeColumn;
@@ -23,14 +31,25 @@ public class EmployeeController {
     @FXML private TableColumn<Employee, String> salaryColumn;
     @FXML private TableColumn<Employee, String> dateColumn;
     @FXML private TableColumn<Employee, String> titleColumn;
-
+    /**
+     * This is a nested class within the EmployeeController.
+     * It contains the information of each employee, such as their name, ID, salary, job title, and date of hire.
+     * @author Grant Duong, Nilay Alwar, Eli Goodrich, Maher Zaveri, Jack Anderson
+     */
     public class Employee {
         private final SimpleStringProperty name;
         private final SimpleStringProperty ID;
         private final SimpleStringProperty salary;
         private final SimpleStringProperty title;
         private final SimpleStringProperty hireDate;
-
+        /**
+         * The constructor for the employee class.
+         * @param name The employee's name.
+         * @param ID The employee's ID.
+         * @param salary The employee's salary.
+         * @param title The employee's job title.
+         * @param hireDate The date the employee was hired.
+         */
         public Employee(String name, String ID, String salary, String title, String hireDate) {
             this.name = new SimpleStringProperty(name);
             this.ID = new SimpleStringProperty(ID);
@@ -42,6 +61,9 @@ public class EmployeeController {
 
     //populates and load table in the viewer
     @FXML
+    /**
+     * This function loads and populates the table of employees for the manager.
+     */
     public void initialize() {
         employeeColumn.setCellValueFactory(c      -> c.getValue().name);
         salaryColumn.setCellValueFactory(c    -> c.getValue().salary);
@@ -53,6 +75,10 @@ public class EmployeeController {
 
     // LOADS the table in the viewer
     @FXML
+    /**
+     * A helper function that loads the table of employees
+     * @param event This function triggers upon navigating to the employee menu, or when a button is pressed.
+     */
     public void loadTable(ActionEvent event) {
         ObservableList<Employee> rows = FXCollections.observableArrayList();
         String sql = "SELECT \"employeeId\", \"name\", \"salary\", \"date_hired\", " +
@@ -74,14 +100,23 @@ public class EmployeeController {
         employeeTable.setItems(rows);
     }
     @FXML
-    void returnHome(ActionEvent event) {
+    /**
+     * This function returns to the main view of the manager's screen.
+     * @param event This function triggers when the back button is pressed.
+     */
+    public void returnHome(ActionEvent event) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         
         MainApp.switchScene(stage, "/fxml/managerview.fxml");
     }
 
     @FXML
-    void addEmployee(ActionEvent event) {
+    /**
+     * This function allows managers to add employees into the database.
+     * @param event This function triggers when the 'Add Employee' button is pressed.
+     * @throws showAlert This throws an error when a manager inputs employee data in an incorrect format.
+     */
+    public void addEmployee(ActionEvent event) {
         TextInputDialog nameDialog = new TextInputDialog();
         nameDialog.setTitle("Add Employee");
         nameDialog.setHeaderText(null);
@@ -168,7 +203,12 @@ public class EmployeeController {
     }
 
     @FXML
-    void removeEmployee(ActionEvent event) {
+    /**
+     * This function allows a manager to remove an employee from the database.
+     * @param event This function is triggered when the 'Remove Employee' button is pressed.
+     * @throws showAlert This function throws an error when the manager inputs employee data in an incorrect format.
+     */
+    public void removeEmployee(ActionEvent event) {
         TextInputDialog IDDialog = new TextInputDialog();
         IDDialog.setTitle("Delete Employee");
         IDDialog.setHeaderText(null);
@@ -195,7 +235,12 @@ public class EmployeeController {
 
     
     @FXML
-    void editEmployee(ActionEvent event) {
+    /**
+     * This function allows a manger to edit an employee's information.
+     * @param event This function is triggered when the 'Edit Employee' button is pressed.
+     * @throws showAlert This function throws an error when a manager inputs employee data in an incorrect format.
+     */
+    public void editEmployee(ActionEvent event) {
         TextInputDialog IDDialog = new TextInputDialog("");
         IDDialog.setTitle("Edit Employee");
         IDDialog.setHeaderText(null);
